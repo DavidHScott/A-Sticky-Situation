@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="PageTab" type="Button"]
+margin_right = 140.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 140, 0 )
+text = "WAREHOUSE"
+align = 1
+valign = 1
+uppercase = true
