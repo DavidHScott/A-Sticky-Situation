@@ -5,6 +5,8 @@ var money = 5000
 var inventory = []
 var inventory_size = 8
 
+signal money_was_updated(new_total)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -22,3 +24,14 @@ func _ready():
 	
 	inventory[4] = newItem
 	# Set the money counter
+
+func get_players_money():
+	return money
+
+func set_players_money(new_money):
+	money = new_money
+	## Reset UI
+
+func increment_players_money(new_money):
+	money += new_money
+	emit_signal("money_was_updated", money)

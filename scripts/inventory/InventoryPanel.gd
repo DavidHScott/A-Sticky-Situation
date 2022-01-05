@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 
 var slots = []
 
@@ -9,7 +9,7 @@ onready var inventory_slots = $GridContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.connect("slot_select", self, "")
+	Global.connect("slot_select", self, "new_selected_item")
 	
 	# Enable slots based on inventory size
 	for i in PlayerVariables.inventory_size-1:
@@ -30,27 +30,48 @@ func clear_selected_item():
 	selected_item_index = null
 
 func _on_SellOneButton_pressed():
-	
 	# Make sure item exists. Get the sell price
 	if selected_item == null:
 		return
-	
 	var sell_price = Global.get_item_sell_price(selected_item)
 	
 	# Remove one of the item from the inventory
-	PlayerVariables.inventory[selected_item_index].set_quantity(selected_item.get_quantity - 1)
+	PlayerVariables.inventory[selected_item_index].set_quantity(selected_item.get_quantity() - 1)
 
 	# Check if that was the last item in stack, and if so, remove item entirly
 	if PlayerVariables.inventory[selected_item_index].get_quantity() < 1:
 		# remove item from inventory,
-		pass
+		PlayerVariables.inventory[selected_item_index] = null
+		
+		# Remove the item from the slot
+		$GridContainer.get_child(selected_item_index).remove_item()
+		
+		# Clear reference to item
+		clear_selected_item()
+		
+		Global.clear_item_info_panel()
 	else:
-		pass
+		Global.slot_selected(selected_item_index)
 	
-	# Refresh UI
-	
-	pass # Replace with function body.
+	# Give money to player
+	PlayerVariables.increment_players_money(sell_price)
 
 
 func _on_SellAllButton_pressed():
-	pass # Replace with function body.
+	if selected_item == null:
+		return
+	var sell_price = Global.get_item_sell_price(selected_item) * selected_item.get_quantity()
+	
+	# Remove the item from the inventory
+	PlayerVariables.inventory[selected_item_index] = null
+	
+	# Remove the item from the slot
+	$GridContainer.get_child(selected_item_index).remove_item()
+	
+	# Clear reference to item
+	clear_selected_item()
+	
+	Global.clear_item_info_panel()
+	
+	# Give money to the player
+	PlayerVariables.increment_players_money(sell_price)

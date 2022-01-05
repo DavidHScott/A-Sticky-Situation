@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 
 Global="*res://scripts/auto_loaded_scripts/Global.gd"
 PlayerVariables="*res://scripts/auto_loaded_scripts/PlayerVariables.gd"
+ShoppingController="*res://scripts/auto_loaded_scripts/ShoppingController.gd"
 
 [physics]
 

@@ -9,8 +9,6 @@ var invItem_class = preload("res://scenes/gui_components/page_panels/InventoryIt
 var item = null
 var item_index = null
 
-var mouseOver = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not enabled:
