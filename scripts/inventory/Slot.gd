@@ -28,11 +28,16 @@ func disable_slot():
 func set_item(newItem_index):
 	item = PlayerVariables.inventory[newItem_index]
 	item_index = newItem_index
-	pass
+	
+	var invItem = invItem_class.instance()
+	
+	self.add_child(invItem)
 
 func remove_item():
 	item = null
 	item_index = null
+	
+	self.get_child(0).queue_free()
 
 func _gui_input(event):
 	if enabled and item != null:

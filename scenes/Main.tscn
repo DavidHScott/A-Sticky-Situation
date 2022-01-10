@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/gui_components/SettingsButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui_components/counters/DayCounter.tscn" type="PackedScene" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://scenes/gui_components/page_tabs/BuySyrupTab.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gui_components/page_tabs/MarketTab.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/tab_buttons/BuySyrupTab.gd" type="Script" id=13]
+[ext_resource path="res://scripts/tab_buttons/StartDayTab.gd" type="Script" id=14]
+[ext_resource path="res://scripts/buy_screen/ShopTimer.gd" type="Script" id=15]
+[ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=16]
+[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=17]
 
 [node name="Main" type="Node2D"]
 
@@ -22,15 +26,25 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+theme = ExtResource( 16 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Page" type="Control" parent="GUI/Interface"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarehousePage" parent="GUI/Interface/Page" instance=ExtResource( 6 )]
+
 [node name="Counters" type="HBoxContainer" parent="GUI/Interface"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -254.0
+margin_left = -284.0
 margin_bottom = 72.0
 grow_horizontal = 0
 __meta__ = {
@@ -46,61 +60,101 @@ margin_left = 104.0
 margin_right = 284.0
 margin_bottom = 72.0
 
-[node name="WarehousePage" parent="GUI/Interface" instance=ExtResource( 6 )]
+[node name="SettingsButton" parent="GUI/Interface" instance=ExtResource( 1 )]
+visible = false
 
-[node name="WarehouseTab" parent="GUI/Interface" instance=ExtResource( 4 )]
+[node name="LowerThird" type="Control" parent="GUI/Interface"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarehouseTab" parent="GUI/Interface/LowerThird" instance=ExtResource( 4 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -48.0
+margin_right = 166.0
 margin_bottom = 0.0
 script = ExtResource( 8 )
 
-[node name="OrdersTab" parent="GUI/Interface" instance=ExtResource( 3 )]
+[node name="OrdersTab" parent="GUI/Interface/LowerThird" instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -140.0
+margin_left = -166.0
 margin_top = -48.0
 margin_right = 0.0
 margin_bottom = 0.0
 script = ExtResource( 9 )
 
-[node name="StartDayTab" parent="GUI/Interface" instance=ExtResource( 7 )]
+[node name="StartDayTab" parent="GUI/Interface/LowerThird" instance=ExtResource( 7 )]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -70.0
-margin_top = -48.0
-margin_right = 70.0
+margin_left = -88.0
+margin_top = -88.0
+margin_right = 88.0
 margin_bottom = 0.0
+script = ExtResource( 14 )
 
-[node name="BuySyrupTab" parent="GUI/Interface" instance=ExtResource( 11 )]
+[node name="BuySyrupTab" parent="GUI/Interface/LowerThird" instance=ExtResource( 11 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -282.0
+margin_left = -337.0
 margin_top = -48.0
-margin_right = -142.0
+margin_right = -171.0
 margin_bottom = 0.0
 script = ExtResource( 13 )
 
-[node name="MarketTab" parent="GUI/Interface" instance=ExtResource( 12 )]
+[node name="MarketTab" parent="GUI/Interface/LowerThird" instance=ExtResource( 12 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 142.0
+margin_left = 171.0
 margin_top = -48.0
-margin_right = 282.0
+margin_right = 337.0
 margin_bottom = 0.0
 
-[node name="SettingsButton" parent="GUI/Interface" instance=ExtResource( 1 )]
-visible = false
+[node name="TimerPanel" type="NinePatchRect" parent="GUI/Interface/LowerThird"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -76.0
+margin_top = -75.0
+margin_right = 76.0
+texture = ExtResource( 17 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 9
+[node name="Label" type="Label" parent="GUI/Interface/LowerThird/TimerPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -37.5
+margin_bottom = 0.5
+rect_scale = Vector2( 2, 2 )
+text = "2:00"
+align = 1
+valign = 1
 
-[connection signal="pressed" from="GUI/Interface/WarehouseTab" to="GUI/Interface/WarehouseTab" method="_on_WarebouseTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/OrdersTab" to="GUI/Interface/OrdersTab" method="_on_OrdersTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/BuySyrupTab" to="GUI/Interface/BuySyrupTab" method="_on_BuySyrupTab_pressed"]
+[node name="ShopTimer" type="Timer" parent="GUI/Interface/LowerThird/TimerPanel"]
+one_shot = true
+script = ExtResource( 15 )
+
+[connection signal="pressed" from="GUI/Interface/LowerThird/WarehouseTab" to="GUI/Interface/LowerThird/WarehouseTab" method="_on_WarebouseTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/OrdersTab" to="GUI/Interface/LowerThird/OrdersTab" method="_on_OrdersTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/StartDayTab" to="GUI/Interface/LowerThird/StartDayTab" method="_on_StartDayTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/BuySyrupTab" to="GUI/Interface/LowerThird/BuySyrupTab" method="_on_BuySyrupTab_pressed"]

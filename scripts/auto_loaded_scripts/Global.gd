@@ -50,6 +50,7 @@ func switch_screen(new_screen):
 			
 			# Assign the reference to the new scene
 			reference_to_new_scene = warehouse_page
+			current_page = UI_PAGES.WAREHOUSE
 		UI_PAGES.MARKET:
 			# Are we already on the screen?
 			if current_page == UI_PAGES.MARKET:
@@ -57,6 +58,7 @@ func switch_screen(new_screen):
 			
 			# Assign the reference to the new scene
 			reference_to_new_scene = market_page
+			current_page = UI_PAGES.MARKET
 		UI_PAGES.BUY_SYRUP:
 			# Are we already on the screen?
 			if current_page == UI_PAGES.BUY_SYRUP or current_game_state == GAME_STATE.DOWNTIME:
@@ -64,13 +66,16 @@ func switch_screen(new_screen):
 			
 			# Assign the reference to the new scene
 			reference_to_new_scene = buy_syrup_page
+			current_page = UI_PAGES.BUY_SYRUP
 		UI_PAGES.ORDERS:
 			# Are we already on the screen?
 			if current_page == UI_PAGES.ORDERS:
 				return
 			
 			reference_to_new_scene = orders_page
+			current_page = UI_PAGES.ORDERS
 		_:
+			print("You done messed up A-Aron!")
 			return
 	
 	# If so, unload current screen
@@ -84,14 +89,15 @@ func switch_screen(new_screen):
 # Game state switcher (From downtime to buying/selling)
 func switch_game_state():
 	if current_game_state == GAME_STATE.DOWNTIME:
-		current_game_state == GAME_STATE.SHOPPING_TIME
+		current_game_state = GAME_STATE.SHOPPING_TIME
+		
+		current_day += 1
 		
 		ShoppingController.start_shop_day()
 		
 		emit_signal("game_state_switch")
 	else:
-		current_game_state == GAME_STATE.DOWNTIME
-		current_day += 1
+		current_game_state = GAME_STATE.DOWNTIME
 		
 		ShoppingController.stop_shop_day()
 		
