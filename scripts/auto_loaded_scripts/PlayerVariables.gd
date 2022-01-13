@@ -11,8 +11,7 @@ signal money_was_updated(new_total)
 func _ready():
 	
 	# Clear the inventory
-	for i in inventory_size-1:
-		inventory.append(null)
+	inventory.resize(8)
 	
 	var newItem = Item.new()
 	
@@ -35,3 +34,17 @@ func set_players_money(new_money):
 func increment_players_money(new_money):
 	money += new_money
 	emit_signal("money_was_updated", money)
+
+func add_item_to_inv(new_item):
+	# Go through and check if there is an item currently in the 
+	# inventory that the new item can stack with
+	for item in inventory:
+		if item != null:
+			if item.compare_items(new_item):
+				item.set_quantity(item.get_quantity() + new_item.get_quantity())
+				return
+	
+	# If there isn't an item in tnv to stack with, add it to an empty spot
+	var index = inventory.find(null)
+	
+	inventory[index] = new_item

@@ -1,16 +1,30 @@
 extends NinePatchRect
 
 var item = null
+var item_index = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-func add_item(item):
-	pass
+func add_item(new_item_index):
+	item_index = new_item_index
+	item = ShoppingController.shop[item_index]
+	
+	# Make sure no errors get thrown
+	if item == null:
+		return
+	
+	$IconBackground/Icon.texture = Global.get_syrup_sprite(item.grade)
+	$GradeLabel.text = item.grade
+	$CostLabel.text = "$" + str(item.get_buy_price()) + "/ea"
+
+func remove_item():
+	queue_free()
 
 func _gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_LEFT:
+	if item != null:
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT:
 				if event.pressed:
-					ShoppingController.slot_selected(item)
+					ShoppingController.slot_selected(item_index)

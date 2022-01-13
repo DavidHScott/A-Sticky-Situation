@@ -38,3 +38,16 @@ func set_quantity(new_quantity):
 
 func get_quantity():
 	return quantity
+
+func copy_item(old_item):
+	set_grade(old_item.get_grade())
+	set_producer(old_item.get_producer())
+	set_quality(old_item.get_quality())
+	set_buy_price(old_item.get_buy_price())
+	set_quantity(old_item.get_quantity())
+
+func compare_items(other_item):
+	if other_item.get_grade() == grade and other_item.get_producer() == producer and other_item.get_quality() == quality and other_item.get_buy_price() == buy_price:
+		return true
+	else:
+		return false

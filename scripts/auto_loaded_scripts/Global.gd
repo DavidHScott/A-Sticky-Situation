@@ -17,6 +17,11 @@ onready var orders_page = preload("res://scenes/gui_components/page_panels/Order
 onready var buy_syrup_page = preload("res://scenes/gui_components/page_panels/BuySyrupPage.tscn")
 onready var market_page = preload("res://scenes/gui_components/page_panels/MarketPage.tscn")
 
+onready var golden_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
+onready var amber_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
+onready var dark_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
+onready var very_dark_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
+
 var current_page = UI_PAGES.WAREHOUSE
 var current_game_state = GAME_STATE.DOWNTIME
 
@@ -117,7 +122,6 @@ func get_item_sell_price(item):
 	var sell_price = item.get_buy_price() * 1.5
 	
 	return sell_price
-	pass
 
 # Remove item info from Item Info panel
 func clear_item_info_panel():
@@ -125,3 +129,15 @@ func clear_item_info_panel():
 	
 # Compare items to see if stackable
 
+# Get the sprite for the specific syrup grade
+func get_syrup_sprite(grade):
+	if grade == GOLDEN:
+		return golden_sprite
+	elif grade == AMBER:
+		return amber_sprite
+	elif grade == DARK:
+		return dark_sprite
+	elif grade == VERY_DARK:
+		return very_dark_sprite
+	else:
+		return null

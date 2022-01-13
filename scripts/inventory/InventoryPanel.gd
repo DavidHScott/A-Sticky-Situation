@@ -10,6 +10,7 @@ onready var inventory_slots = $GridContainer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.connect("slot_select", self, "new_selected_item")
+	Global.connect("game_state_switch", self, "clear_selected_item")
 	
 	# Enable slots based on inventory size
 	for i in PlayerVariables.inventory_size-1:
@@ -28,6 +29,7 @@ func new_selected_item(item_index):
 func clear_selected_item():
 	selected_item = null
 	selected_item_index = null
+	Global.clear_item_info_panel()
 
 func _on_SellOneButton_pressed():
 	# Make sure item exists. Get the sell price

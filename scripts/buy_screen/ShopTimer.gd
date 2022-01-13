@@ -1,10 +1,32 @@
 extends Timer
 
+var minutes = 2
+var seconds = 0
+
+signal update_timer_ui(seconds, minutes)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ShoppingController.connect("start_shop_timer", self, "")
+	ShoppingController.connect("start_shop_timer", self, "start_shop_timer")
 
+func start_shop_timer():
+	
+	minutes = 2
+	seconds = 0
+	
+	self.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_ShopTimer_timeout():
+	
+	if minutes == 0 and seconds == 0:
+		self.stop()
+		Global.switch_game_state()
+		return
+	
+	if seconds == 0:
+		minutes -= 1
+		seconds = 59
+	else:
+		seconds -= 1
+	
+	emit_signal("update_timer_ui", seconds, minutes)
