@@ -35,7 +35,7 @@ func _on_SellOneButton_pressed():
 	# Make sure item exists. Get the sell price
 	if selected_item == null:
 		return
-	var sell_price = Global.get_item_sell_price(selected_item)
+	var sell_price = Market.get_item_price(selected_item)
 	
 	# Remove one of the item from the inventory
 	PlayerVariables.inventory[selected_item_index].set_quantity(selected_item.get_quantity() - 1)
@@ -62,7 +62,7 @@ func _on_SellOneButton_pressed():
 func _on_SellAllButton_pressed():
 	if selected_item == null:
 		return
-	var sell_price = Global.get_item_sell_price(selected_item) * selected_item.get_quantity()
+	var sell_price = Market.get_item_price(selected_item) * selected_item.get_quantity()
 	
 	# Remove the item from the inventory
 	PlayerVariables.inventory[selected_item_index] = null

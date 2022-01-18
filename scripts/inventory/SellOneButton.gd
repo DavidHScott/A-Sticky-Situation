@@ -8,7 +8,7 @@ func _ready():
 	Global.connect("slot_select", self, "add_text")
 
 func add_text(item_index):
-	var item_sell_price = Global.get_item_sell_price(PlayerVariables.inventory[item_index])
+	var item_sell_price = Market.get_item_price(PlayerVariables.inventory[item_index])
 	
 	$Label.text = "SELL 1 (" + str(item_sell_price) + ")"
 

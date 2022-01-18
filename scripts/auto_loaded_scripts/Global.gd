@@ -100,6 +100,9 @@ func switch_game_state():
 		
 		ShoppingController.start_shop_day()
 		
+		# TEMP
+		Market.randomise_prices()
+		
 		emit_signal("game_state_switch")
 	else:
 		current_game_state = GAME_STATE.DOWNTIME
@@ -117,17 +120,9 @@ func switch_game_state():
 func slot_selected(item):
 	emit_signal("slot_select", item)
 
-# Sell price calculation
-func get_item_sell_price(item):
-	var sell_price = item.get_buy_price() * 1.5
-	
-	return sell_price
-
 # Remove item info from Item Info panel
 func clear_item_info_panel():
 	emit_signal("clear_info_panel")
-	
-# Compare items to see if stackable
 
 # Get the sprite for the specific syrup grade
 func get_syrup_sprite(grade):

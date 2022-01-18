@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/gui_components/SettingsButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui_components/counters/DayCounter.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=16]
 [ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=17]
 [ext_resource path="res://scripts/HUD/TimerPanel.gd" type="Script" id=18]
+[ext_resource path="res://scripts/tab_buttons/MarketTab.gd" type="Script" id=19]
 
 [node name="Main" type="Node2D"]
 
@@ -120,6 +121,7 @@ margin_left = 171.0
 margin_top = -48.0
 margin_right = 337.0
 margin_bottom = 0.0
+script = ExtResource( 19 )
 
 [node name="TimerPanel" type="NinePatchRect" parent="GUI/Interface/LowerThird"]
 anchor_left = 0.5
@@ -162,4 +164,5 @@ script = ExtResource( 15 )
 [connection signal="pressed" from="GUI/Interface/LowerThird/OrdersTab" to="GUI/Interface/LowerThird/OrdersTab" method="_on_OrdersTab_pressed"]
 [connection signal="pressed" from="GUI/Interface/LowerThird/StartDayTab" to="GUI/Interface/LowerThird/StartDayTab" method="_on_StartDayTab_pressed"]
 [connection signal="pressed" from="GUI/Interface/LowerThird/BuySyrupTab" to="GUI/Interface/LowerThird/BuySyrupTab" method="_on_BuySyrupTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/MarketTab" to="GUI/Interface/LowerThird/MarketTab" method="_on_MarketTab_pressed"]
 [connection signal="timeout" from="GUI/Interface/LowerThird/TimerPanel/ShopTimer" to="GUI/Interface/LowerThird/TimerPanel/ShopTimer" method="_on_ShopTimer_timeout"]
