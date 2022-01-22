@@ -6,9 +6,14 @@ var current_golden_price = 100
 var current_dark_price = 100
 var current_verydark_price = 100
 
+var amber_price_history = []
+var golden_price_history = []
+var dark_price_history = []
+var verydark_price_history = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	randomize()
 
 # TEMP
 func randomise_prices():
@@ -16,6 +21,12 @@ func randomise_prices():
 	current_golden_price = randi() % 1000
 	current_dark_price = randi() % 1000
 	current_verydark_price = randi() % 1000
+
+func new_day():
+	amber_price_history.append(current_amber_price)
+	golden_price_history.append(current_golden_price)
+	dark_price_history.append(current_dark_price)
+	verydark_price_history.append(current_verydark_price)
 
 func get_item_price(item):
 	

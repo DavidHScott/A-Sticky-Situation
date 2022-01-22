@@ -102,6 +102,7 @@ func switch_game_state():
 		
 		# TEMP
 		Market.randomise_prices()
+		Market.new_day()
 		
 		emit_signal("game_state_switch")
 	else:
