@@ -33,7 +33,7 @@ func _draw():
 	var all_top_points = []
 	
 	# Dealing with height:
-	var view_height = self.get_size().y# * 0.8
+	var view_height = self.get_size().y * 0.9
 	
 	match selected_grade_view:
 		grade_views.AMBER:
@@ -43,7 +43,7 @@ func _draw():
 		grade_views.DARK:
 			historical_prices = Market.dark_price_history.duplicate()
 		grade_views.VERY_DARK:
-			historical_prices = Market.verdark_price_history.duplicate()
+			historical_prices = Market.verydark_price_history.duplicate()
 	
 	match selected_time_view:
 		time_view_types.WEEK:
@@ -73,15 +73,12 @@ func _draw():
 	sorted_arr.sort()
 	var biggest_num = sorted_arr[-1]
 	
-	#print(str(historical_prices))
-	#print(str(biggest_num))
-	
 	for i in numof_lines:
 		
 		var line_height_percent = (historical_prices[i] as float / biggest_num as float)
 		var line_height = (view_height * (1 - line_height_percent))
 		
-		line_height += self.get_size().y * 0.2
+		line_height += self.get_size().y * 0.1
 		
 		if line_height >= bottom:
 			line_height = bottom
@@ -100,3 +97,34 @@ func _draw():
 			var vec_end = all_top_points[i + 1]
 			
 			draw_line(vec_start, vec_end, Color.white, 3, false)
+
+func change_grade_view(new_grade):
+	match new_grade:
+		Global.AMBER:
+			selected_grade_view = grade_views.AMBER
+		Global.GOLDEN:
+			selected_grade_view = grade_views.GOLDEN
+		Global.DARK:
+			selected_grade_view = grade_views.DARK
+		Global.VERY_DARK:
+			selected_grade_view = grade_views.VERY_DARK
+	
+	update()
+
+func change_timeline_view():
+	var new_time_view
+	
+	match selected_time_view:
+		time_view_types.WEEK:
+			new_time_view = time_view_types.TWO_WEEKS
+		time_view_types.TWO_WEEKS:
+			new_time_view = time_view_types.FOUR_WEEKS
+		time_view_types.FOUR_WEEKS:
+			new_time_view = time_view_types.ALL_TIME
+		time_view_types.ALL_TIME:
+			new_time_view = time_view_types.WEEK
+	
+	selected_time_view = new_time_view
+	update()
+	
+	return selected_time_view

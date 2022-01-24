@@ -11,6 +11,9 @@ var golden_price_history = []
 var dark_price_history = []
 var verydark_price_history = []
 
+signal change_view(grade)
+signal change_timeline()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -44,3 +47,9 @@ func get_item_price(item):
 		return
 	
 	return item_price
+
+func change_view_category(grade):
+	emit_signal("change_view", grade)
+
+func change_timeline_view():
+	emit_signal("change_timeline")
