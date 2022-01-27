@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Item",
 "language": "GDScript",
 "path": "res://scripts/inventory/Item.gd"
+}, {
+"base": "Object",
+"class": "MarketTrend",
+"language": "GDScript",
+"path": "res://scripts/market/MarketTrend.gd"
 } ]
 _global_script_class_icons={
-"Item": ""
+"Item": "",
+"MarketTrend": ""
 }
 
 [application]

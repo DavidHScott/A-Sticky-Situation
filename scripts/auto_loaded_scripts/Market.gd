@@ -1,15 +1,9 @@
 extends Node
 
-# Prices assume 100/100 quality
-var current_amber_price = 100
-var current_golden_price = 100
-var current_dark_price = 100
-var current_verydark_price = 100
-
-var amber_price_history = []
-var golden_price_history = []
-var dark_price_history = []
-var verydark_price_history = []
+var golden_trend = MarketTrend.new()
+var amber_trend = MarketTrend.new()
+var dark_trend = MarketTrend.new()
+var verydark_trend = MarketTrend.new()
 
 signal change_view(grade)
 signal change_timeline()
@@ -20,29 +14,40 @@ func _ready():
 
 # TEMP
 func randomise_prices():
-	current_amber_price = randi() % 1000
-	current_golden_price = randi() % 1000
-	current_dark_price = randi() % 1000
-	current_verydark_price = randi() % 1000
+	golden_trend.current_base_price = randi() % 1000
+	amber_trend.current_base_price = randi() % 1000
+	dark_trend.current_base_price = randi() % 1000
+	verydark_trend.current_base_price = randi() % 1000
 
 func new_day():
-	amber_price_history.append(current_amber_price)
-	golden_price_history.append(current_golden_price)
-	dark_price_history.append(current_dark_price)
-	verydark_price_history.append(current_verydark_price)
+	# The start of a new week. Day 1, day 8, etc
+	if (Global.current_day - 1) % 7 == 0:
+		new_week()
+	
+	golden_trend.price_history.append(golden_trend.current_base_price)
+	amber_trend.price_history.append(amber_trend.current_base_price)
+	dark_trend.price_history.append(dark_trend.current_base_price)
+	verydark_trend.price_history.append(verydark_trend.current_base_price)
+
+# Gets called every 7 days. Day 1, Day 8, etc.
+func new_week():
+	golden_trend.randomize_trend()
+	amber_trend.randomize_trend()
+	dark_trend.randomize_trend()
+	verydark_trend.randomize_trend()
 
 func get_item_price(item):
 	
 	var item_price
 	
 	if item.get_grade() == Global.AMBER:
-		item_price = current_amber_price
+		item_price = amber_trend.current_base_price
 	elif item.get_grade() == Global.GOLDEN:
-		item_price = current_golden_price
+		item_price = golden_trend.current_base_price
 	elif item.get_grade() == Global.DARK:
-		item_price = current_dark_price
+		item_price = dark_trend.current_base_price
 	elif item.get_grade() == Global.VERY_DARK:
-		item_price = current_verydark_price
+		item_price = verydark_trend.current_base_price
 	else:
 		return
 	
