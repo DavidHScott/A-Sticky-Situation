@@ -26,10 +26,11 @@ func start_shop_day():
 	# Start timer
 	emit_signal("start_shop_timer")
 	
+	shop.clear()
+	
 	# Generate 4 random items
 	for i in 4:
 		shop.append(generate_shop_item())
-		pass
 	
 	# Start time for generating new products throughout the day
 	shop_generation_timer = Timer.new()

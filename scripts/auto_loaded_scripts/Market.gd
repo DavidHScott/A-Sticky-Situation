@@ -12,22 +12,15 @@ signal change_timeline()
 func _ready():
 	randomize()
 
-# TEMP
-func randomise_prices():
-	golden_trend.current_base_price = randi() % 1000
-	amber_trend.current_base_price = randi() % 1000
-	dark_trend.current_base_price = randi() % 1000
-	verydark_trend.current_base_price = randi() % 1000
-
 func new_day():
 	# The start of a new week. Day 1, day 8, etc
 	if (Global.current_day - 1) % 7 == 0:
 		new_week()
 	
-	golden_trend.price_history.append(golden_trend.current_base_price)
-	amber_trend.price_history.append(amber_trend.current_base_price)
-	dark_trend.price_history.append(dark_trend.current_base_price)
-	verydark_trend.price_history.append(verydark_trend.current_base_price)
+	golden_trend.generate_new_price()
+	amber_trend.generate_new_price()
+	dark_trend.generate_new_price()
+	verydark_trend.generate_new_price()
 
 # Gets called every 7 days. Day 1, Day 8, etc.
 func new_week():
@@ -35,6 +28,11 @@ func new_week():
 	amber_trend.randomize_trend()
 	dark_trend.randomize_trend()
 	verydark_trend.randomize_trend()
+	
+	print("Golden Trend: " + str(golden_trend.current_trend))
+	print("Amber Trend: " + str(amber_trend.current_trend))
+	print("Dark Trend: " + str(dark_trend.current_trend))
+	print("V.Dark Trend: " + str(verydark_trend.current_trend))
 
 func get_item_price(item):
 	

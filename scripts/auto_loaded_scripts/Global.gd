@@ -98,11 +98,8 @@ func switch_game_state():
 		
 		current_day += 1
 		
-		ShoppingController.start_shop_day()
-		
-		# TEMP
-		Market.randomise_prices()
 		Market.new_day()
+		ShoppingController.start_shop_day()
 		
 		emit_signal("game_state_switch")
 	else:

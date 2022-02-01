@@ -1,11 +1,196 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/order-fulfillment/OrdersPage.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=2]
+[ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scripts/order-fulfillment/OrderInformationPanel.gd" type="Script" id=4]
+[ext_resource path="res://scripts/order-fulfillment/OrdersPanel.gd" type="Script" id=5]
+[ext_resource path="res://assets/UI/ui_panel_item_button.png" type="Texture" id=6]
 
 [node name="OrdersPage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrdersPanel" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 41.0
+margin_top = -197.0
+margin_right = 321.0
+margin_bottom = 188.0
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OrdersPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OrdersPanel/ScrollContainer"]
+margin_right = 270.0
+margin_bottom = 375.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptedLabel" type="Label" parent="OrdersPanel/ScrollContainer/VBoxContainer"]
+margin_right = 270.0
+margin_bottom = 28.0
+text = "ACCEPTED"
+uppercase = true
+
+[node name="OrderSlot" type="NinePatchRect" parent="OrdersPanel/ScrollContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 270.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 60 )
+texture = ExtResource( 6 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="NewLabel" type="Label" parent="OrdersPanel/ScrollContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 270.0
+margin_bottom = 124.0
+text = "new"
+uppercase = true
+
+[node name="OrderSlot2" type="NinePatchRect" parent="OrdersPanel/ScrollContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 270.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 0, 60 )
+texture = ExtResource( 6 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="OrderSlot5" type="NinePatchRect" parent="OrdersPanel/ScrollContainer/VBoxContainer"]
+margin_top = 192.0
+margin_right = 270.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 0, 60 )
+texture = ExtResource( 6 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="OrderInformationPanel" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -358.0
+margin_top = -197.0
+margin_right = -41.0
+margin_bottom = 131.0
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FulfillButton" type="Button" parent="OrderInformationPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -156.5
+margin_top = 6.0
+margin_right = 27.5
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderInformationPanel/FulfillButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+text = "fulfill"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="OrderInformationPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 35.5
+margin_top = 6.0
+margin_right = 156.5
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderInformationPanel/CancelButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+text = "Cancel"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptButton" type="Button" parent="OrderInformationPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -156.5
+margin_top = 6.0
+margin_right = 156.5
+margin_bottom = 55.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderInformationPanel/AcceptButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+text = "ACCEPT ORDER"
+align = 1
+valign = 1
+uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

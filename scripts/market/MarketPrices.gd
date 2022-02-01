@@ -37,13 +37,13 @@ func _draw():
 	
 	match selected_grade_view:
 		grade_views.AMBER:
-			historical_prices = Market.amber_price_history.duplicate()
+			historical_prices = Market.amber_trend.price_history.duplicate()
 		grade_views.GOLDEN:
-			historical_prices = Market.golden_price_history.duplicate()
+			historical_prices = Market.golden_trend.price_history.duplicate()
 		grade_views.DARK:
-			historical_prices = Market.dark_price_history.duplicate()
+			historical_prices = Market.dark_trend.price_history.duplicate()
 		grade_views.VERY_DARK:
-			historical_prices = Market.verydark_price_history.duplicate()
+			historical_prices = Market.verydark_trend.price_history.duplicate()
 	
 	match selected_time_view:
 		time_view_types.WEEK:
