@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "MarketTrend",
 "language": "GDScript",
 "path": "res://scripts/market/MarketTrend.gd"
+}, {
+"base": "Object",
+"class": "Order",
+"language": "GDScript",
+"path": "res://scripts/order-fulfillment/Order.gd"
 } ]
 _global_script_class_icons={
 "Item": "",
-"MarketTrend": ""
+"MarketTrend": "",
+"Order": ""
 }
 
 [application]
@@ -35,6 +41,7 @@ Global="*res://scripts/auto_loaded_scripts/Global.gd"
 PlayerVariables="*res://scripts/auto_loaded_scripts/PlayerVariables.gd"
 ShoppingController="*res://scripts/auto_loaded_scripts/ShoppingController.gd"
 Market="*res://scripts/auto_loaded_scripts/Market.gd"
+OrderFulfillment="*res://scripts/auto_loaded_scripts/OrderFulfillment.gd"
 
 [display]
 

@@ -18,10 +18,12 @@ signal refresh_shop_ui()
 func _ready():
 	pass # Replace with function body.
 
+## Select an item in the shop
 func slot_selected(item_index):
 	selected_item_index = item_index
 	emit_signal("shop_slot_select", item_index)
 
+## Start the day, and start generating items
 func start_shop_day():
 	# Start timer
 	emit_signal("start_shop_timer")
@@ -50,6 +52,7 @@ func on_shop_generation_timer_timeout():
 	
 	emit_signal("refresh_shop_ui", false)
 
+## Clear the shop at the end of the day
 func stop_shop_day():
 	shop.clear()
 	pass

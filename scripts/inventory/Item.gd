@@ -3,11 +3,18 @@ extends Object
 class_name Item
 
 # Item attributes
-var grade = Global.GOLDEN
-var producer = "Sugar Shack inc."
-var quality = 69
-var buy_price = 420
-var quantity = 69
+var grade
+var producer
+var quality
+var buy_price
+var quantity
+
+func _init(item_grade = null, item_producer = null,
+		item_quality = null, item_quantity = null):
+	grade = item_grade
+	producer = item_producer
+	quality = item_quality
+	quantity = item_quantity
 
 func set_grade(new_grade):
 	grade = new_grade
