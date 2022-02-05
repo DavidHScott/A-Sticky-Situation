@@ -28,11 +28,6 @@ func new_week():
 	amber_trend.randomize_trend()
 	dark_trend.randomize_trend()
 	verydark_trend.randomize_trend()
-	
-	print("Golden Trend: " + str(golden_trend.current_trend))
-	print("Amber Trend: " + str(amber_trend.current_trend))
-	print("Dark Trend: " + str(dark_trend.current_trend))
-	print("V.Dark Trend: " + str(verydark_trend.current_trend))
 
 func get_item_price(item):
 	

@@ -61,13 +61,8 @@ func new_day():
 func accept_order():
 	accepted = true
 
-func can_complete():
-	# Check if the player has all the required items in their inventory
-	pass
-
 func complete_order():
-	if can_complete():
-		pass
+	completed = true
 
 func is_completed():
 	return completed

@@ -15,9 +15,9 @@ func _ready():
 	
 	var newItem = Item.new()
 	
-	newItem.set_grade(Global.DARK)
+	newItem.set_grade(Global.AMBER)
 	newItem.set_producer("Test Prod")
-	newItem.set_quality(80)
+	newItem.set_quality(90)
 	newItem.set_buy_price(5000)
 	newItem.set_quantity(96)
 	
@@ -48,3 +48,42 @@ func add_item_to_inv(new_item):
 	var index = inventory.find(null)
 	
 	inventory[index] = new_item
+
+# if item quantity is 0, remove all of item
+func remove_item_from_inv(item:Item):
+	var succeeded = false
+	
+	for inv_item in inventory:
+		# Don't need to compare empty slots
+		if inv_item == null:
+			continue
+		
+		if inv_item.compare_items(item):
+			# Found the item!
+			succeeded = true
+			
+			if item.quantity == 0:
+				# Remove entire stack from inventory
+				inv_item = null
+			else:
+				# Remove item.quantity from the stack
+				inv_item.quantity -= item.quantity
+	
+	if succeeded == false:
+		print("Tried to remove an item not in the inventory!")
+		return false
+	return true
+
+func remove_item_array_from_inv(item_arr:Array):
+	var succeeded = true
+	
+	for item in item_arr:
+		succeeded = remove_item_from_inv(item)
+		
+		if succeeded:
+			continue
+		else:
+			break
+	
+	if succeeded == false:
+		print("Tried to remove an item not in the inventory!")

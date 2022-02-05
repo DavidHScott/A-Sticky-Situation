@@ -14,4 +14,10 @@ func _on_OrderSlot_gui_input(event):
 					OrderFulfillment.select_order_slot(self)
 
 func accept_order():
-	pass
+	OrderFulfillment.refresh_order_panel_ui()
+
+func add_information(new_order:Order = null):
+	order = new_order
+	
+	$Subject/TitleLabel.text = order.title
+	$From/DistributerLabel.text = order.distributer

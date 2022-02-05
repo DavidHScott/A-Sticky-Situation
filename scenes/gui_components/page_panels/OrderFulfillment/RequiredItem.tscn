@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui_themes/fonts/small_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/order-fulfillment/RequiredItem.gd" type="Script" id=2]
+
+[node name="RequiredItem" type="HBoxContainer"]
+margin_right = 307.0
+margin_bottom = 39.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuantityLabel" type="Label" parent="."]
+margin_right = 99.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "8x"
+valign = 1
+
+[node name="GradeRequirement" type="VBoxContainer" parent="."]
+margin_left = 103.0
+margin_right = 203.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GradeRequirement"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Grade:"
+align = 2
+
+[node name="GradeLabel" type="Label" parent="GradeRequirement"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 0.682353, 0.682353, 0.682353, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Amber"
+align = 2
+
+[node name="QualityRequirement" type="VBoxContainer" parent="."]
+margin_left = 207.0
+margin_right = 307.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="QualityRequirement"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = " Qual:"
+align = 2
+
+[node name="QualityLabel" type="Label" parent="QualityRequirement"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 0.682353, 0.682353, 0.682353, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = ">69/100"
+align = 2

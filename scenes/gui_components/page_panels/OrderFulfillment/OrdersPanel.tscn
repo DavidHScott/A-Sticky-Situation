@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=2]
+[ext_resource path="res://scripts/order-fulfillment/OrdersPanel.gd" type="Script" id=3]
+
+[node name="OrdersPanel" type="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 41.0
+margin_top = -197.0
+margin_right = 321.0
+margin_bottom = 188.0
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 270.0
+margin_bottom = 375.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptedOrders" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 270.0
+margin_bottom = 14.0
+
+[node name="AcceptedLabel" type="Label" parent="ScrollContainer/VBoxContainer/AcceptedOrders"]
+margin_right = 270.0
+margin_bottom = 14.0
+text = "ACCEPTED"
+uppercase = true
+
+[node name="NewOrders" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 270.0
+margin_bottom = 32.0
+
+[node name="NewLabel" type="Label" parent="ScrollContainer/VBoxContainer/NewOrders"]
+margin_right = 270.0
+margin_bottom = 14.0
+text = "new"
+uppercase = true
