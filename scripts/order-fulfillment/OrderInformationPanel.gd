@@ -3,6 +3,7 @@ extends NinePatchRect
 var required_item_scene = preload("res://scenes/gui_components/page_panels/OrderFulfillment/RequiredItem.tscn")
 
 var selected_order_slot:Control = null
+var selected_order_key:String
 var selected_order:Order = null
 
 signal open_popup(order, item_arr)
@@ -30,6 +31,7 @@ func clear_panel():
 
 func render_selected_order(order_slot):
 	selected_order_slot = order_slot
+	selected_order_key = order_slot.order_key
 	selected_order = order_slot.order
 	
 	# Clear the panel
@@ -77,7 +79,7 @@ func render_buttons():
 		
 		$FulfillButton.visible = true
 		
-		if OrderFulfillment.can_be_fulfilled(selected_order) == null: 
+		if OrderFulfillment.can_be_fulfilled(selected_order_key) == null: 
 			$FulfillButton.disabled = true
 		else:
 			$FulfillButton.disabled = false
@@ -88,11 +90,14 @@ func render_buttons():
 
 ## Buttons
 func _on_FulfillButton_pressed():
-	var item_arr = OrderFulfillment.can_be_fulfilled(selected_order)
+	var item_arr = OrderFulfillment.can_be_fulfilled(selected_order_key)
 	
-	emit_signal("open_popup", selected_order, item_arr)
+	emit_signal("open_popup", selected_order_key, item_arr)
 
 func _on_AcceptButton_pressed():
+	# Save the change
+	SaveAndLoad.save_data.available_quest_keys[selected_order_key] = true
+	
 	# Set the order to accepted & put the slot into the acceptedOrders container
 	selected_order.accept_order()
 	selected_order_slot.accept_order()

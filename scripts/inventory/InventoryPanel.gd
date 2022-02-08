@@ -57,6 +57,7 @@ func _on_SellOneButton_pressed():
 	
 	# Give money to player
 	PlayerVariables.increment_players_money(sell_price)
+	SaveAndLoad.save_current_game()
 
 
 func _on_SellAllButton_pressed():
@@ -77,3 +78,4 @@ func _on_SellAllButton_pressed():
 	
 	# Give money to the player
 	PlayerVariables.increment_players_money(sell_price)
+	SaveAndLoad.save_current_game()

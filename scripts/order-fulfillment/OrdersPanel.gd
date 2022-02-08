@@ -12,11 +12,11 @@ func refresh_ui():
 	clear_panel()
 	
 	# Get quests from the OrderFulfillment script and populate the menu
-	for item in OrderFulfillment.available_quests:
+	for item_key in OrderFulfillment.available_quests.keys():
 		var slot = order_slot.instance()
-		slot.add_information(item)
+		slot.add_information(item_key)
 		
-		if item.accepted:
+		if OrderFulfillment.available_quests[item_key].accepted:
 			$ScrollContainer/VBoxContainer/AcceptedOrders.add_child(slot)
 		else:
 			$ScrollContainer/VBoxContainer/NewOrders.add_child(slot)

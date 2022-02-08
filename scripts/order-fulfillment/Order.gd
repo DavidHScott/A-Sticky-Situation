@@ -59,6 +59,7 @@ func new_day():
 				expired = true
 
 func accept_order():
+	SaveAndLoad.save_current_game()
 	accepted = true
 
 func complete_order():

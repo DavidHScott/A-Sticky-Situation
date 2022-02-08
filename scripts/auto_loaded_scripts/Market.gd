@@ -21,6 +21,9 @@ func new_day():
 	amber_trend.generate_new_price()
 	dark_trend.generate_new_price()
 	verydark_trend.generate_new_price()
+	
+	# Save the MarketTrend resources to disk
+	SaveAndLoad.save_market_trends()
 
 # Gets called every 7 days. Day 1, Day 8, etc.
 func new_week():

@@ -7,7 +7,7 @@ func _ready():
 	
 	refresh_ui()
 
-func refresh_ui():
+func refresh_ui():	
 	if Global.current_game_state == Global.GAME_STATE.DOWNTIME:
 		$SellAllButton.visible = false
 		$SellOneButton.visible = false

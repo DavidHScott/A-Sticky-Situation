@@ -127,3 +127,5 @@ func sell_shop_item(quantity_sold):
 		emit_signal("refresh_shop_ui", true)
 	else:
 		slot_selected(selected_item_index)
+	
+	SaveAndLoad.save_current_game()

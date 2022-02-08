@@ -1,0 +1,18 @@
+{
+    "main_0": {
+        "Title": "Getting You Started",
+        "Distributer": "???",
+        "Description": "",
+        "Payment": 500,
+        "Requirements": [{
+            "ItemGrade": null,
+            "ItemProducer": null,
+            "ItemQuality": null,
+            "ItemQuantity": 2
+        }],
+        "Prerequisite": null,
+        "AcceptTimelimit": 0,
+        "Deadline": 0
+    }
+ }
+ 

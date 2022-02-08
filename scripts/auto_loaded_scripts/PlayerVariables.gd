@@ -1,9 +1,11 @@
 extends Node2D
 
-var money = 5000
+var username:String
 
-var inventory = []
-var inventory_size = 8
+var money:int = 5000
+
+var inventory:Array
+var inventory_size:int = 8
 
 signal money_was_updated(new_total)
 
@@ -29,11 +31,27 @@ func get_players_money():
 
 func set_players_money(new_money):
 	money = new_money
-	## Reset UI
+	emit_signal("money_was_updated", money)
+	
+	SaveAndLoad.save_data.money = money
 
 func increment_players_money(new_money):
 	money += new_money
 	emit_signal("money_was_updated", money)
+	
+	SaveAndLoad.save_data.money = money
+
+func update_inventory_size(new_size:int):
+	inventory_size = new_size
+	# TODO: If the new size is smaller, remove some items
+	
+	SaveAndLoad.save_data.inventory_size = inventory_size
+
+func inc_inventory_size(new_size:int):
+	inventory_size += new_size
+	# TODO: If the new size is smaller, remove some items
+	
+	SaveAndLoad.save_data.inventory_size = inventory_size
 
 func add_item_to_inv(new_item):
 	# Go through and check if there is an item currently in the 
@@ -48,6 +66,8 @@ func add_item_to_inv(new_item):
 	var index = inventory.find(null)
 	
 	inventory[index] = new_item
+	
+	SaveAndLoad.save_inv_to_savedata()
 
 # if item quantity is 0, remove all of item
 func remove_item_from_inv(item:Item):
@@ -68,10 +88,15 @@ func remove_item_from_inv(item:Item):
 			else:
 				# Remove item.quantity from the stack
 				inv_item.quantity -= item.quantity
+			
+			if inv_item.quantity < 1:
+				inv_item = null
 	
 	if succeeded == false:
 		print("Tried to remove an item not in the inventory!")
 		return false
+	
+	SaveAndLoad.save_inv_to_savedata()
 	return true
 
 func remove_item_array_from_inv(item_arr:Array):

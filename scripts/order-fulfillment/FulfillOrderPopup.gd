@@ -1,6 +1,6 @@
 extends Popup
 
-var selected_order:Order
+var selected_order_key:String
 var item_array:Array
 
 var shipped_items_ui
@@ -9,7 +9,7 @@ var popup_ship_item_scene = preload("res://scenes/gui_components/page_panels/Ord
 func _ready():
 	shipped_items_ui = $NinePatchRect/PopupLayout/ShippedItems
 
-func populate(order:Order, item_arr:Array):
+func populate(order_key:String, item_arr:Array):
 	
 	# Clear the to be shipped item sections
 	for node in shipped_items_ui.get_children():
@@ -17,7 +17,8 @@ func populate(order:Order, item_arr:Array):
 		node.queue_free()
 	
 	item_array = item_arr
-	selected_order = order
+	selected_order_key = order_key
+	var selected_order = OrderFulfillment.available_quests[selected_order_key]
 	
 	for item in item_array:
 		var new_scene = popup_ship_item_scene.instance()
@@ -25,12 +26,12 @@ func populate(order:Order, item_arr:Array):
 		
 		shipped_items_ui.add_child(new_scene)
 	
-	$NinePatchRect/PopupLayout/PaymentLabel.text = "$" + str(order.pay)
+	$NinePatchRect/PopupLayout/PaymentLabel.text = "$" + str(selected_order.pay)
 	
 	self.rect_min_size = Vector2(0, $NinePatchRect/PopupLayout.rect_size.y)
 
 func _on_ConfirmButton_pressed():
-	OrderFulfillment.fulfill_order(selected_order, item_array)
+	OrderFulfillment.fulfill_order(selected_order_key, item_array)
 	
 	self.visible = false
 

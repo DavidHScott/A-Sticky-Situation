@@ -1,5 +1,4 @@
-extends Object
-
+extends Resource
 class_name MarketTrend
 
 var rng = RandomNumberGenerator.new()
@@ -10,18 +9,18 @@ enum trends {
 	DOWNWARDS,
 	STABLE
 }
-var current_trend = trends.STABLE
-var trend_start_price
-var trend_target_price
+export var current_trend = trends.STABLE
+export var trend_start_price:int
+export var trend_target_price:int
 
-var upper_delta = 0.05
-var lower_delta = 0.05
+export var upper_delta = 0.05
+export var lower_delta = 0.05
 
 # Current price assumes 100/100 quality
-var current_base_price = 1000
-var price_history = []
+export var current_base_price = 1000
+export var price_history:Array
 
-var day = 0
+export var day = 0
 
 func generate_new_price():
 	day += 1
@@ -58,3 +57,15 @@ func increment_lower_delta():
 
 func _ready():
 	rng.randomize()
+
+
+func clear_trend():
+	current_trend = trends.STABLE
+	
+	upper_delta = 0.05
+	lower_delta = 0.05
+	
+	current_base_price = 1000
+	price_history.clear()
+	
+	day = 0

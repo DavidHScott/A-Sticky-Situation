@@ -11,16 +11,18 @@ var story_orders_dict = {
 var random_orders_dict = { }
 
 # Orders that the player can see, accepted & unaccepted
-var available_quests = []
+var available_quests = {
+	
+}
+
+# Orders that the player previously completed or failed
+var previous_quests = {
+	
+}
 
 signal order_slot_select(slot)
 signal refresh_order_panel()
 signal remove_order()
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	available_quests.append(story_orders_dict.get("main_0"))
 
 func start_day():
 	pass
@@ -28,7 +30,7 @@ func start_day():
 func select_order_slot(slot):
 	emit_signal("order_slot_select", slot)
 
-func can_be_fulfilled(order:Order):
+func can_be_fulfilled(order_key:String):
 	var inventory_copy:Array
 	
 	# remove all null items in array before anything else
@@ -47,7 +49,7 @@ func can_be_fulfilled(order:Order):
 	var item_arr = []
 	
 	# Iterate through every required item
-	for req_item in order.requirements:
+	for req_item in available_quests[order_key].requirements:
 		var found_amount = 0
 		var found = false
 		
@@ -103,19 +105,31 @@ func can_be_fulfilled(order:Order):
 			continue
 	
 	# Return an array of the items to be sold if the player fulfills the order
-	#print(item_arr[0].quantity)
 	return item_arr
 
-func fulfill_order(order:Order, item_arr:Array):
+func fulfill_order(order_key:String, item_arr:Array):
 	# Connect to PlayerVariables to remove items from inventory
 	# Give player the monies
 	PlayerVariables.remove_item_array_from_inv(item_arr)
-	PlayerVariables.increment_players_money(order.pay)
+	PlayerVariables.increment_players_money(available_quests[order_key].pay)
+	
+	previous_quests[order_key] = available_quests[order_key]
 	
 	# Set the order as fulfilled
 	# Remove the order from available orders
-	order.complete_order()
-	available_quests.erase(order)
+	available_quests[order_key].complete_order()
+	available_quests.erase(order_key)
+	
+	SaveAndLoad.save_data.available_quest_keys.clear()
+	SaveAndLoad.save_data.previous_quest_keys.clear()
+	
+	for key in available_quests.keys():
+		SaveAndLoad.save_data.available_quest_keys[key] = available_quests[key].accepted
+	
+	for key in previous_quests.keys():
+		SaveAndLoad.save_data.previous_quest_keys[key] = previous_quests[key].completed
+	
+	SaveAndLoad.save_current_game()
 	
 	# Remove the order from the menu
 	emit_signal("remove_order")

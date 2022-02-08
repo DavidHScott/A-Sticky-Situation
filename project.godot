@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/inventory/Item.gd"
 }, {
-"base": "Object",
+"base": "Resource",
 "class": "MarketTrend",
 "language": "GDScript",
 "path": "res://scripts/market/MarketTrend.gd"
@@ -23,16 +23,23 @@ _global_script_classes=[ {
 "class": "Order",
 "language": "GDScript",
 "path": "res://scripts/order-fulfillment/Order.gd"
+}, {
+"base": "Resource",
+"class": "SaveData",
+"language": "GDScript",
+"path": "res://scripts/resources/SaveData.gd"
 } ]
 _global_script_class_icons={
 "Item": "",
 "MarketTrend": "",
-"Order": ""
+"Order": "",
+"SaveData": ""
 }
 
 [application]
 
-config/name="Maple Syrup Black Market Simulator"
+config/name="Amber Alert"
+run/main_scene="res://scenes/main_menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -42,6 +49,8 @@ PlayerVariables="*res://scripts/auto_loaded_scripts/PlayerVariables.gd"
 ShoppingController="*res://scripts/auto_loaded_scripts/ShoppingController.gd"
 Market="*res://scripts/auto_loaded_scripts/Market.gd"
 OrderFulfillment="*res://scripts/auto_loaded_scripts/OrderFulfillment.gd"
+ImportData="*res://scripts/auto_loaded_scripts/ImportData.gd"
+SaveAndLoad="*res://scripts/auto_loaded_scripts/SaveAndLoad.gd"
 
 [display]
 
@@ -54,4 +63,5 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+environment/default_clear_color=Color( 0.160784, 0.160784, 0.188235, 1 )
 environment/default_environment="res://default_env.tres"

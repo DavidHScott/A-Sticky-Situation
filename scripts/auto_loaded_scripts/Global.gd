@@ -1,5 +1,7 @@
 extends Node2D
 
+var current_game_version = "0.1"
+
 enum GAME_STATE {
 	DOWNTIME,
 	SHOPPING_TIME
@@ -40,8 +42,37 @@ signal game_state_switch()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_tree().set_auto_accept_quit(false)
 
+
+func start_game():
+	# Open the game scene, and load the selected save data into the right spots
+	
+	get_tree().change_scene("res://scenes/gameplay/Game.tscn")
+	
+	PlayerVariables.name = SaveAndLoad.save_data.player_name
+	PlayerVariables.money = SaveAndLoad.save_data.money
+	PlayerVariables.inventory_size = SaveAndLoad.save_data.inventory_size
+	
+	SaveAndLoad.load_inv_from_savedata()
+	
+	current_day = SaveAndLoad.save_data.current_day
+	
+	for key in SaveAndLoad.save_data.available_quest_keys:
+		if OrderFulfillment.story_orders_dict.has(key):
+			OrderFulfillment.available_quests[key] = OrderFulfillment.story_orders_dict[key]
+		elif OrderFulfillment.random_orders_dict.has(key):
+			OrderFulfillment.available_quests[key] = OrderFulfillment.random_orders_dict[key]
+		
+		OrderFulfillment.available_quests[key].accepted = SaveAndLoad.save_data.available_quest_keys[key]
+	
+	SaveAndLoad.load_market_trends()
+	
+	# Check what day it is. What features can be accessed. If new game, start the tutorial?
+	
+
+
+# TODO: This really needs to be refactored. I hate this lmao
 # Screen switcher
 func switch_screen(new_screen):
 	var reference_to_new_scene
@@ -97,6 +128,7 @@ func switch_game_state():
 		current_game_state = GAME_STATE.SHOPPING_TIME
 		
 		current_day += 1
+		SaveAndLoad.save_data.current_day = current_day
 		
 		Market.new_day()
 		ShoppingController.start_shop_day()
@@ -111,8 +143,11 @@ func switch_game_state():
 			switch_screen(UI_PAGES.WAREHOUSE)
 		
 		emit_signal("game_state_switch")
+	
+	SaveAndLoad.save_current_game()
 
 ####### Inventory
+# TODO: Move this to a different file.
 
 # Slot selection
 func slot_selected(item):
@@ -134,3 +169,11 @@ func get_syrup_sprite(grade):
 		return very_dark_sprite
 	else:
 		return null
+
+
+#### Handle notifications
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		# TODO: Make sure to save the game here!!
+		get_tree().quit()
+
