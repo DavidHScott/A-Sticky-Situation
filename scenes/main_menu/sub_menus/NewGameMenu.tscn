@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/main_menu/NewGameMenu.gd" type="Script" id=2]
 [ext_resource path="res://scenes/main_menu/buttons/BackToTitleScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/UI/textfield_username.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 32, 22 )
+margin_left = 22.0
+margin_right = 2.0
+margin_top = 2.0
+margin_bottom = 2.0
 
 [node name="NewGameMenu" type="Control"]
 anchor_right = 1.0
@@ -41,33 +50,36 @@ custom_constants/separation = 11
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/EnterUsername/VBoxContainer"]
-margin_top = 194.0
+margin_top = 197.0
 margin_right = 372.0
-margin_bottom = 222.0
+margin_bottom = 225.0
 text = "Please enter a username"
 align = 1
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/EnterUsername/VBoxContainer"]
-margin_top = 233.0
+margin_top = 236.0
 margin_right = 372.0
-margin_bottom = 271.0
+margin_bottom = 268.0
+custom_styles/normal = SubResource( 1 )
 
 [node name="Button" type="Button" parent="MarginContainer/EnterUsername/VBoxContainer"]
 margin_left = 197.0
-margin_top = 282.0
+margin_top = 279.0
 margin_right = 372.0
-margin_bottom = 316.0
+margin_bottom = 313.0
 rect_min_size = Vector2( 175, 0 )
 size_flags_horizontal = 8
 disabled = true
-align = 2
+text = "CONTINUE"
 
 [node name="Label" type="Label" parent="MarginContainer/EnterUsername/VBoxContainer/Button"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "CONTINUE"
 align = 1
+valign = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false

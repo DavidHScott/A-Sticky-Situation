@@ -2,7 +2,7 @@
 
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/inventory/ItemPanel.gd" type="Script" id=2]
-[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=3]
+[ext_resource path="res://assets/UI/panel.png" type="Texture" id=3]
 
 [node name="ItemPanel" type="NinePatchRect"]
 anchor_left = 0.5
@@ -14,29 +14,32 @@ margin_top = -190.0
 margin_right = -20.0
 margin_bottom = 137.0
 texture = ExtResource( 3 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ItemInformation" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -7.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SyrupGrade" type="HBoxContainer" parent="ItemInformation"]
-margin_right = 290.0
+margin_right = 286.0
 margin_bottom = 28.0
 
 [node name="Label" type="Label" parent="ItemInformation/SyrupGrade"]
-margin_right = 143.0
+margin_right = 141.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -44,8 +47,8 @@ text = "GRADE:"
 valign = 1
 
 [node name="Variable" type="Label" parent="ItemInformation/SyrupGrade"]
-margin_left = 147.0
-margin_right = 290.0
+margin_left = 145.0
+margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -55,11 +58,11 @@ valign = 1
 
 [node name="Producer" type="HBoxContainer" parent="ItemInformation"]
 margin_top = 32.0
-margin_right = 290.0
+margin_right = 286.0
 margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="ItemInformation/Producer"]
-margin_right = 140.0
+margin_right = 136.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -67,8 +70,8 @@ text = "PROD:"
 uppercase = true
 
 [node name="Variable" type="Label" parent="ItemInformation/Producer"]
-margin_left = 144.0
-margin_right = 290.0
+margin_left = 140.0
+margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -78,11 +81,11 @@ valign = 1
 
 [node name="Quality" type="HBoxContainer" parent="ItemInformation"]
 margin_top = 64.0
-margin_right = 290.0
+margin_right = 286.0
 margin_bottom = 92.0
 
 [node name="Label" type="Label" parent="ItemInformation/Quality"]
-margin_right = 143.0
+margin_right = 141.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -91,8 +94,8 @@ valign = 1
 uppercase = true
 
 [node name="Variable" type="Label" parent="ItemInformation/Quality"]
-margin_left = 147.0
-margin_right = 290.0
+margin_left = 145.0
+margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -102,11 +105,11 @@ valign = 1
 
 [node name="BuyPrice" type="HBoxContainer" parent="ItemInformation"]
 margin_top = 96.0
-margin_right = 290.0
+margin_right = 286.0
 margin_bottom = 124.0
 
 [node name="Label" type="Label" parent="ItemInformation/BuyPrice"]
-margin_right = 143.0
+margin_right = 141.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -115,8 +118,8 @@ valign = 1
 uppercase = true
 
 [node name="Variable" type="Label" parent="ItemInformation/BuyPrice"]
-margin_left = 147.0
-margin_right = 290.0
+margin_left = 145.0
+margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -127,11 +130,11 @@ autowrap = true
 
 [node name="Quantity" type="HBoxContainer" parent="ItemInformation"]
 margin_top = 128.0
-margin_right = 290.0
+margin_right = 286.0
 margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="ItemInformation/Quantity"]
-margin_right = 143.0
+margin_right = 141.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )
@@ -140,8 +143,8 @@ valign = 1
 uppercase = true
 
 [node name="Variable" type="Label" parent="ItemInformation/Quantity"]
-margin_left = 147.0
-margin_right = 290.0
+margin_left = 145.0
+margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 theme = ExtResource( 1 )

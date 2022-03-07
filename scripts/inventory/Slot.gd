@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 
 export var enabled = false
 

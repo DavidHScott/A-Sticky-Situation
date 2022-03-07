@@ -1,13 +1,17 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/inventory/Slot.gd" type="Script" id=1]
-[ext_resource path="res://ui_themes/themes/SlotThemes/slot_enabled.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/UI/Warehouse/ItemSlot.png" type="Texture" id=2]
 
-[node name="Slot" type="Panel"]
+[node name="Slot" type="NinePatchRect"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
-custom_styles/panel = ExtResource( 2 )
+texture = ExtResource( 2 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
