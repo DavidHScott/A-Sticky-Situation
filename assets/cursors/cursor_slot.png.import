@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/InventorySlot_Disabled.png-16f27a8635a7bb904e1e5167a7d60ca8.stex"
+path="res://.import/cursor_slot.png-671ec54e21e58dc970833e73d87497b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Inventory/InventorySlot_Disabled.png"
-dest_files=[ "res://.import/InventorySlot_Disabled.png-16f27a8635a7bb904e1e5167a7d60ca8.stex" ]
+source_file="res://assets/cursors/cursor_slot.png"
+dest_files=[ "res://.import/cursor_slot.png-671ec54e21e58dc970833e73d87497b7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

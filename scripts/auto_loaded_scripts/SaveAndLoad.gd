@@ -5,15 +5,17 @@ var initial_inventory_size = 8
 var initial_order = "main_0"
 
 const SAVE_FOLDER = "user://saves"
-const SAVE_DATA_INFO = "save_data_info.json"
+const USER_DATA = "user://user_data.json"
 const SAVE_DIR_TEMPLATE = "%s_userdata%s"
 const SAVE_NAME_TEMPLATE = "%s_userdata%s.res"
+
+const OPTIONS_FILE = "user://options.json"
 
 var save_data = SaveData.new()
 
 func _ready():
 	var info_file = File.new()
-	if !info_file.file_exists(SAVE_FOLDER.plus_file(SAVE_DATA_INFO)):
+	if !info_file.file_exists(USER_DATA):
 		first_time_setup()
 
 
@@ -91,7 +93,7 @@ func save_current_game():
 
 func get_num_saves():
 	var file = File.new()
-	file.open(SAVE_FOLDER.plus_file(SAVE_DATA_INFO), File.READ)
+	file.open(USER_DATA, File.READ)
 	var json = JSON.parse(file.get_as_text())
 	var data = json.result
 	file.close()
@@ -101,7 +103,7 @@ func get_num_saves():
 
 func inc_num_saves(i):
 	var file = File.new()
-	file.open(SAVE_FOLDER.plus_file(SAVE_DATA_INFO), File.READ_WRITE)
+	file.open(USER_DATA, File.READ_WRITE)
 	
 	var json = JSON.parse(file.get_as_text())
 	var data = json.result
@@ -113,7 +115,7 @@ func inc_num_saves(i):
 
 func add_save_to_arr(filename:String):
 	var file = File.new()
-	file.open(SAVE_FOLDER.plus_file(SAVE_DATA_INFO), File.READ_WRITE)
+	file.open(USER_DATA, File.READ_WRITE)
 	
 	var json = JSON.parse(file.get_as_text())
 	var data = json.result
@@ -167,14 +169,14 @@ func first_time_setup():
 	dir.make_dir("saves")
 	
 	var file = File.new()
-	file.open(SAVE_FOLDER.plus_file(SAVE_DATA_INFO), File.WRITE)
+	file.open(USER_DATA, File.WRITE)
 	file.store_string(to_json(boilerplate))
 	file.close()
 
 
 func get_all_saves_arr():
 	var file = File.new()
-	file.open(SAVE_FOLDER.plus_file(SAVE_DATA_INFO), File.READ)
+	file.open(USER_DATA, File.READ)
 	var json = JSON.parse(file.get_as_text())
 	var data = json.result
 	file.close()

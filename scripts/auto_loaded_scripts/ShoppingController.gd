@@ -6,9 +6,10 @@ var possible_producers = ["Test Producer", "Sugar Shack inc."]
 
 var shop_generation_timer
 
-var shop_max_items = 6
+# var shop_max_items = 6
 
 var selected_item_index = null
+var selected_slot = null
 
 signal shop_slot_select(item_index)
 signal start_shop_timer()
@@ -19,9 +20,10 @@ func _ready():
 	pass # Replace with function body.
 
 ## Select an item in the shop
-func slot_selected(item_index):
-	selected_item_index = item_index
-	emit_signal("shop_slot_select", item_index)
+func slot_selected(item_slot):
+	selected_item_index = item_slot.item_index
+	emit_signal("shop_slot_select", selected_item_index)
+
 
 ## Start the day, and start generating items
 func start_shop_day():
@@ -44,9 +46,7 @@ func start_shop_day():
 
 ## Every 15 seconds, check if an item can be added to the shop
 func on_shop_generation_timer_timeout():
-	
-	if shop.size() < shop_max_items:
-		shop.append(generate_shop_item())
+	shop.append(generate_shop_item())
 	
 	shop_generation_timer.wait_time = (randi() % 11) + 10
 	
@@ -124,8 +124,12 @@ func sell_shop_item(quantity_sold):
 	if new_item.get_quantity() < 1:
 		# Remove the item from the array
 		shop.remove(selected_item_index)
+		
+		selected_item_index = null
+		selected_slot = null
+		
 		emit_signal("refresh_shop_ui", true)
 	else:
-		slot_selected(selected_item_index)
+		emit_signal("shop_slot_select", selected_item_index)
 	
 	SaveAndLoad.save_current_game()

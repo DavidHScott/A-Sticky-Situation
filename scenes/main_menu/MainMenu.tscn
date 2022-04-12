@@ -74,22 +74,22 @@ size_flags_vertical = 3
 custom_constants/separation = 15
 alignment = 1
 
-[node name="NewGameButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" instance=ExtResource( 4 )]
+[node name="NewGameButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" groups=["FocusItems_Title"] instance=ExtResource( 4 )]
 margin_top = 0.0
 margin_right = 424.0
 margin_bottom = 50.0
 
-[node name="LoadGameButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" instance=ExtResource( 7 )]
+[node name="LoadGameButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" groups=["FocusItems_Title"] instance=ExtResource( 7 )]
 margin_top = 65.0
 margin_right = 424.0
 margin_bottom = 115.0
 
-[node name="OptionsButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" instance=ExtResource( 3 )]
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" groups=["FocusItems_Title"] instance=ExtResource( 3 )]
 margin_top = 130.0
 margin_right = 424.0
 margin_bottom = 180.0
 
-[node name="ExitButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" instance=ExtResource( 2 )]
+[node name="ExitButton" parent="MarginContainer/VBoxContainer/MarginContainer/Menu" groups=["FocusItems_Title"] instance=ExtResource( 2 )]
 margin_top = 195.0
 margin_right = 424.0
 margin_bottom = 245.0

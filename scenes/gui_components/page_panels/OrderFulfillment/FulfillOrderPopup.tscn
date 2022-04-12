@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/UI/ui_panel_item_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/UI/ui_panel_2.png" type="Texture" id=1]
 [ext_resource path="res://scripts/order-fulfillment/FulfillOrderPopup.gd" type="Script" id=3]
 
 [node name="FulfillOrderPopup" type="Popup"]
@@ -21,11 +21,11 @@ margin_top = 178.0
 margin_right = -291.0
 margin_bottom = -176.0
 grow_vertical = 2
-texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 1 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,16 +33,16 @@ __meta__ = {
 [node name="PopupLayout" type="VBoxContainer" parent="NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 2.0
-margin_right = -4.0
+margin_left = 5.0
+margin_top = 3.0
+margin_right = -5.0
 margin_bottom = -3.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Header" type="Label" parent="NinePatchRect/PopupLayout"]
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 14.0
 text = "FULFILL ORDER?"
 align = 1
@@ -52,7 +52,7 @@ __meta__ = {
 
 [node name="HSeparator" type="HSeparator" parent="NinePatchRect/PopupLayout"]
 margin_top = 18.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 22.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,45 +60,45 @@ __meta__ = {
 
 [node name="YouShipLabel" type="Label" parent="NinePatchRect/PopupLayout"]
 margin_top = 26.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 40.0
 text = "You'll ship:"
 
 [node name="ShippedItems" type="VBoxContainer" parent="NinePatchRect/PopupLayout"]
 margin_top = 44.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 44.0
 
 [node name="HSeparator2" type="HSeparator" parent="NinePatchRect/PopupLayout"]
 margin_top = 48.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 52.0
 
 [node name="PayHeader" type="Label" parent="NinePatchRect/PopupLayout"]
 margin_top = 56.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 70.0
 text = "Order pay:"
 
 [node name="PaymentLabel" type="Label" parent="NinePatchRect/PopupLayout"]
 margin_top = 74.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 88.0
 text = "$150500"
 align = 1
 
 [node name="HSeparator3" type="HSeparator" parent="NinePatchRect/PopupLayout"]
 margin_top = 92.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 96.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/PopupLayout"]
 margin_top = 100.0
-margin_right = 434.0
+margin_right = 432.0
 margin_bottom = 120.0
 
 [node name="ConfirmButton" type="Button" parent="NinePatchRect/PopupLayout/HBoxContainer"]
-margin_right = 215.0
+margin_right = 214.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
@@ -113,8 +113,8 @@ __meta__ = {
 }
 
 [node name="CancelButton" type="Button" parent="NinePatchRect/PopupLayout/HBoxContainer"]
-margin_left = 219.0
-margin_right = 434.0
+margin_left = 218.0
+margin_right = 432.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/gui_components/page_panels/ItemPanel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=2]
+[ext_resource path="res://assets/UI/panel.png" type="Texture" id=2]
 [ext_resource path="res://scenes/gui_components/page_panels/BuyItemSlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=4]
 [ext_resource path="res://scripts/buy_screen/BuySyrupPage.gd" type="Script" id=5]
@@ -13,9 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemPanel" parent="." instance=ExtResource( 1 )]
 margin_top = -195.0
@@ -29,20 +26,19 @@ anchor_bottom = 0.5
 margin_left = 21.0
 margin_top = -195.0
 margin_right = 309.0
-margin_bottom = 195.0
+margin_bottom = 202.0
 texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BuyPanel"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 283.0
+[node name="ScrollContainer" type="ScrollContainer" parent="BuyPanel"]
+margin_right = 12.0
+margin_bottom = 12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BuyPanel/ScrollContainer"]
+margin_right = 50.0
 margin_bottom = 380.0
 rect_min_size = Vector2( 0, 50 )
 size_flags_horizontal = 3
@@ -51,26 +47,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BuyItemSlot" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_right = 50.0
 
-[node name="BuyItemSlot2" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot2" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 64.0
+margin_right = 50.0
 margin_bottom = 124.0
 
-[node name="BuyItemSlot3" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot3" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 128.0
+margin_right = 50.0
 margin_bottom = 188.0
 
-[node name="BuyItemSlot4" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot4" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 192.0
+margin_right = 50.0
 margin_bottom = 252.0
 
-[node name="BuyItemSlot5" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot5" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 256.0
+margin_right = 50.0
 margin_bottom = 316.0
 
-[node name="BuyItemSlot6" parent="BuyPanel/VBoxContainer" instance=ExtResource( 3 )]
+[node name="BuyItemSlot6" parent="BuyPanel/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_top = 320.0
+margin_right = 50.0
 margin_bottom = 380.0
 
 [node name="BuyOneButton" type="Button" parent="."]
@@ -116,9 +118,9 @@ __meta__ = {
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = -152.0
-margin_top = -19.0
-margin_right = -6.0
-margin_bottom = 19.0
+margin_top = -18.5
+margin_right = -10.0
+margin_bottom = 19.5
 min_value = 1.0
 value = 1.0
 rounded = true

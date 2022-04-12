@@ -24,3 +24,8 @@ func refresh_ui():
 		$LowerThird/StartDayTab.visible = false
 		$LowerThird/BuySyrupTab.visible = true
 		$LowerThird/TimerPanel.visible = true
+
+
+func _on_PauseButton_pressed():
+	
+	pass # Replace with function body.

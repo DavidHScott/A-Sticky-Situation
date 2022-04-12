@@ -21,7 +21,7 @@ func refresh_ui(clear_item_panel):
 	$BuyMultipleButton/SpinBox.value = 1
 	
 	# Refresh the buy panel
-	var buy_item_slots = $BuyPanel/VBoxContainer
+	var buy_item_slots = $BuyPanel/ScrollContainer/VBoxContainer
 	
 	if buy_item_slots.get_child_count() > 0:
 		for c in buy_item_slots.get_children():

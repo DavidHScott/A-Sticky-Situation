@@ -2,12 +2,12 @@
 
 [ext_resource path="res://scripts/market/MarketPage.gd" type="Script" id=1]
 [ext_resource path="res://scripts/market/MarketPrices.gd" type="Script" id=2]
-[ext_resource path="res://assets/UI/ui_panel.png" type="Texture" id=3]
+[ext_resource path="res://assets/UI/panel.png" type="Texture" id=3]
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=4]
-[ext_resource path="res://assets/UI/ui_panel_item_button.png" type="Texture" id=5]
 [ext_resource path="res://scripts/market/MarketCategoryTab.gd" type="Script" id=6]
 [ext_resource path="res://scripts/market/MarketPanel.gd" type="Script" id=7]
 [ext_resource path="res://scripts/market/TimelineButton.gd" type="Script" id=8]
+[ext_resource path="res://assets/UI/ui_panel_2.png" type="Texture" id=9]
 
 [node name="MarketPage" type="Control"]
 anchor_right = 1.0
@@ -17,9 +17,6 @@ margin_top = -2.0
 margin_right = 1.0
 margin_bottom = -2.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarketPanel" type="NinePatchRect" parent="."]
 anchor_right = 1.0
@@ -29,14 +26,13 @@ margin_top = 98.0
 margin_right = -182.0
 margin_bottom = -98.0
 texture = ExtResource( 3 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="MarketGraphic" type="Control" parent="MarketPanel"]
@@ -62,11 +58,11 @@ margin_right = 110.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 mouse_filter = 0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 9 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 6 )
 tab_type = 1
 
@@ -88,11 +84,11 @@ margin_right = 110.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 50, 50 )
 mouse_filter = 0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 9 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="MarketPanel/Tabs/GoldenTab"]
@@ -113,11 +109,11 @@ margin_right = 110.0
 margin_bottom = 158.0
 rect_min_size = Vector2( 50, 50 )
 mouse_filter = 0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 9 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 6 )
 tab_type = 2
 
@@ -139,11 +135,11 @@ margin_right = 110.0
 margin_bottom = 212.0
 rect_min_size = Vector2( 50, 50 )
 mouse_filter = 0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 9 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 6 )
 tab_type = 3
 
@@ -167,15 +163,12 @@ margin_top = -75.0
 margin_bottom = -10.0
 rect_min_size = Vector2( 125, 50 )
 mouse_filter = 0
-texture = ExtResource( 5 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 9 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
 script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="MarketPanel/TimelineButton"]
 anchor_right = 1.0

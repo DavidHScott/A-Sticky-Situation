@@ -24,7 +24,7 @@ onready var amber_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
 onready var dark_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
 onready var very_dark_sprite = preload("res://assets/sprites/syrups/syrup_jug.png")
 
-var current_page = UI_PAGES.WAREHOUSE
+var current_page = null
 var current_game_state = GAME_STATE.DOWNTIME
 
 const GOLDEN = "Golden"
