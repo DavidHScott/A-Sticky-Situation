@@ -6,4 +6,4 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_BuySyrupTab_pressed():
-	Global.switch_screen(Global.UI_PAGES.BUY_SYRUP)
+	Global._game().switch_screen(Global.UI_PAGES.BUY_SYRUP)

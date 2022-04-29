@@ -9,14 +9,18 @@ const USER_DATA = "user://user_data.json"
 const SAVE_DIR_TEMPLATE = "%s_userdata%s"
 const SAVE_NAME_TEMPLATE = "%s_userdata%s.res"
 
-const OPTIONS_FILE = "user://options.json"
+const OPTIONS_FILE = "user://options.res"
 
 var save_data = SaveData.new()
+var options = Options.new()
 
 func _ready():
 	var info_file = File.new()
 	if !info_file.file_exists(USER_DATA):
 		first_time_setup()
+	
+	if ResourceLoader.exists(OPTIONS_FILE):
+		options = ResourceLoader.load(OPTIONS_FILE)
 
 
 func create_new_save(username:String):
@@ -172,6 +176,8 @@ func first_time_setup():
 	file.open(USER_DATA, File.WRITE)
 	file.store_string(to_json(boilerplate))
 	file.close()
+	
+	ResourceSaver.save(OPTIONS_FILE, options)
 
 
 func get_all_saves_arr():
@@ -243,3 +249,8 @@ func load_inv_from_savedata():
 			
 			PlayerVariables.inventory[i] = Item.new(grade, prod, quality, quantity)
 			PlayerVariables.inventory[i].buy_price = buy_price
+
+
+func save_options_to_file():
+	ResourceSaver.save(OPTIONS_FILE, options)
+	print(str(options.master_volume))

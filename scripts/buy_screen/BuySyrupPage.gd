@@ -4,7 +4,7 @@ var buy_item_slot_scene = preload("res://scenes/gui_components/page_panels/BuyIt
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.connect("close_current_page", self, "close_page")
+	Global._game().connect("close_current_page", self, "close_page")
 	ShoppingController.connect("refresh_shop_ui", self, "refresh_ui")
 	
 	refresh_ui(true)

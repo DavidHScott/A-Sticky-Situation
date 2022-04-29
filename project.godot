@@ -57,7 +57,7 @@ Market="*res://scripts/auto_loaded_scripts/Market.gd"
 OrderFulfillment="*res://scripts/auto_loaded_scripts/OrderFulfillment.gd"
 ImportData="*res://scripts/auto_loaded_scripts/ImportData.gd"
 SaveAndLoad="*res://scripts/auto_loaded_scripts/SaveAndLoad.gd"
-InputManager="*res://scripts/auto_loaded_scripts/InputManager.gd"
+AudioController="*res://scripts/auto_loaded_scripts/AudioController.gd"
 
 [display]
 

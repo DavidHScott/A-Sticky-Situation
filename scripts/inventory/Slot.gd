@@ -49,7 +49,7 @@ func _gui_input(event):
 		if event is InputEventMouseButton:
 			if event.button_index == BUTTON_LEFT:
 				if event.pressed:\
-					Global.slot_selected(item_index)
+					PlayerVariables.slot_selected(item_index)
 
 func _notification(what):
 	match what:

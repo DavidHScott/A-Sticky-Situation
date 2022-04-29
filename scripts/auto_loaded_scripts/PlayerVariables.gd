@@ -9,22 +9,6 @@ var inventory_size:int = 8
 
 signal money_was_updated(new_total)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	# Clear the inventory
-	inventory.resize(8)
-	
-	var newItem = Item.new()
-	
-	newItem.set_grade(Global.AMBER)
-	newItem.set_producer("Test Prod")
-	newItem.set_quality(90)
-	newItem.set_buy_price(5000)
-	newItem.set_quantity(96)
-	
-	inventory[4] = newItem
-	# Set the money counter
 
 func get_players_money():
 	return money
@@ -112,3 +96,13 @@ func remove_item_array_from_inv(item_arr:Array):
 	
 	if succeeded == false:
 		print("Tried to remove an item not in the inventory!")
+
+
+# Warehouse functions
+# Slot selection
+func slot_selected(item):
+	emit_signal("slot_select", item)
+
+# Remove item info from Item Info panel
+func clear_item_info_panel():
+	emit_signal("clear_info_panel")

@@ -4,8 +4,8 @@ extends Button
 func _ready():
 	clear_text()
 	
-	Global.connect("clear_info_panel", self, "clear_text")
-	Global.connect("slot_select", self, "add_text")
+	PlayerVariables.connect("clear_info_panel", self, "clear_text")
+	PlayerVariables.connect("slot_select", self, "add_text")
 	
 func add_text(item_index):
 	var item_price = Market.get_item_price(PlayerVariables.inventory[item_index])

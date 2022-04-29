@@ -7,3 +7,5 @@ scene_path_to_load = "res://scenes/main_menu/sub_menus/NewGameMenu.tscn"
 
 [node name="Label" parent="." index="0"]
 text = "new game"
+
+[connection signal="mouse_entered" from="." to="." method="_on_NewGameButton_mouse_entered"]

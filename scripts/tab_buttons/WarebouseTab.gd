@@ -6,4 +6,4 @@ func _ready():
 
 
 func _on_WarebouseTab_pressed():
-	Global.switch_screen(Global.UI_PAGES.WAREHOUSE)
+	Global._game().switch_screen(Global.UI_PAGES.WAREHOUSE)

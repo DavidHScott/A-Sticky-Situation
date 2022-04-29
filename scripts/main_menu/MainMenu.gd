@@ -18,6 +18,8 @@ func load_scene(scene_to_load):
 
 
 func _on_menu_button_pressed(button_type, scene_to_load):
+	AudioController.play_clip("button_click")
+	
 	if button_type == 0:
 		load_scene(scene_to_load)
 	elif button_type == 1:

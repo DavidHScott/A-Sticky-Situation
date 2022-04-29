@@ -61,18 +61,17 @@ func stop_shop_day():
 func generate_shop_item():
 	# Create the item
 	var new_item = Item.new()
-	
 	# Generate the grade
 	var rand = randi() % 4
 	match rand:
 		0:
-			new_item.set_grade(Global.AMBER)
+			new_item.set_grade(Global._game().AMBER)
 		1:
-			new_item.set_grade(Global.GOLDEN)
+			new_item.set_grade(Global._game().GOLDEN)
 		2:
-			new_item.set_grade(Global.DARK)
+			new_item.set_grade(Global._game().DARK)
 		3:
-			new_item.set_grade(Global.VERY_DARK)
+			new_item.set_grade(Global._game().VERY_DARK)
 	
 	# Generate the producer
 	rand = randi() % possible_producers.size()

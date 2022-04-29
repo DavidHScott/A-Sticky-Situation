@@ -5,4 +5,4 @@ func _ready():
 	pass
 
 func _on_OrdersTab_pressed():
-	Global.switch_screen(Global.UI_PAGES.ORDERS)
+	Global._game().switch_screen(Global.UI_PAGES.ORDERS)

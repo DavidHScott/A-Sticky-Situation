@@ -1,0 +1,22 @@
+[gd_scene format=2]
+
+[node name="ButtonOptionSelect" type="HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_constants/separation = 100
+
+[node name="OptionLabel" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 462.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Option:"
+
+[node name="OptionButton" type="Button" parent="."]
+margin_left = 562.0
+margin_right = 1024.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+text = "ON"

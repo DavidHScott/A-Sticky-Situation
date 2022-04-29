@@ -6,4 +6,4 @@ func _ready():
 
 
 func _on_StartDayTab_pressed():
-	Global.switch_game_state()
+	Global._game().switch_game_state()

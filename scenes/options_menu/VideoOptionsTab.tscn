@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/options_menu/OptionTab.tscn" type="PackedScene" id=1]
+
+[node name="VideoOptionsTab" instance=ExtResource( 1 )]
+toggle_mode = true
+
+[node name="Label" parent="." index="0"]
+text = "Video"

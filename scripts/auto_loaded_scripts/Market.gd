@@ -14,7 +14,7 @@ func _ready():
 
 func new_day():
 	# The start of a new week. Day 1, day 8, etc
-	if (Global.current_day - 1) % 7 == 0:
+	if (Global._game().current_day - 1) % 7 == 0:
 		new_week()
 	
 	golden_trend.generate_new_price()
@@ -36,13 +36,13 @@ func get_item_price(item):
 	
 	var item_price
 	
-	if item.get_grade() == Global.AMBER:
+	if item.get_grade() == Global._game().AMBER:
 		item_price = amber_trend.current_base_price
-	elif item.get_grade() == Global.GOLDEN:
+	elif item.get_grade() == Global._game().GOLDEN:
 		item_price = golden_trend.current_base_price
-	elif item.get_grade() == Global.DARK:
+	elif item.get_grade() == Global._game().DARK:
 		item_price = dark_trend.current_base_price
-	elif item.get_grade() == Global.VERY_DARK:
+	elif item.get_grade() == Global._game().VERY_DARK:
 		item_price = verydark_trend.current_base_price
 	else:
 		return

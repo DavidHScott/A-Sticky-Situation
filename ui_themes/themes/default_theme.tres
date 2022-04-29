@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [ext_resource path="res://ui_themes/fonts/default_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/UI/buttons/button_default.png" type="Texture" id=2]
@@ -24,11 +24,19 @@ margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 31.9399, 16 )
-margin_left = 3.0
-margin_right = 3.0
-margin_top = 3.0
-margin_bottom = 3.0
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 10.0
+margin_right = 10.0
+margin_top = 10.0
+margin_bottom = 10.0
 
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 1, 1, 1, 1 )
@@ -48,7 +56,7 @@ Button/colors/font_color_disabled = Color( 0.901961, 0.901961, 0.901961, 0.53333
 Button/styles/disabled = SubResource( 4 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 2 )
-Button/styles/pressed = SubResource( 2 )
+Button/styles/pressed = SubResource( 6 )
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = SubResource( 1 )
 LineEdit/styles/normal = SubResource( 5 )

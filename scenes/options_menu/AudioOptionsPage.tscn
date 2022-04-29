@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/options_menu/OptionsPage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/options_menu/AudioOptionsPage.gd" type="Script" id=2]
+[ext_resource path="res://scripts/options_menu/RangeOptionSelect.gd" type="Script" id=3]
+
+[node name="AudioOptionsPage" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MasterVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="0"]
+margin_right = 1024.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+custom_constants/separation = 100
+script = ExtResource( 3 )
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/MasterVolumeSelect" index="0"]
+margin_top = 1.0
+margin_right = 462.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Master Volume"
+
+[node name="OptionRange" type="HSlider" parent="VBoxContainer/MasterVolumeSelect" index="1"]
+margin_left = 562.0
+margin_right = 1024.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MasterVolumeSelect/OptionRange" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "69%"
+align = 1
+valign = 1
+
+[node name="MusicVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="1"]
+margin_top = 25.0
+margin_right = 1024.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_constants/separation = 100
+script = ExtResource( 3 )
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/MusicVolumeSelect" index="0"]
+margin_top = 1.0
+margin_right = 462.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Music Volume"
+
+[node name="OptionRange" type="HSlider" parent="VBoxContainer/MusicVolumeSelect" index="1"]
+margin_left = 562.0
+margin_right = 1024.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MusicVolumeSelect/OptionRange" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "69%"
+align = 1
+valign = 1
+
+[node name="EffectsVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="2"]
+margin_top = 50.0
+margin_right = 1024.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+custom_constants/separation = 100
+script = ExtResource( 3 )
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/EffectsVolumeSelect" index="0"]
+margin_top = 1.0
+margin_right = 462.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "SFX Volume"
+
+[node name="OptionRange" type="HSlider" parent="VBoxContainer/EffectsVolumeSelect" index="1"]
+margin_left = 562.0
+margin_right = 1024.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/EffectsVolumeSelect/OptionRange" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "69%"
+align = 1
+valign = 1
+
+[connection signal="value_changed" from="VBoxContainer/MasterVolumeSelect/OptionRange" to="." method="_on_MasterVolumeRange_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MasterVolumeSelect/OptionRange" to="VBoxContainer/MasterVolumeSelect" method="_on_OptionRange_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MusicVolumeSelect/OptionRange" to="." method="_on_MusicVolumeRange_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MusicVolumeSelect/OptionRange" to="VBoxContainer/MusicVolumeSelect" method="_on_OptionRange_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/EffectsVolumeSelect/OptionRange" to="." method="_on_EffectsVolumeRange_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/EffectsVolumeSelect/OptionRange" to="VBoxContainer/EffectsVolumeSelect" method="_on_OptionRange_value_changed"]

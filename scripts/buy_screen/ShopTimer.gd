@@ -20,7 +20,7 @@ func _on_ShopTimer_timeout():
 	
 	if minutes == 0 and seconds == 0:
 		self.stop()
-		Global.switch_game_state()
+		Global._game().switch_game_state()
 		return
 	
 	if seconds == 0:

@@ -11,23 +11,17 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -380, -58 )
 theme = ExtResource( 2 )
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 100.0
+margin_left = 64.0
 margin_top = 50.0
-margin_right = -100.0
+margin_right = -64.0
 margin_bottom = -40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SaveSelect" type="MarginContainer" parent="MarginContainer"]
-margin_right = 824.0
+margin_right = 896.0
 margin_bottom = 510.0
 custom_constants/margin_right = 226
 custom_constants/margin_top = 50
@@ -39,13 +33,13 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/SaveSelect"]
 margin_left = 226.0
 margin_top = 50.0
-margin_right = 598.0
+margin_right = 670.0
 margin_bottom = 510.0
 custom_constants/separation = 11
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/SaveSelect/VBoxContainer"]
-margin_right = 372.0
+margin_right = 444.0
 margin_bottom = 28.0
 text = "Save Select"
 align = 1
@@ -53,7 +47,7 @@ valign = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/SaveSelect/VBoxContainer"]
 margin_top = 39.0
-margin_right = 372.0
+margin_right = 444.0
 margin_bottom = 415.0
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -76,7 +70,7 @@ __meta__ = {
 }
 
 [node name="SaveContainer" type="VBoxContainer" parent="MarginContainer/SaveSelect/VBoxContainer/NinePatchRect/ScrollContainer"]
-margin_right = 356.0
+margin_right = 428.0
 margin_bottom = 362.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -84,13 +78,13 @@ custom_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SaveSelect/VBoxContainer"]
 margin_top = 426.0
-margin_right = 372.0
+margin_right = 444.0
 margin_bottom = 460.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
-margin_right = 178.0
+margin_right = 214.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 
@@ -106,8 +100,8 @@ __meta__ = {
 }
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
-margin_left = 193.0
-margin_right = 372.0
+margin_left = 229.0
+margin_right = 444.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 

@@ -2,8 +2,8 @@ extends NinePatchRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.connect("slot_select", self, "update_item_info")
-	Global.connect("clear_info_panel", self, "clear_item_info_panel")
+	PlayerVariables.connect("slot_select", self, "update_item_info")
+	PlayerVariables.connect("clear_info_panel", self, "clear_item_info_panel")
 	
 	ShoppingController.connect("shop_slot_select", self, "shopping_update_item_info")
 	

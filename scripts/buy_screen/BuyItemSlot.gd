@@ -17,7 +17,7 @@ func add_item(new_item_index):
 	if item == null:
 		return
 	
-	$IconBackground/Icon.texture = Global.get_syrup_sprite(item.grade)
+	$IconBackground/Icon.texture = Global._game().get_syrup_sprite(item.grade)
 	$GradeLabel.text = item.grade
 	$CostLabel.text = "$" + str(item.get_buy_price()) + "/ea"
 
