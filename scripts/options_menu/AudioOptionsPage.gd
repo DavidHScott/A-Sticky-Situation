@@ -1,8 +1,5 @@
 extends Control
 
-var range_select = preload("res://scenes/options_menu/OptionSelects/RangeOptionSelect.tscn")
-var button_select = preload("res://scenes/options_menu/OptionSelects/ButtonOptionSelect.tscn")
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

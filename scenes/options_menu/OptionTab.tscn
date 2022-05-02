@@ -14,5 +14,3 @@ anchor_bottom = 1.0
 text = "Category"
 align = 1
 valign = 1
-
-[connection signal="toggled" from="." to="." method="_on_OptionTab_toggled"]

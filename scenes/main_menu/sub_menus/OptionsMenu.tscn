@@ -4,14 +4,18 @@
 [ext_resource path="res://scenes/options_menu/AudioOptionsTab.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main_menu/buttons/BackToTitleScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/options_menu/VideoOptionsTab.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/options_menu/AudioOptionsPage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/options_menu/OptionsMenu.gd" type="Script" id=6]
 
-[node name="OptionsMenu" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enable = true
+
+[node name="OptionsMenu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+script = ExtResource( 6 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="OptionsMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 64.0
@@ -19,14 +23,14 @@ margin_top = 50.0
 margin_right = -64.0
 margin_bottom = -40.0
 
-[node name="OptionsMargin" type="MarginContainer" parent="MarginContainer"]
+[node name="OptionsMargin" type="MarginContainer" parent="OptionsMenu/MarginContainer"]
 margin_right = 896.0
 margin_bottom = 510.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 75
 custom_constants/margin_left = 90
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/OptionsMargin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/MarginContainer/OptionsMargin"]
 margin_left = 90.0
 margin_top = 75.0
 margin_right = 806.0
@@ -34,22 +38,24 @@ margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="OptionCategories" type="VBoxContainer" parent="MarginContainer/OptionsMargin/HBoxContainer"]
-margin_right = 112.0
+[node name="OptionCategories" type="VBoxContainer" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer"]
+margin_right = 100.0
 margin_bottom = 435.0
-size_flags_horizontal = 3
+rect_min_size = Vector2( 100, 0 )
 
-[node name="AudioOptionsTab" parent="MarginContainer/OptionsMargin/HBoxContainer/OptionCategories" instance=ExtResource( 2 )]
-margin_right = 112.0
+[node name="AudioOptionsTab" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer/OptionCategories" instance=ExtResource( 2 )]
+margin_right = 100.0
 margin_bottom = 48.0
+option_page = 0
 
-[node name="VideoOptionsTab" parent="MarginContainer/OptionsMargin/HBoxContainer/OptionCategories" instance=ExtResource( 4 )]
+[node name="VideoOptionsTab" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer/OptionCategories" instance=ExtResource( 4 )]
 margin_top = 52.0
-margin_right = 112.0
+margin_right = 100.0
 margin_bottom = 100.0
+option_page = 1
 
-[node name="OptionsContainer" type="MarginContainer" parent="MarginContainer/OptionsMargin/HBoxContainer"]
-margin_left = 116.0
+[node name="OptionsContainer" type="MarginContainer" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer"]
+margin_left = 104.0
 margin_right = 716.0
 margin_bottom = 435.0
 rect_min_size = Vector2( 600, 0 )
@@ -58,12 +64,4 @@ custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 
-[node name="AudioOptionsPage" parent="MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 590.0
-margin_bottom = 435.0
-
-[node name="BackToTitleScreen" parent="MarginContainer" instance=ExtResource( 3 )]
+[node name="BackToTitleScreen" parent="OptionsMenu/MarginContainer" instance=ExtResource( 3 )]

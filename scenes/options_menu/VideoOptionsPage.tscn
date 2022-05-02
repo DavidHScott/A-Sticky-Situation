@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/options_menu/OptionsPage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/options_menu/VideoOptionsPage.gd" type="Script" id=2]
+[ext_resource path="res://scripts/options_menu/ButtonOptionSelect.gd" type="Script" id=3]
+
+[node name="VideoOptionsPage" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="FullscreenOptionSelect" type="HBoxContainer" parent="VBoxContainer" index="0"]
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_constants/separation = 100
+script = ExtResource( 3 )
+option_array = [ "OFF", "ON" ]
+
+[node name="OptionLabel" type="Label" parent="VBoxContainer/FullscreenOptionSelect" index="0"]
+margin_top = 3.0
+margin_right = 462.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="OptionButton" type="Button" parent="VBoxContainer/FullscreenOptionSelect" index="1"]
+margin_left = 562.0
+margin_right = 1024.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 350, 0 )
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/FullscreenOptionSelect/OptionButton" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "NULL"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="VBoxContainer/FullscreenOptionSelect/OptionButton" to="VBoxContainer/FullscreenOptionSelect" method="_on_OptionButton_pressed"]

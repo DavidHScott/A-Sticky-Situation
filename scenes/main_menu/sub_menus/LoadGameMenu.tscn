@@ -5,14 +5,17 @@
 [ext_resource path="res://assets/UI/panel.png" type="Texture" id=3]
 [ext_resource path="res://scripts/main_menu/LoadGameMenu.gd" type="Script" id=4]
 
-[node name="LoadGameMenu" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enable = true
+
+[node name="LoadGameMenu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( -380, -58 )
 theme = ExtResource( 2 )
 script = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="LoadGameMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 64.0
@@ -20,7 +23,7 @@ margin_top = 50.0
 margin_right = -64.0
 margin_bottom = -40.0
 
-[node name="SaveSelect" type="MarginContainer" parent="MarginContainer"]
+[node name="SaveSelect" type="MarginContainer" parent="LoadGameMenu/MarginContainer"]
 margin_right = 896.0
 margin_bottom = 510.0
 custom_constants/margin_right = 226
@@ -30,7 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/SaveSelect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGameMenu/MarginContainer/SaveSelect"]
 margin_left = 226.0
 margin_top = 50.0
 margin_right = 670.0
@@ -38,17 +41,17 @@ margin_bottom = 510.0
 custom_constants/separation = 11
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/SaveSelect/VBoxContainer"]
+[node name="Label" type="Label" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer"]
 margin_right = 444.0
 margin_bottom = 28.0
 text = "Save Select"
 align = 1
 valign = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/SaveSelect/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer"]
 margin_top = 39.0
 margin_right = 444.0
-margin_bottom = 415.0
+margin_bottom = 401.0
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 patch_margin_left = 25
@@ -56,7 +59,7 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/SaveSelect/VBoxContainer/NinePatchRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -69,26 +72,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveContainer" type="VBoxContainer" parent="MarginContainer/SaveSelect/VBoxContainer/NinePatchRect/ScrollContainer"]
+[node name="SaveContainer" type="VBoxContainer" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/NinePatchRect/ScrollContainer"]
 margin_right = 428.0
-margin_bottom = 362.0
+margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SaveSelect/VBoxContainer"]
-margin_top = 426.0
+[node name="HBoxContainer" type="HBoxContainer" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer"]
+margin_top = 412.0
 margin_right = 444.0
 margin_bottom = 460.0
 custom_constants/separation = 15
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
+[node name="PlayButton" type="Button" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
 margin_right = 214.0
-margin_bottom = 34.0
+margin_bottom = 48.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton"]
+[node name="Label" type="Label" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "PLAY"
@@ -99,13 +102,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeleteButton" type="Button" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
+[node name="DeleteButton" type="Button" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer"]
 margin_left = 229.0
 margin_right = 444.0
-margin_bottom = 34.0
+margin_bottom = 48.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton"]
+[node name="Label" type="Label" parent="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Delete"
@@ -116,7 +119,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackToTitleScreen" parent="MarginContainer" instance=ExtResource( 1 )]
+[node name="BackToTitleScreen" parent="LoadGameMenu/MarginContainer" instance=ExtResource( 1 )]
 
-[connection signal="pressed" from="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="pressed" from="MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="pressed" from="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton" to="LoadGameMenu" method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="LoadGameMenu/MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton" to="LoadGameMenu" method="_on_DeleteButton_pressed"]

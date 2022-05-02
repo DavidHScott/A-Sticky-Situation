@@ -21,6 +21,9 @@ func _ready():
 	
 	if ResourceLoader.exists(OPTIONS_FILE):
 		options = ResourceLoader.load(OPTIONS_FILE)
+	
+	if options.fullscreen == true:
+		OS.window_fullscreen = true
 
 
 func create_new_save(username:String):
@@ -253,4 +256,3 @@ func load_inv_from_savedata():
 
 func save_options_to_file():
 	ResourceSaver.save(OPTIONS_FILE, options)
-	print(str(options.master_volume))

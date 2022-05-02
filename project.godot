@@ -61,7 +61,8 @@ AudioController="*res://scripts/auto_loaded_scripts/AudioController.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [input]
 

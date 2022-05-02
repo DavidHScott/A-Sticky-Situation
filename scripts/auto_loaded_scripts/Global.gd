@@ -17,15 +17,9 @@ func _game():
 
 
 func start_game():
-	# load the selected save data into the right spots
 	
-	PlayerVariables.name = SaveAndLoad.save_data.player_name
-	PlayerVariables.money = SaveAndLoad.save_data.money
-	PlayerVariables.inventory_size = SaveAndLoad.save_data.inventory_size
-	
-	SaveAndLoad.load_inv_from_savedata()
-	
-	_game().current_day = SaveAndLoad.save_data.current_day
+	# First, load the scene
+	get_tree().change_scene("res://scenes/gameplay/Game.tscn")
 	
 	for key in SaveAndLoad.save_data.available_quest_keys:
 		if OrderFulfillment.story_orders_dict.has(key):
@@ -36,9 +30,6 @@ func start_game():
 		OrderFulfillment.available_quests[key].accepted = SaveAndLoad.save_data.available_quest_keys[key]
 	
 	SaveAndLoad.load_market_trends()
-	
-	# Finally, load the scene
-	get_tree().change_scene("res://scenes/gameplay/Game.tscn")
 
 
 #### Handle notifications

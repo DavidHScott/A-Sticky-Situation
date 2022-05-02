@@ -16,7 +16,7 @@ func refresh_ui():
 	$LowerThird/OrdersTab.visible = true
 	$LowerThird/MarketTab.visible = true
 	
-	if Global.current_game_state == Global.GAME_STATE.DOWNTIME:
+	if Global._game().current_game_state == Global._game().GAME_STATE.DOWNTIME:
 		$LowerThird/StartDayTab.visible = true
 		$LowerThird/BuySyrupTab.visible = false
 		$LowerThird/TimerPanel.visible = false

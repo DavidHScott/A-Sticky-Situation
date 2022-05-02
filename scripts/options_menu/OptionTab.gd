@@ -1,8 +1,8 @@
 extends Button
 
+enum page_enum {
+	AUDIO,
+	VIDEO,
+}
 
-export(String) var option_page
-
-
-func _on_OptionTab_toggled(button_pressed):
-	pass # Replace with function body.
+export(page_enum) var option_page = page_enum.AUDIO
