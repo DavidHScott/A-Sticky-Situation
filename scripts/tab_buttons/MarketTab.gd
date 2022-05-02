@@ -5,4 +5,4 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_MarketTab_pressed():
-	Global._game().switch_screen(Global.UI_PAGES.MARKET)
+	Global._game().switch_screen(Global._game().UI_PAGES.MARKET)

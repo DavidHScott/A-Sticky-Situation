@@ -11,10 +11,14 @@ func _ready():
 	for obj in $MarginContainer/OptionsMargin/HBoxContainer/OptionCategories.get_children():
 		obj.connect("pressed", self, "open_options_page", [obj])
 	
+	for obj in $MarginContainer/OptionsMargin/HBoxContainer/OptionCategories.get_children():
+		obj.connect("mouse_entered", self, "play_blip")
+	
 	pass # Replace with function body.
 
 
 func open_options_page(source):
+	AudioController.play_clip("button_click")
 	
 	for obj in $MarginContainer/OptionsMargin/HBoxContainer/OptionCategories.get_children():
 		obj.pressed = false
@@ -33,3 +37,7 @@ func open_options_page(source):
 		$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer.get_child(0).queue_free()
 	
 	$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer.add_child(option_page)
+
+
+func play_blip():
+	AudioController.play_clip("menu_blip")

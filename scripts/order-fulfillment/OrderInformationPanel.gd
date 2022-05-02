@@ -91,7 +91,6 @@ func render_buttons():
 ## Buttons
 func _on_FulfillButton_pressed():
 	var item_arr = OrderFulfillment.can_be_fulfilled(selected_order_key)
-	
 	emit_signal("open_popup", selected_order_key, item_arr)
 
 func _on_AcceptButton_pressed():

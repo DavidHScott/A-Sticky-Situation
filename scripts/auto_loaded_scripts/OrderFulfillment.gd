@@ -2,7 +2,7 @@ extends Node
 
 var placeholder_quest = Order.new("Quest Name!", "Flor-Stor", 
 	"Wow, this is a really specific order. Want some interesting backstory? Did you know about X event?",
-	1500, [Item.new("Amber", null, 70, 2)], 0, 0)
+	1500, [Item.new("Amber", null, 0, 2)], 0, 0)
 	
 var story_orders_dict = {
 	"main_0": placeholder_quest

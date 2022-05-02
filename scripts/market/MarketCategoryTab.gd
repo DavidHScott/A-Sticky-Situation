@@ -9,13 +9,13 @@ var grade_var
 func _ready():
 	match tab_type:
 		grade.GOLDEN:
-			grade_var = Global.GOLDEN
+			grade_var = Global._game().GOLDEN
 		grade.AMBER:
-			grade_var = Global.AMBER
+			grade_var = Global._game().AMBER
 		grade.DARK:
-			grade_var = Global.DARK
+			grade_var = Global._game().DARK
 		grade.VERY_DARK:
-			grade_var = Global.VERY_DARK
+			grade_var = Global._game().VERY_DARK
 
 func _gui_input(event):
 	if event is InputEventMouseButton:

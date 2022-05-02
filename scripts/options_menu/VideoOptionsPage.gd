@@ -5,7 +5,6 @@ extends Control
 func _ready():
 	
 	var fullscreen = SaveAndLoad.options.fullscreen
-	var gui_scale = SaveAndLoad.options.gui_scale
 	
 	$VBoxContainer/FullscreenOptionSelect.connect("option_changed", self, "fullscreen_option_changed")
 	

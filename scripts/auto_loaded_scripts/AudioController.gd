@@ -24,6 +24,10 @@ func _ready():
 	_effects_player = AudioStreamPlayer.new()
 	add_child(_effects_player)
 	_effects_player.bus = "Effects"
+	
+	change_master_volume(SaveAndLoad.options.master_volume)
+	change_music_volume(SaveAndLoad.options.music_volume)
+	change_effects_volume(SaveAndLoad.options.sfx_volume)
 
 
 func play_music(track_url:String):

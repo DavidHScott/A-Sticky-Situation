@@ -8,11 +8,17 @@ var save_arr:Array
 
 var save_slot = preload("res://scenes/main_menu/slots/SaveFileSlot.tscn")
 
+
+signal open_popup(selected_save)
+
+
 # Slot selection
 var selected_save_data:SaveData = null
 
 
 func _ready():
+	$DeleteConfirm.connect("delete_confirmed", self, "delete_save")
+	
 	play_button = $MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton
 	delete_button = $MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton
 	
@@ -29,6 +35,10 @@ func _ready():
 
 
 func populate_menu():
+	
+	for obj in save_container.get_children():
+		obj.queue_free()
+	
 	save_arr = SaveAndLoad.get_all_saves_arr()
 	
 	for save in save_arr:
@@ -45,6 +55,14 @@ func slot_select(save_data):
 	delete_button.disabled = false
 
 
+func delete_save():
+	# Connect to SaveAndLoad to remove the file
+	SaveAndLoad.delete_save(selected_save_data)
+	
+	# Refresh the menu
+	populate_menu()
+
+
 func _on_PlayButton_pressed():
 	SaveAndLoad.load_save(selected_save_data.filename)
 	Global.start_game()
@@ -52,8 +70,4 @@ func _on_PlayButton_pressed():
 
 func _on_DeleteButton_pressed():
 	# Open a popup menu to confirm
-	
-	# Connect to SaveAndLoad to remove the file
-	
-	# Remove the slot from the menu (Refresh the menu?)
-	pass # Replace with function body.
+	emit_signal("open_popup", selected_save_data)

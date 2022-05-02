@@ -256,3 +256,32 @@ func load_inv_from_savedata():
 
 func save_options_to_file():
 	ResourceSaver.save(OPTIONS_FILE, options)
+
+
+func delete_save(save:SaveData):
+	var dir = Directory.new()
+	if dir.file_exists(SAVE_FOLDER.plus_file(save.filename)):
+		# Delete the directory and file
+		var split_arr = save.filename.split("/")
+		
+		dir.remove(SAVE_FOLDER.plus_file(save.filename))
+		dir.remove(SAVE_FOLDER.plus_file(split_arr[0]))
+	else:
+		return
+	
+	# remove it from the user_data.json file
+	var file = File.new()
+	file.open(USER_DATA, File.READ_WRITE)
+	var json = JSON.parse(file.get_as_text())
+	var data = json.result
+	
+	data["SaveNames"].erase(save.filename)
+	data["NumberOfSaves"] -= 1
+	
+	file.close()
+	
+	dir.remove(USER_DATA)
+	
+	file.open(USER_DATA, file.WRITE)
+	file.store_string(to_json(data))
+	file.close()
