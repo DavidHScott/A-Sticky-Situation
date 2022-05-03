@@ -8,7 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="FullscreenOptionSelect" type="HBoxContainer" parent="VBoxContainer" index="0"]
-margin_right = 1024.0
+margin_right = 1008.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 custom_constants/separation = 100
@@ -17,14 +17,14 @@ option_array = [ "OFF", "ON" ]
 
 [node name="OptionLabel" type="Label" parent="VBoxContainer/FullscreenOptionSelect" index="0"]
 margin_top = 3.0
-margin_right = 462.0
+margin_right = 454.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 text = "Fullscreen"
 
 [node name="OptionButton" type="Button" parent="VBoxContainer/FullscreenOptionSelect" index="1"]
-margin_left = 562.0
-margin_right = 1024.0
+margin_left = 554.0
+margin_right = 1008.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 350, 0 )
 size_flags_horizontal = 3

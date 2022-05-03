@@ -1,10 +1,11 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=15 format=2]
 
 [ext_resource path="res://ui_themes/fonts/default_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/UI/buttons/button_default.png" type="Texture" id=2]
 [ext_resource path="res://assets/UI/buttons/button_toggle.png" type="Texture" id=3]
 [ext_resource path="res://assets/UI/buttons/button_disabled.png" type="Texture" id=4]
 [ext_resource path="res://assets/UI/textfield.png" type="Texture" id=5]
+[ext_resource path="res://assets/UI/hslider_cursor.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
@@ -41,6 +42,18 @@ margin_bottom = 10.0
 [sub_resource type="StyleBoxLine" id=1]
 color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="StyleBoxTexture" id=9]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 3.0
+margin_right = 3.0
+margin_top = 3.0
+margin_bottom = 3.0
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 32, 22 )
@@ -59,5 +72,10 @@ Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 6 )
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = SubResource( 1 )
+HSlider/icons/grabber = ExtResource( 6 )
+HSlider/icons/grabber_highlight = ExtResource( 6 )
+HSlider/styles/grabber_area = SubResource( 9 )
+HSlider/styles/grabber_area_highlight = SubResource( 9 )
+HSlider/styles/slider = SubResource( 8 )
 LineEdit/styles/normal = SubResource( 5 )
 Panel/styles/panel = null

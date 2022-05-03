@@ -8,25 +8,27 @@
 script = ExtResource( 2 )
 
 [node name="MasterVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="0"]
-margin_right = 1024.0
-margin_bottom = 16.0
+margin_right = 1008.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
 size_flags_horizontal = 3
 custom_constants/separation = 100
 script = ExtResource( 3 )
 
 [node name="OptionLabel" type="Label" parent="VBoxContainer/MasterVolumeSelect" index="0"]
-margin_top = 1.0
-margin_right = 462.0
-margin_bottom = 15.0
+margin_top = 5.0
+margin_right = 454.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Master Volume"
 
 [node name="OptionRange" type="HSlider" parent="VBoxContainer/MasterVolumeSelect" index="1"]
-margin_left = 562.0
-margin_right = 1024.0
-margin_bottom = 16.0
+margin_left = 554.0
+margin_right = 1008.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
+size_flags_vertical = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/MasterVolumeSelect/OptionRange" index="0"]
 anchor_right = 1.0
@@ -36,26 +38,28 @@ align = 1
 valign = 1
 
 [node name="MusicVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="1"]
-margin_top = 25.0
-margin_right = 1024.0
-margin_bottom = 41.0
+margin_top = 36.0
+margin_right = 1008.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 0, 25 )
 size_flags_horizontal = 3
 custom_constants/separation = 100
 script = ExtResource( 3 )
 
 [node name="OptionLabel" type="Label" parent="VBoxContainer/MusicVolumeSelect" index="0"]
-margin_top = 1.0
-margin_right = 462.0
-margin_bottom = 15.0
+margin_top = 5.0
+margin_right = 454.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Music Volume"
 
 [node name="OptionRange" type="HSlider" parent="VBoxContainer/MusicVolumeSelect" index="1"]
-margin_left = 562.0
-margin_right = 1024.0
-margin_bottom = 16.0
+margin_left = 554.0
+margin_right = 1008.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/MusicVolumeSelect/OptionRange" index="0"]
 anchor_right = 1.0
@@ -65,26 +69,28 @@ align = 1
 valign = 1
 
 [node name="EffectsVolumeSelect" type="HBoxContainer" parent="VBoxContainer" index="2"]
-margin_top = 50.0
-margin_right = 1024.0
-margin_bottom = 66.0
+margin_top = 72.0
+margin_right = 1008.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 0, 25 )
 size_flags_horizontal = 3
 custom_constants/separation = 100
 script = ExtResource( 3 )
 
 [node name="OptionLabel" type="Label" parent="VBoxContainer/EffectsVolumeSelect" index="0"]
-margin_top = 1.0
-margin_right = 462.0
-margin_bottom = 15.0
+margin_top = 5.0
+margin_right = 454.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "SFX Volume"
 
 [node name="OptionRange" type="HSlider" parent="VBoxContainer/EffectsVolumeSelect" index="1"]
-margin_left = 562.0
-margin_right = 1024.0
-margin_bottom = 16.0
+margin_left = 554.0
+margin_right = 1008.0
+margin_bottom = 25.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/EffectsVolumeSelect/OptionRange" index="0"]
 anchor_right = 1.0

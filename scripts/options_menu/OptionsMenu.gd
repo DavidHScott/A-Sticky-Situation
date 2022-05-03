@@ -33,10 +33,10 @@ func open_options_page(source):
 		source.page_enum.VIDEO:
 			option_page = video_page.instance()
 	
-	if $MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer.get_child(0) != null:
-		$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer.get_child(0).queue_free()
+	if $MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer/NinePatchRect.get_child(0) != null:
+		$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer/NinePatchRect.get_child(0).queue_free()
 	
-	$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer.add_child(option_page)
+	$MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer/NinePatchRect.add_child(option_page)
 
 
 func play_blip():
