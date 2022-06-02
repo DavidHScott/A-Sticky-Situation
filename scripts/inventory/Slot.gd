@@ -58,5 +58,5 @@ func _notification(what):
 			
 			# TODO: When the GUI focus system is implemented, make this change the current focus
 		NOTIFICATION_MOUSE_EXIT:
-			if selected != false:
+			if selected == false:
 				$FocusCursor.visible = false

@@ -46,27 +46,36 @@ func render_selected_order(order_slot):
 	$ScrollGrid/ItemInformation/OrderDescription.text = selected_order.job_description
 	
 	# Requirements
-	for item in selected_order.requirements:
-		var required_item = required_item_scene.instance()
-		required_item.edit_text(item)
+	if selected_order.requirements != null:
+		$ScrollGrid/ItemInformation/Separator2.visible = true
+		$ScrollGrid/ItemInformation/Requirements.visible = true
+		$ScrollGrid/ItemInformation/Separator3.visible = true
+		$ScrollGrid/ItemInformation/Deadline.visible = true
+		$ScrollGrid/ItemInformation/Pay.visible = true
 		
-		$ScrollGrid/ItemInformation/Requirements.add_child(required_item)
-	
-	# Deadline
-	if selected_order.fulfill_timelimit > 0:
+		for item in selected_order.requirements:
+			var required_item = required_item_scene.instance()
+			required_item.edit_text(item)
+			
+			$ScrollGrid/ItemInformation/Requirements.add_child(required_item)
 		
-		$ScrollGrid/ItemInformation/Deadline/Timelimit.text = str(selected_order.fulfill_timelimit) + " Days"
+		# Deadline
+		if selected_order.fulfill_timelimit > 0:
+			$ScrollGrid/ItemInformation/Deadline/Timelimit.text = str(selected_order.fulfill_timelimit) + " Days"
+		else:
+			$ScrollGrid/ItemInformation/Deadline/Timelimit.text = "None"
+		
+		# Pay
+		$ScrollGrid/ItemInformation/Pay.text = "$" + str(selected_order.pay)
 	else:
-		$ScrollGrid/ItemInformation/Deadline/Timelimit.text = "None"
-	
-	# Pay
-	$ScrollGrid/ItemInformation/Pay.text = "$" + str(selected_order.pay)
+		$ScrollGrid/ItemInformation/Separator2.visible = false
+		$ScrollGrid/ItemInformation/Requirements.visible = false
+		$ScrollGrid/ItemInformation/Separator3.visible = false
+		$ScrollGrid/ItemInformation/Deadline.visible = false
+		$ScrollGrid/ItemInformation/Pay.visible = false
 	
 	# Render the buttons
 	render_buttons()
-	
-	# Check if the order is accepted + can be fulfilled
-	# Enable/disable fulfill button
 
 func render_buttons():
 	if selected_order == null:
@@ -100,6 +109,12 @@ func _on_AcceptButton_pressed():
 	# Set the order to accepted & put the slot into the acceptedOrders container
 	selected_order.accept_order()
 	selected_order_slot.accept_order()
+	
+	OrderFulfillment.order_accepted(selected_order_key)
+	
+	if selected_order.requirements == null:
+		OrderFulfillment.fulfill_order(selected_order_key, null)
+		remove_selected_order()
 	
 	# Render buttons
 	render_buttons()

@@ -2,7 +2,7 @@ extends Node
 
 var initial_money = 5000
 var initial_inventory_size = 8
-var initial_order = "main_0"
+var initial_order = "???_0"
 
 const SAVE_FOLDER = "user://saves"
 const USER_DATA = "user://user_data.json"

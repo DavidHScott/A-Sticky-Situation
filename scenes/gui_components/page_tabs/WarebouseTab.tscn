@@ -3,3 +3,5 @@
 [ext_resource path="res://scenes/gui_components/page_tabs/PageTab.tscn" type="PackedScene" id=1]
 
 [node name="WarebouseTab" instance=ExtResource( 1 )]
+margin_right = 140.0
+margin_bottom = 50.0

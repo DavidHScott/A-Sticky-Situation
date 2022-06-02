@@ -3,6 +3,8 @@ extends Node2D
 
 var current_game_version = "0.1"
 
+var currently_in_game = false
+
 signal slot_select(item)
 signal clear_info_panel()
 
@@ -18,6 +20,8 @@ func _game():
 
 func start_game():
 	
+	currently_in_game = true
+	
 	# First, load the scene
 	get_tree().change_scene("res://scenes/gameplay/Game.tscn")
 	
@@ -32,9 +36,17 @@ func start_game():
 	SaveAndLoad.load_market_trends()
 
 
+func exit_game():
+	# Might add a loading screen or animation or something
+	
+	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")
+
 #### Handle notifications
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		# TODO: Make sure to save the game here!!
+		
+		if currently_in_game:
+			SaveAndLoad.save_current_game()
+		
 		get_tree().quit()
 

@@ -1,34 +1,79 @@
 extends Node
 
-var placeholder_quest = Order.new("Quest Name!", "Flor-Stor", 
-	"Wow, this is a really specific order. Want some interesting backstory? Did you know about X event?",
-	1500, [Item.new("Amber", null, 0, 2)], 0, 0)
-	
-var story_orders_dict = {
-	"main_0": placeholder_quest
-}
+
+var story_orders_dict = { }
 
 var random_orders_dict = { }
 
 # Orders that the player can see, accepted & unaccepted
-var available_quests = {
-	
-}
+var available_quests = { }
+
+# New orders come in after a work day, so this acts as a cache
+var order_purgatory = { }
 
 # Orders that the player previously completed or failed
-var previous_quests = {
-	
-}
+var previous_quests = { }
 
 signal order_slot_select(slot)
 signal refresh_order_panel()
 signal remove_order()
+signal order_accepted(order_key)
+signal order_fulfilled(order_key)
+
+
+func _ready():
+	for order_key in ImportData.main_order_data.keys():
+		var order_dict = ImportData.main_order_data[order_key]
+		
+		var title = order_dict["Title"]
+		var distrib = order_dict["Distributer"]
+		var description = order_dict["Description"]
+		var pay = order_dict["Payment"]
+		
+		var timelimit = order_dict["AcceptTimelimit"]
+		var deadline = order_dict["Deadline"]
+		
+		var require_arr
+		var unlocks_arr = order_dict["Unlocks"]
+		
+		var wait = order_dict["wait_day_to_unlock"]
+		
+		if order_dict["Requirements"] == null:
+			require_arr = null
+		else:
+			require_arr = []
+			
+			for item in order_dict["Requirements"]:
+				var new_item = Item.new(item["ItemGrade"], item["ItemProducer"], item["ItemQuality"], item["ItemQuantity"])
+				
+				require_arr.append(new_item)
+		
+		
+		var new_quest = Order.new(title, distrib, description, pay, require_arr, timelimit, deadline, unlocks_arr, wait)
+		story_orders_dict[order_key] = new_quest
+
 
 func start_day():
 	pass
 
+
+func end_day():
+	order_purgatory.clear()
+	
+	refresh_order_panel_ui()
+
+
 func select_order_slot(slot):
 	emit_signal("order_slot_select", slot)
+
+
+func order_accepted(order_key):
+	emit_signal("order_accepted", order_key)
+
+
+func order_fulfilled(order_key):
+	emit_signal("order_fulfilled", order_key)
+
 
 func can_be_fulfilled(order_key:String):
 	var inventory_copy:Array
@@ -107,11 +152,13 @@ func can_be_fulfilled(order_key:String):
 	# Return an array of the items to be sold if the player fulfills the order
 	return item_arr
 
-func fulfill_order(order_key:String, item_arr:Array):
-	# Connect to PlayerVariables to remove items from inventory
-	# Give player the monies
-	PlayerVariables.remove_item_array_from_inv(item_arr)
-	PlayerVariables.increment_players_money(available_quests[order_key].pay)
+func fulfill_order(order_key:String, item_arr):
+	
+	if item_arr != null:
+		# Connect to PlayerVariables to remove items from inventory
+		# Give player the monies
+		PlayerVariables.remove_item_array_from_inv(item_arr)
+		PlayerVariables.increment_players_money(available_quests[order_key].pay)
 	
 	previous_quests[order_key] = available_quests[order_key]
 	
@@ -133,7 +180,25 @@ func fulfill_order(order_key:String, item_arr:Array):
 	
 	# Remove the order from the menu
 	emit_signal("remove_order")
+	
+	# unlock any new orders
+	unlock_new_orders(previous_quests[order_key].unlocks_keys)
+	
 	refresh_order_panel_ui()
+
+
+func unlock_new_orders(orders):
+	if orders == null:
+		return
+	
+	for item in orders:
+		# Make sure the order exist
+		if story_orders_dict.has(item):
+			available_quests[item] = story_orders_dict.get(item)
+			
+			if story_orders_dict[item].wait_day_to_unlock != 0:
+				order_purgatory[item] = story_orders_dict.get(item)
+
 
 func refresh_order_panel_ui():
 	emit_signal("refresh_order_panel")

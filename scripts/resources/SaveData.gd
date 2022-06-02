@@ -31,3 +31,6 @@ export var golden_trend_filename = ""
 export var amber_trend_filename = ""
 export var dark_trend_filename = ""
 export var verydark_trend_filename = ""
+
+export var unlocked_start_day = false
+export var unlocked_warehouse = false

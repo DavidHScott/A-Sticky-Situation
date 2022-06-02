@@ -1,10 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/tab_buttons/TabButtonTween.gd" type="Script" id=1]
 
 [node name="PageTab" type="Button"]
-margin_right = 140.0
-margin_bottom = 48.0
+margin_right = 150.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 150, 60 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_group_": true
 }
 
 [node name="Label" type="Label" parent="."]
@@ -15,3 +18,6 @@ text = "WAREHOUSE"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="Tween" type="Tween" parent="."]
+script = ExtResource( 1 )

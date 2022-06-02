@@ -36,8 +36,13 @@ const VERY_DARK = "Very Dark"
 
 var current_day = 0
 
+var unlocked_start_day = false
+var unlocked_warehouse = false
 
 func _ready():
+	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")
+	OrderFulfillment.connect("order_fulfilled", self, "check_fulfilled_order")
+	
 	current_day = SaveAndLoad.save_data.current_day
 	
 	PlayerVariables.name = SaveAndLoad.save_data.player_name
@@ -46,18 +51,35 @@ func _ready():
 	
 	SaveAndLoad.load_inv_from_savedata()
 	
+	unlocked_start_day = SaveAndLoad.save_data.unlocked_start_day
+	unlocked_warehouse = SaveAndLoad.save_data.unlocked_warehouse
+	
 	limit_functions()
+	
+
+
+func check_accepted_order(order_key):
+	# Check the name of the order, and if something needs to happen, do that thing
+	if order_key == "???_0":
+		unlocked_start_day = true
+		unlocked_warehouse = true
+		SaveAndLoad.save_data.unlocked_start_day = unlocked_start_day
+		
+		$GUI/Interface/LowerThird/StartDayTab.visible = true
+		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
+		
+
+
+func check_fulfilled_order(order_key):
+	pass
 
 
 func limit_functions():
-	# get use current day to figure out if you still need to be in the tutorial
-	if current_day > 7:
-		return
+	if unlocked_start_day:
+		$GUI/Interface/LowerThird/StartDayTab.visible = true
 	
-	if current_day == 0:
-		pass
-	elif current_day == 7:
-		pass
+	if unlocked_warehouse:
+		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
 
 
 # TODO: This really needs to be refactored. I hate this lmao
@@ -125,6 +147,7 @@ func switch_game_state():
 		current_game_state = GAME_STATE.DOWNTIME
 		
 		ShoppingController.stop_shop_day()
+		OrderFulfillment.end_day()
 		
 		if current_page == UI_PAGES.BUY_SYRUP:
 			switch_screen(UI_PAGES.WAREHOUSE)

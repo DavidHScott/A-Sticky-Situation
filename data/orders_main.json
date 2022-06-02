@@ -1,17 +1,40 @@
 {
-    "main_0": {
+    "???_0": {
         "Title": "Getting You Started",
         "Distributer": "???",
-        "Description": "",
+        "Description": "Hey you, let’s get you set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. Buy [****] and send it over to me to prove that you can figure this out.",
         "Payment": 500,
         "Requirements": [{
-            "ItemGrade": null,
+            "ItemGrade": "Amber",
             "ItemProducer": null,
             "ItemQuality": null,
-            "ItemQuantity": 2
+            "ItemQuantity": 1
         }],
-        "Prerequisite": null,
+        "Unlocks": ["???_1"],
         "AcceptTimelimit": 0,
-        "Deadline": 0
+        "Deadline": 0,
+        "wait_day_to_unlock": 0
+    },
+    "???_1": {
+    	"Title": "Shipment Received",
+     	"Distributer": "???",
+	"Description": "So it seems you’re not as hopeless as the last guy, huh. The barrels have arrived safely. Since you probably want another job now, how about I refer you to an old client of mine? They’ll pay decent, and I’ve heard that they have a need for a new middleman after their last source got locked up. You’ll start getting requests from them in a few days.",
+	"Payment": 0,
+	"Requirements": null,
+	"Unlocks": ["wyman_0"],
+	"AcceptTimelimit": 0,
+	"Deadline": 0,
+	"wait_day_to_unlock": 0
+    },
+    "wyman_0": {
+    	"Title": "Your First Real Job",
+     	"Distributer": "Wyman Inc.",
+	"Description": "[description]",
+	"Payment": 0,
+	"Requirements": null,
+	"Unlocks": null,
+	"AcceptTimelimit": 0,
+	"Deadline": 0,
+	"wait_day_to_unlock": 1
     }
 }

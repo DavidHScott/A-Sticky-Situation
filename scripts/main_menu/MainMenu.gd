@@ -3,9 +3,9 @@ extends Control
 
 func _ready():
 	# Set the version number correctly
-	$MarginContainer/VBoxContainer/VersionLabel.text = "Version: " + Global.current_game_version
+	$AspectRatioContainer/VBoxContainer/VersionLabel.text = "Version: " + Global.current_game_version
 	
-	for button in $MarginContainer/VBoxContainer/MarginContainer/Menu.get_children():
+	for button in $AspectRatioContainer/VBoxContainer/MarginContainer/Menu.get_children():
 		button.connect("pressed", self, "_on_menu_button_pressed", [button.selected_button_type, button.scene_path_to_load])
 
 

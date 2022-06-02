@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/UI/buttons/pause_button.png" type="Texture" id=1]
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://scripts/Game.gd" type="Script" id=17]
 [ext_resource path="res://scenes/gui_components/counters/MoneyCounter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/gui_components/page_tabs/MarketTab.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/gameplay/PausePopupMenu.tscn" type="PackedScene" id=20]
+[ext_resource path="res://assets/UI/buttons/pause_button_toggle.png" type="Texture" id=21]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 17 )
@@ -36,76 +38,41 @@ script = ExtResource( 8 )
 [node name="Page" type="Control" parent="GUI/Interface"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LowerThird" type="Control" parent="GUI/Interface"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_top = -59.0
 
-[node name="WarehouseTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 16 )]
+[node name="Left" type="HBoxContainer" parent="GUI/Interface/LowerThird"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -48.0
-margin_right = 166.0
-margin_bottom = 0.0
+margin_top = -60.0
+margin_right = 336.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="WarehouseTab" parent="GUI/Interface/LowerThird/Left" groups=["FocusItems_Game"] instance=ExtResource( 16 )]
+visible = false
+margin_right = 150.0
+margin_bottom = 60.0
 script = ExtResource( 7 )
 
-[node name="OrdersTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 14 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -166.0
-margin_top = -48.0
-margin_right = 0.0
-margin_bottom = 0.0
-script = ExtResource( 5 )
-
-[node name="StartDayTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 15 )]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -88.0
-margin_top = -88.0
-margin_right = 88.0
-margin_bottom = 0.0
-script = ExtResource( 9 )
-
-[node name="BuySyrupTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 13 )]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -337.0
-margin_top = -48.0
-margin_right = -171.0
-margin_bottom = 0.0
-script = ExtResource( 6 )
-
-[node name="MarketTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 19 )]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 171.0
-margin_top = -48.0
-margin_right = 337.0
-margin_bottom = 0.0
+[node name="MarketTab" parent="GUI/Interface/LowerThird/Left" groups=["FocusItems_Game"] instance=ExtResource( 19 )]
+visible = false
 script = ExtResource( 11 )
 
 [node name="TimerPanel" type="NinePatchRect" parent="GUI/Interface/LowerThird"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -76.0
-margin_top = -75.0
-margin_right = 76.0
+margin_left = -80.0
+margin_top = -85.0
+margin_right = 80.0
+rect_min_size = Vector2( 160, 85 )
 texture = ExtResource( 3 )
 patch_margin_left = 25
 patch_margin_top = 25
@@ -132,38 +99,74 @@ __meta__ = {
 [node name="ShopTimer" type="Timer" parent="GUI/Interface/LowerThird/TimerPanel"]
 script = ExtResource( 4 )
 
+[node name="StartDayTab" parent="GUI/Interface/LowerThird" groups=["FocusItems_Game"] instance=ExtResource( 15 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_top = -60.0
+margin_right = 75.0
+margin_bottom = 0.0
+script = ExtResource( 9 )
+
+[node name="Right" type="HBoxContainer" parent="GUI/Interface/LowerThird"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -304.0
+margin_top = -60.0
+alignment = 2
+
+[node name="BuySyrupTab" parent="GUI/Interface/LowerThird/Right" groups=["FocusItems_Game"] instance=ExtResource( 13 )]
+visible = false
+align = 2
+script = ExtResource( 6 )
+
+[node name="OrdersTab" parent="GUI/Interface/LowerThird/Right" groups=["FocusItems_Game"] instance=ExtResource( 14 )]
+margin_left = 154.0
+margin_right = 304.0
+align = 2
+script = ExtResource( 5 )
+
 [node name="UpperThird" type="HBoxContainer" parent="GUI/Interface"]
 anchor_right = 1.0
 
 [node name="PauseButton" type="TextureButton" parent="GUI/Interface/UpperThird" groups=["FocusItems_Game"]]
-margin_right = 510.0
+margin_right = 64.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 63, 63 )
-size_flags_horizontal = 3
 texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 21 )
 
 [node name="Counters" type="HBoxContainer" parent="GUI/Interface/UpperThird"]
-margin_left = 514.0
+margin_left = 68.0
 margin_right = 1024.0
 margin_bottom = 64.0
 grow_horizontal = 0
 size_flags_horizontal = 3
+custom_constants/separation = -2
 alignment = 2
 
 [node name="DayCounter" parent="GUI/Interface/UpperThird/Counters" instance=ExtResource( 12 )]
-margin_left = 226.0
-margin_right = 326.0
+margin_left = 678.0
+margin_right = 778.0
 margin_bottom = 64.0
 
 [node name="MoneyCounter" parent="GUI/Interface/UpperThird/Counters" instance=ExtResource( 18 )]
-margin_left = 330.0
-margin_right = 510.0
+margin_left = 776.0
+margin_right = 956.0
 margin_bottom = 64.0
 
-[connection signal="pressed" from="GUI/Interface/LowerThird/WarehouseTab" to="GUI/Interface/LowerThird/WarehouseTab" method="_on_WarebouseTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/LowerThird/OrdersTab" to="GUI/Interface/LowerThird/OrdersTab" method="_on_OrdersTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/LowerThird/StartDayTab" to="GUI/Interface/LowerThird/StartDayTab" method="_on_StartDayTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/LowerThird/BuySyrupTab" to="GUI/Interface/LowerThird/BuySyrupTab" method="_on_BuySyrupTab_pressed"]
-[connection signal="pressed" from="GUI/Interface/LowerThird/MarketTab" to="GUI/Interface/LowerThird/MarketTab" method="_on_MarketTab_pressed"]
+[node name="PausePopupMenu" parent="GUI/Interface" instance=ExtResource( 20 )]
+
+[connection signal="pressed" from="GUI/Interface/LowerThird/Left/WarehouseTab" to="GUI/Interface/LowerThird/Left/WarehouseTab" method="_on_WarebouseTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/Left/MarketTab" to="GUI/Interface/LowerThird/Left/MarketTab" method="_on_MarketTab_pressed"]
 [connection signal="timeout" from="GUI/Interface/LowerThird/TimerPanel/ShopTimer" to="GUI/Interface/LowerThird/TimerPanel/ShopTimer" method="_on_ShopTimer_timeout"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/StartDayTab" to="GUI/Interface/LowerThird/StartDayTab" method="_on_StartDayTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/Right/BuySyrupTab" to="GUI/Interface/LowerThird/Right/BuySyrupTab" method="_on_BuySyrupTab_pressed"]
+[connection signal="pressed" from="GUI/Interface/LowerThird/Right/OrdersTab" to="GUI/Interface/LowerThird/Right/OrdersTab" method="_on_OrdersTab_pressed"]
 [connection signal="pressed" from="GUI/Interface/UpperThird/PauseButton" to="GUI/Interface" method="_on_PauseButton_pressed"]
