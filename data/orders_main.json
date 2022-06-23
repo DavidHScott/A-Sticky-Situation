@@ -4,13 +4,15 @@
         "Distributer": "???",
         "Description": "Hey you, let’s get you set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. Buy [****] and send it over to me to prove that you can figure this out.",
         "Payment": 500,
+        "RepReward": 0,
         "Requirements": [{
             "ItemGrade": "Amber",
             "ItemProducer": null,
             "ItemQuality": null,
             "ItemQuantity": 1
         }],
-        "Unlocks": ["???_1"],
+        "RequiredRep": 0,
+        "Prereq": null,
         "AcceptTimelimit": 0,
         "Deadline": 0,
         "wait_day_to_unlock": 0
@@ -18,23 +20,86 @@
     "???_1": {
     	"Title": "Shipment Received",
      	"Distributer": "???",
-	"Description": "So it seems you’re not as hopeless as the last guy, huh. The barrels have arrived safely. Since you probably want another job now, how about I refer you to an old client of mine? They’ll pay decent, and I’ve heard that they have a need for a new middleman after their last source got locked up. You’ll start getting requests from them in a few days.",
+	"Description": "So it seems you’re not as hopeless as the last guy, huh. The barrels have arrived safely. I'm referring you to an old client of mine. They’ll pay decent, and I’ve heard that they have a need for a new middleman after their last source got locked up. You’ll start getting requests from them in a little while.",
 	"Payment": 0,
+    "RepReward": 0,
 	"Requirements": null,
-	"Unlocks": ["wyman_0"],
+    "RequiredRep": 0,
+	"Prereq": ["???_0"],
 	"AcceptTimelimit": 0,
 	"Deadline": 0,
 	"wait_day_to_unlock": 0
     },
     "wyman_0": {
-    	"Title": "Your First Real Job",
+    	"Title": "Your First Job",
      	"Distributer": "Wyman Inc.",
-	"Description": "[description]",
+	"Description": "Hello {playername},\n\nI am contacting you as a representative of Wyman incorporated. A mutual associate of ours told me that you were interested in getting into the syrup industry. As it happens, we have a vacancy for a contract worker at this time.\n\nTo get to acclimated to the job, we have a low stakes contract for you. Send over one barrel of Golden, and one barrel of Very Dark. Keep in mind that our company has a reputation for selling high quality products, so please ensure that everything you send has a quality score of 85 or above.",
 	"Payment": 0,
-	"Requirements": null,
-	"Unlocks": null,
+    "RepReward": 0,
+	"Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 85,
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "Very Dark",
+            "ItemProducer": null,
+            "ItemQuality": 85,
+            "ItemQuantity": 1
+        }],
+    "RequiredRep": 0,
+	"Prereq": ["???_1"],
 	"AcceptTimelimit": 0,
 	"Deadline": 0,
+	"wait_day_to_unlock": 1
+    },
+    "wyman_1": {
+    	"Title": "Quick Restock",
+     	"Distributer": "Wyman Inc.",
+	"Description": "Hello {playername},\n\nI hope that your payment was satisfactory. The two barrels have arrived safely at the store that needed them, and their quality seems to be up to our standards. With all that in mind, we would like to take you on as a semi-permanent contractor. We unfortunately do not provide any benefits to contractors because of the circumstances and legality of the services we are paying you for.\n\nWe already have a new job for you. Golden grade syrup is plentiful this time of year, so we’d like to stock up on a few extra barrels of it now.\n\nWe’re going to need it within the next 5 business days. If you are late, your payment will be penalized.",
+	"Payment": 0,
+    "RepReward": 0,
+	"Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 85,
+            "ItemQuantity": 3
+        }],
+    "RequiredRep": 0,
+	"Prereq": ["wyman_0"],
+	"AcceptTimelimit": 0,
+	"Deadline": 5,
+	"wait_day_to_unlock": 1
+    },
+    "wyman_2": {
+    	"Title": "Urgent!",
+     	"Distributer": "Wyman Inc.",
+	"Description": "Hello {playername},\n\nThere has been sudden demand for syrup in one of our locations, and we are unfortunately understocked. We expect the syrup to be shipped within the next three days. Don’t disappoint me.",
+	"Payment": 0,
+    "RepReward": 0,
+	"Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 70,
+            "ItemQuantity": 2
+        },
+        {
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 70,
+            "ItemQuantity": 2
+        },
+        {
+            "ItemGrade": "Very Dark",
+            "ItemProducer": null,
+            "ItemQuality": 70,
+            "ItemQuantity": 1
+        }],
+    "RequiredRep": 0,
+	"Prereq": ["wyman_1"],
+	"AcceptTimelimit": 0,
+	"Deadline": 3,
 	"wait_day_to_unlock": 1
     }
 }

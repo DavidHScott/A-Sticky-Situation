@@ -3,6 +3,7 @@ extends Node2D
 var username:String
 
 var money:int = 5000
+var reputation:int = 0
 
 var inventory:Array
 var inventory_size:int = 8

@@ -10,7 +10,7 @@ var pay: int
 
 var requirements = []
 
-var unlocks_keys = null
+var prereq_keys = []
 
 # The amount of time the order remains in the menu before disapearing.
 # If the value is 0, the order does not expire
@@ -25,6 +25,9 @@ var days_since_accept = 0
 # 0 = false, 1 = true
 var wait_day_to_unlock = 0
 
+var reward_reputation = 0
+var required_reputation = 0
+
 var accepted: bool = false
 var expired: bool = false
 var completed: bool = false
@@ -32,7 +35,7 @@ var completed: bool = false
 func _init(order_title:String = "Placeholder",
 		order_distributer:String = "Name", order_desc:String = "Lorem Ipsum...",
 		order_pay:int = 420, require_array = [null], timelimit: int = 0,
-		deadline: int = 0, unlock = null, wait = 0):
+		deadline: int = 0, prereq = null, wait = 0, reward_rep = 0, required_rep = 0):
 	title = order_title
 	distributer = order_distributer
 	job_description = order_desc
@@ -40,7 +43,7 @@ func _init(order_title:String = "Placeholder",
 	requirements = require_array
 	accept_timelimit = timelimit
 	fulfill_timelimit = deadline
-	unlocks_keys = unlock
+	prereq_keys = prereq
 	wait_day_to_unlock = wait
 	
 

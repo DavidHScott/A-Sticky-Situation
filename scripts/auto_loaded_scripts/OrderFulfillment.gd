@@ -34,9 +34,12 @@ func _ready():
 		var deadline = order_dict["Deadline"]
 		
 		var require_arr
-		var unlocks_arr = order_dict["Unlocks"]
+		var prereq_arr = order_dict["Prereq"]
 		
 		var wait = order_dict["wait_day_to_unlock"]
+		
+		var reward_reputation = order_dict["RepReward"]
+		var required_reputation = order_dict["RequiredRep"]
 		
 		if order_dict["Requirements"] == null:
 			require_arr = null
@@ -49,7 +52,7 @@ func _ready():
 				require_arr.append(new_item)
 		
 		
-		var new_quest = Order.new(title, distrib, description, pay, require_arr, timelimit, deadline, unlocks_arr, wait)
+		var new_quest = Order.new(title, distrib, description, pay, require_arr, timelimit, deadline, prereq_arr, wait, reward_reputation, required_reputation)
 		story_orders_dict[order_key] = new_quest
 
 
@@ -182,22 +185,54 @@ func fulfill_order(order_key:String, item_arr):
 	emit_signal("remove_order")
 	
 	# unlock any new orders
-	unlock_new_orders(previous_quests[order_key].unlocks_keys)
+	unlock_new_orders(order_key)
 	
 	refresh_order_panel_ui()
 
 
-func unlock_new_orders(orders):
-	if orders == null:
-		return
+# Prereq_key is generally the key of a quest that was just completed
+func unlock_new_orders(prereq_key):
 	
-	for item in orders:
-		# Make sure the order exist
-		if story_orders_dict.has(item):
-			available_quests[item] = story_orders_dict.get(item)
+	for order in story_orders_dict:
+		# Check if order was already completed or is already available to the player
+		if previous_quests.has(order) or available_quests.has(order):
+			continue
+		# Make sure the player has enough reputation
+		if story_orders_dict[order].required_reputation > PlayerVariables.reputation:
+			continue
+		
+		# Start by unlocking anything with a null prereq
+		if story_orders_dict[order].prereq_keys == null:
+			# We've already checked reputation, so the order can just be added
+			available_quests[order] = story_orders_dict.get(order)
 			
-			if story_orders_dict[item].wait_day_to_unlock != 0:
-				order_purgatory[item] = story_orders_dict.get(item)
+			if story_orders_dict[order].wait_day_to_unlock != 0:
+				order_purgatory[order] = story_orders_dict.get(order)
+			
+			continue
+		
+		# Start checking prereqs
+		if story_orders_dict[order].prereq_keys.has(prereq_key):
+			# Check if there's more than one prereq. If so, make sure both prereqs are fulfilled
+			if story_orders_dict[order].prereq_keys.size() > 1:
+				
+				if !loop_through_prereqs(story_orders_dict[order]):
+					continue
+			
+			# If we haven't continued the loop at this point, the order can be added
+			available_quests[order] = story_orders_dict.get(order)
+			
+			if story_orders_dict[order].wait_day_to_unlock != 0:
+				order_purgatory[order] = story_orders_dict.get(order)
+
+
+# Loop through an order's prereq keys. returns true or false if the order can be unlocked
+func loop_through_prereqs(order):
+	for prereq_order in order.prereq_keys:
+		if !previous_quests.keys().has(prereq_order):
+			return false
+	
+	return true
 
 
 func refresh_order_panel_ui():
