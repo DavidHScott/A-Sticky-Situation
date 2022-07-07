@@ -1,9 +1,17 @@
 extends Node
 
 
+var rng = RandomNumberGenerator.new()
+
+var temp_rand_order_1 = Order.new("RAND_1", "PLACEHOLDER", "PLACEHOLDER", 1000, null, 1, 3, null, 0, 1, 0)
+var temp_rand_order_2 = Order.new("RAND_2", "PLACEHOLDERRR", "PLACEHOLDER", 2000, null, 1, 3, null, 0, 1, 0)
+
 var story_orders_dict = { }
 
-var random_orders_dict = { }
+var random_orders_dict = {
+	"rand_1": temp_rand_order_1,
+	"rand_2": temp_rand_order_2
+}
 
 # Orders that the player can see, accepted & unaccepted
 var available_quests = { }
@@ -20,8 +28,18 @@ signal remove_order()
 signal order_accepted(order_key)
 signal order_fulfilled(order_key)
 
+var thread
+
+var max_orders = 2
+var generate_random_orders = false
+
 
 func _ready():
+	load_main_orders_to_dict()
+	
+
+# Get the main order data and load all orders into a dictionary
+func load_main_orders_to_dict():
 	for order_key in ImportData.main_order_data.keys():
 		var order_dict = ImportData.main_order_data[order_key]
 		
@@ -61,9 +79,19 @@ func start_day():
 
 
 func end_day():
-	order_purgatory.clear()
+	unlock_any_new_orders()
 	
-	refresh_order_panel_ui()
+	# Check if we can generate some new orders, and if so, fill up the queue
+	if generate_random_orders:
+		while available_quests.size() < max_orders:
+			generate_random_order()
+	
+	if Global._game().current_page == Global._game().UI_PAGES.ORDERS:
+		# TODO: instead of completely refreshing, call animations to play for new orders
+		order_purgatory.clear()
+		refresh_order_panel_ui()
+	else:
+		order_purgatory.clear()
 
 
 func select_order_slot(slot):
@@ -190,7 +218,24 @@ func fulfill_order(order_key:String, item_arr):
 	refresh_order_panel_ui()
 
 
-# Prereq_key is generally the key of a quest that was just completed
+# Go through ALL of the previous orders and unlock any orders. This is called at the end of every day
+#
+# This is mainly just here for if I expand the game and add more content. Though if this ends up
+#	being an issue, This can be changed to only be called when loading a save, and saving a cache
+#	of the most recent fulfilled orders, and calling unlock_new_orders with that
+#
+## TODO: Should this runs on a seperate thread?
+func unlock_any_new_orders():
+	for order_key in previous_quests.keys():
+		unlock_new_orders(order_key)
+
+
+# Takes the key of an order that has been completed and checks if any new orders can be unlocked.
+#
+# params:
+#	prereq_key - the key of a completed order
+#
+## TODO: Refactor this maybe? This whole system is a bit of a mess lol
 func unlock_new_orders(prereq_key):
 	
 	for order in story_orders_dict:
@@ -235,8 +280,30 @@ func loop_through_prereqs(order):
 	return true
 
 
+#
+func generate_random_order():
+	# Pick a random order
+	rng.randomize()
+	var rand_i = rng.randi_range(0, random_orders_dict.size() - 1)
+	
+	var new_key = random_orders_dict.keys()[rand_i]
+	
+	# Add it to the available orders
+	available_quests[new_key] = random_orders_dict[new_key]
+
+
 func refresh_order_panel_ui():
 	emit_signal("refresh_order_panel")
+
+
+func inc_max_orders(o):
+	max_orders =+ o
+	SaveAndLoad.save_data.max_orders = max_orders
+
+
+func set_max_orders(o):
+	max_orders = o
+	SaveAndLoad.save_data.max_orders = max_orders
 
 
 #### ARRAY SORT

@@ -43,6 +43,9 @@ func _ready():
 	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")
 	OrderFulfillment.connect("order_fulfilled", self, "check_fulfilled_order")
 	
+	OrderFulfillment.max_orders = SaveAndLoad.save_data.max_orders
+	OrderFulfillment.generate_random_orders = SaveAndLoad.save_data.generate_random_orders
+	
 	current_day = SaveAndLoad.save_data.current_day
 	
 	PlayerVariables.name = SaveAndLoad.save_data.player_name
@@ -64,10 +67,14 @@ func check_accepted_order(order_key):
 		unlocked_start_day = true
 		unlocked_warehouse = true
 		SaveAndLoad.save_data.unlocked_start_day = unlocked_start_day
+		SaveAndLoad.save_data.unlocked_warehouse = unlocked_warehouse
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
 		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
-		
+	if order_key == "wyman_2":
+		# Unlock random orders
+		OrderFulfillment.generate_random_orders = true
+		SaveAndLoad.save_data.generate_random_orders = true
 
 
 func check_fulfilled_order(order_key):
@@ -82,7 +89,6 @@ func limit_functions():
 		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
 
 
-# TODO: This really needs to be refactored. I hate this lmao
 # Screen switcher
 func switch_screen(new_screen):
 	var reference_to_new_scene
@@ -121,10 +127,10 @@ func switch_screen(new_screen):
 			reference_to_new_scene = orders_page
 			current_page = UI_PAGES.ORDERS
 		_:
-			print("You done messed up A-Aron!")
+			print("Error: Game::Trying to switch to a page that doesn't exist!")
 			return
 	
-	# If so, unload current screen
+	# unload current screen
 	emit_signal("close_current_page")
 	
 	# Load new scene

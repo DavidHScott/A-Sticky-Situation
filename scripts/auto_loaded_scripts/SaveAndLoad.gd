@@ -154,6 +154,8 @@ func clear_save_game():
 	save_data.available_quest_keys.clear()
 	
 	save_data.available_quest_keys[initial_order] = false
+	save_data.max_orders = 2
+	save_data.generate_random_orders = false
 	
 	# Market trends
 	Market.golden_trend.clear_trend()

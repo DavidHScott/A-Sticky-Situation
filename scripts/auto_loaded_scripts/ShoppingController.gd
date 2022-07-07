@@ -85,6 +85,13 @@ func generate_shop_item():
 	
 	# Generate the buy price
 	# TODO: make it based on producer, quality, and current market value
+	#	The "average" price of a 10 gallon barrel of syrup should START at ~$800
+	#	Low quality goods generally drop in price sharply
+	#	Some producers will sell for slightly higher and some sell for lower
+	#	And market value adjusts whatevers left
+	#
+	#	Most likely this will be calculated as a percentage (e.g. 1.0 * qual * prod * market)
+	#	And then the actual price is calculated from that
 	rand = (randi() % 1601) + 100
 	new_item.set_buy_price(rand)
 	

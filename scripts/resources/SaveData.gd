@@ -15,7 +15,13 @@ export var money = 0
 export var inventory_size = 0
 export var inventory = []
 
+# TODO: Implement warehouse upgrades
+export var available_warehouse_upgrades = 0
+
 export var current_day = 0
+
+export var max_orders = 2
+export var generate_random_orders = false
 
 # Key is the quest key. Value is bool; Accepted or not
 export var available_quest_keys = {

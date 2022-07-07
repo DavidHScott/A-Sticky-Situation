@@ -78,7 +78,7 @@ func remove_item_from_inv(item:Item):
 				inv_item = null
 	
 	if succeeded == false:
-		print("Tried to remove an item not in the inventory!")
+		print("Error: PlayerVariables::Tried to remove an item not in the inventory!")
 		return false
 	
 	SaveAndLoad.save_inv_to_savedata()
@@ -96,7 +96,7 @@ func remove_item_array_from_inv(item_arr:Array):
 			break
 	
 	if succeeded == false:
-		print("Tried to remove an item not in the inventory!")
+		print("Error: PlayerVariables::Tried to remove an item not in the inventory!")
 
 
 # Warehouse functions
