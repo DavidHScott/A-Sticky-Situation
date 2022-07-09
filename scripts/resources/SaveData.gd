@@ -17,6 +17,7 @@ export var inventory = []
 
 # TODO: Implement warehouse upgrades
 export var available_warehouse_upgrades = 0
+export var upcoming_upgrade_costs = [1000, 2000]
 
 export var current_day = 0
 

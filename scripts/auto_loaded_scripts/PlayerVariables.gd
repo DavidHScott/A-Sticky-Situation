@@ -8,6 +8,10 @@ var reputation:int = 0
 var inventory:Array
 var inventory_size:int = 8
 
+var available_warehouse_upgrades = 0
+var upcoming_upgrade_costs = [1000, 2000]
+var upgrade_size = 4
+
 signal money_was_updated(new_total)
 
 
@@ -26,11 +30,13 @@ func increment_players_money(new_money):
 	
 	SaveAndLoad.save_data.money = money
 
+
 func update_inventory_size(new_size:int):
 	inventory_size = new_size
 	# TODO: If the new size is smaller, remove some items
 	
 	SaveAndLoad.save_data.inventory_size = inventory_size
+
 
 func inc_inventory_size(new_size:int):
 	inventory_size += new_size
@@ -78,7 +84,7 @@ func remove_item_from_inv(item:Item):
 				inv_item = null
 	
 	if succeeded == false:
-		print("Error: PlayerVariables::Tried to remove an item not in the inventory!")
+		print("PlayerVariables::Error: Tried to remove an item not in the inventory!")
 		return false
 	
 	SaveAndLoad.save_inv_to_savedata()
@@ -96,7 +102,30 @@ func remove_item_array_from_inv(item_arr:Array):
 			break
 	
 	if succeeded == false:
-		print("Error: PlayerVariables::Tried to remove an item not in the inventory!")
+		print("PlayerVariables::Error: Tried to remove an item not in the inventory!")
+
+
+func upgrade_inventory():
+	# First check if there is an upgrade available and the player can afford it
+	if available_warehouse_upgrades < 1 or money < upcoming_upgrade_costs[0]:
+		return
+	
+	# Remove the player's money
+	increment_players_money(-upcoming_upgrade_costs[0])
+	
+	# Add inventory spots
+	inventory_size += upgrade_size
+	inventory.resize(inventory_size)
+	
+	# Remove 0th upcoming upgrade cost
+	upcoming_upgrade_costs.pop_front()
+	available_warehouse_upgrades -= 1
+	
+	# Save the new data
+	SaveAndLoad.save_data.inventory_size = inventory_size
+	SaveAndLoad.save_data.upcoming_upgrade_costs = upcoming_upgrade_costs
+	SaveAndLoad.save_data.available_warehouse_upgrades = available_warehouse_upgrades
+	SaveAndLoad.save_data.inventory.resize(inventory_size)
 
 
 # Warehouse functions

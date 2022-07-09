@@ -40,9 +40,11 @@ var unlocked_start_day = false
 var unlocked_warehouse = false
 
 func _ready():
+	# Connect signals
 	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")
 	OrderFulfillment.connect("order_fulfilled", self, "check_fulfilled_order")
 	
+	# Set variables from the save data
 	OrderFulfillment.max_orders = SaveAndLoad.save_data.max_orders
 	OrderFulfillment.generate_random_orders = SaveAndLoad.save_data.generate_random_orders
 	
@@ -52,8 +54,12 @@ func _ready():
 	PlayerVariables.money = SaveAndLoad.save_data.money
 	PlayerVariables.inventory_size = SaveAndLoad.save_data.inventory_size
 	
+	PlayerVariables.available_warehouse_upgrades = SaveAndLoad.save_data.available_warehouse_upgrades
+	PlayerVariables.upcoming_upgrade_costs = SaveAndLoad.save_data. upcoming_upgrade_costs
+	
 	SaveAndLoad.load_inv_from_savedata()
 	
+	# Unlock features
 	unlocked_start_day = SaveAndLoad.save_data.unlocked_start_day
 	unlocked_warehouse = SaveAndLoad.save_data.unlocked_warehouse
 	
@@ -61,6 +67,7 @@ func _ready():
 	
 
 
+# Unlock features over time
 func check_accepted_order(order_key):
 	# Check the name of the order, and if something needs to happen, do that thing
 	if order_key == "???_0":
@@ -71,14 +78,13 @@ func check_accepted_order(order_key):
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
 		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
+
+
+func check_fulfilled_order(order_key):
 	if order_key == "wyman_2":
 		# Unlock random orders
 		OrderFulfillment.generate_random_orders = true
 		SaveAndLoad.save_data.generate_random_orders = true
-
-
-func check_fulfilled_order(order_key):
-	pass
 
 
 func limit_functions():

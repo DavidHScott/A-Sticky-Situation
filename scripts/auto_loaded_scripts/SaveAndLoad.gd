@@ -145,6 +145,8 @@ func clear_save_game():
 	save_data.inventory_size = initial_inventory_size
 	save_data.inventory.clear()
 	save_data.inventory.resize(save_data.inventory_size)
+	save_data.available_warehouse_upgrades = 0
+	save_data.upcoming_upgrade_costs = [1000, 2000]
 	
 	# Global data
 	save_data.current_day = 0
