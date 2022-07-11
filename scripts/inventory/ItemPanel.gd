@@ -10,7 +10,6 @@ func _ready():
 	clear_item_info_panel()
 
 func update_item_info(item_index):
-	
 	var item = PlayerVariables.inventory[item_index]
 	
 	$ItemInformation/SyrupGrade/Variable.text = item.get_grade()

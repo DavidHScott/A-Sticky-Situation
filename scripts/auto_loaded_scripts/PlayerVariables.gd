@@ -13,6 +13,8 @@ var upcoming_upgrade_costs = [1000, 2000]
 var upgrade_size = 4
 
 signal money_was_updated(new_total)
+signal slot_select(item)
+signal clear_info_panel()
 
 
 func get_players_money():

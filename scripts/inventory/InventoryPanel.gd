@@ -57,11 +57,19 @@ func refresh_inventory_panel():
 
 
 func new_selected_item(item_index):
+	clear_selected_item()
+	
 	selected_item = PlayerVariables.inventory[item_index]
 	selected_item_index = item_index
+	
+	$GridContainer.get_child(selected_item_index).selected = true
 
 
 func clear_selected_item():
+	if selected_item_index != null:
+		$GridContainer.get_child(selected_item_index).selected = false
+		
+	
 	selected_item = null
 	selected_item_index = null
 	PlayerVariables.clear_item_info_panel()
