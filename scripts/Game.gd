@@ -67,7 +67,9 @@ func _ready():
 	
 
 
-# Unlock features over time
+# TODO: It would be better to have this be data-driven instead of hardcoded as it is here
+#
+# Unlock features when a specific order is accepted
 func check_accepted_order(order_key):
 	# Check the name of the order, and if something needs to happen, do that thing
 	if order_key == "???_0":
@@ -80,6 +82,9 @@ func check_accepted_order(order_key):
 		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
 
 
+# (cont.) It would be better to have this be data-driven instead of hardcoded as it is here
+#
+# # Unlock features when a specific order is fulfilled
 func check_fulfilled_order(order_key):
 	if order_key == "wyman_2":
 		# Unlock random orders

@@ -7,6 +7,7 @@ var title: String
 var distributer: String
 var job_description: String
 var pay: int
+var overdue_pay: int
 
 var requirements = []
 
@@ -29,8 +30,10 @@ var reward_reputation = 0
 var required_reputation = 0
 
 var accepted: bool = false
-var expired: bool = false
+var overdue: bool = false
 var completed: bool = false
+
+var expired: bool = false
 
 func _init(order_title:String = "Placeholder",
 		order_distributer:String = "Name", order_desc:String = "Lorem Ipsum...",
@@ -46,24 +49,25 @@ func _init(order_title:String = "Placeholder",
 	prereq_keys = prereq
 	wait_day_to_unlock = wait
 	
+	# 20% discount if the player is late. May change this later
+	overdue_pay = pay * 0.8
 
 func set_items(item_array: Array):
 	requirements = item_array
 
 func new_day():
-	if !expired:
+	if !overdue:
 		if !accepted:
 			days_since_init += 1
 		
-			if accept_timelimit != 0 and days_since_init > accept_timelimit:
-				# Remove the item
+			if accept_timelimit != 0 and days_since_init >= accept_timelimit:
 				expired = true
 		else:
 			days_since_accept += 1
 			
 			if fulfill_timelimit != 0 and days_since_accept > fulfill_timelimit:
 				# Remove the item
-				expired = true
+				overdue = true
 
 func accept_order():
 	SaveAndLoad.save_current_game()

@@ -61,12 +61,19 @@ func render_selected_order(order_slot):
 		
 		# Deadline
 		if selected_order.fulfill_timelimit > 0:
-			$ScrollGrid/ItemInformation/Deadline/Timelimit.text = str(selected_order.fulfill_timelimit) + " Days"
+			$ScrollGrid/ItemInformation/Deadline/Timelimit.text = str(selected_order.fulfill_timelimit - selected_order.days_since_accept) + " Days"
+			
+			if selected_order.fulfill_timelimit - selected_order.days_since_accept < 0:
+				$ScrollGrid/ItemInformation/Deadline/Timelimit.text = "OVERDUE"
 		else:
 			$ScrollGrid/ItemInformation/Deadline/Timelimit.text = "None"
 		
 		# Pay
-		$ScrollGrid/ItemInformation/Pay.text = "$" + str(selected_order.pay)
+		if !selected_order.overdue:
+			$ScrollGrid/ItemInformation/Pay.bbcode_text = "[center]$" + str(selected_order.pay) + "[/center]"
+		else:
+			# Is there a way to override the strikethrough to make it more than one pixel?
+			$ScrollGrid/ItemInformation/Pay.bbcode_text = "[center][s][color=#a63700]$" + str(selected_order.pay) + "[/color][/s] $" + str(selected_order.overdue_pay) + "[/center]"
 	else:
 		$ScrollGrid/ItemInformation/Separator2.visible = false
 		$ScrollGrid/ItemInformation/Requirements.visible = false

@@ -11,7 +11,7 @@ func _ready():
 
 func start_shop_timer():
 	
-	minutes = 2
+	minutes = 1
 	seconds = 0
 	
 	self.start()

@@ -79,6 +79,12 @@ func start_day():
 
 
 func end_day():
+	for order in available_quests.values():
+		order.new_day()
+		
+		if order.expired:
+			order.queue_free()
+	
 	unlock_any_new_orders()
 	
 	# Check if we can generate some new orders, and if so, fill up the queue
@@ -94,14 +100,17 @@ func end_day():
 		order_purgatory.clear()
 
 
+# SHOULD BE IN EVENT BUS
 func select_order_slot(slot):
 	emit_signal("order_slot_select", slot)
 
 
+# SHOULD BE IN EVENT BUS
 func order_accepted(order_key):
 	emit_signal("order_accepted", order_key)
 
 
+# SHOULD BE IN EVENT BUS
 func order_fulfilled(order_key):
 	emit_signal("order_fulfilled", order_key)
 
@@ -189,7 +198,12 @@ func fulfill_order(order_key:String, item_arr):
 		# Connect to PlayerVariables to remove items from inventory
 		# Give player the monies
 		PlayerVariables.remove_item_array_from_inv(item_arr)
-		PlayerVariables.increment_players_money(available_quests[order_key].pay)
+		
+		# Check if the player should have pay penalty
+		if !available_quests[order_key].overdue:
+			PlayerVariables.increment_players_money(available_quests[order_key].pay)
+		else:
+			PlayerVariables.increment_players_money(available_quests[order_key].overdue_pay)
 	
 	previous_quests[order_key] = available_quests[order_key]
 	

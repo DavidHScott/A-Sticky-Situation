@@ -119,12 +119,14 @@ size_flags_horizontal = 3
 text = "None"
 align = 2
 
-[node name="Pay" type="Label" parent="ScrollGrid/ItemInformation"]
+[node name="Pay" type="RichTextLabel" parent="ScrollGrid/ItemInformation"]
 margin_top = 194.0
 margin_right = 301.0
-margin_bottom = 208.0
+margin_bottom = 209.0
+bbcode_enabled = true
+bbcode_text = "[center]$69,420[/center]"
 text = "$69,420"
-align = 1
+fit_content_height = true
 
 [node name="FulfillButton" type="Button" parent="."]
 anchor_left = 0.5

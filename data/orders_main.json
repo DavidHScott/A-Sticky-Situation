@@ -14,7 +14,7 @@
         "RequiredRep": 0,
         "Prereq": null,
         "AcceptTimelimit": 0,
-        "Deadline": 0,
+        "Deadline": 1,
         "wait_day_to_unlock": 0
     },
     "???_1": {
@@ -163,7 +163,7 @@
 	"wait_day_to_unlock": 1
     },
     "wyman_3": {
-    	"Title": "PLACEHOLDER",
+    	"Title": "Watch the Market",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI hope you have been well, and your business ventures have been fruitful. We are again in need of a shipment of syrup. There seems to be an uptick in demand for the darker varieties of syrup at this time. I hope the market value of that variety isn’t climbing too high. Regardless, this payment should be more than enough to cover the costs.\n\nYou may have noticed that the price of syrup is far more variable on our black market than it is using more legal avenues. Since you have proven yourself as a valuable contractor, I wanted to give you access to a tool that some of our other associates use. I hope that you find it to be of some use to you.\n\nRegards",
 	"Payment": 500,
@@ -193,7 +193,7 @@
 	"wait_day_to_unlock": 1
     },
     "wyman_4": {
-    	"Title": "PLACEHOLDER",
+    	"Title": "Be Vigilant",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI hope you have been well.\n\nFirstly I would like to make you aware that a source of ours has confirmed that the syrup producer {investigated_producer} is currently under police investigation. I would highly suggest that you refrain from purchasing merchandise from them for the foreseeable future. The FPAQ does not look fondly on the sale of syrup behind their back\n\nOtherwise, our order is attached as expected.\n\nRegards.",
 	"Payment": 500,
@@ -223,7 +223,7 @@
 	"wait_day_to_unlock": 1
     },
     "maxime_2": {
-    	"Title": "PLACEHOLDER",
+    	"Title": "Wealth Hoarding",
      	"Distributer": "Maxime",
 	"Description": "Hey there bud!\n\nWith all the news going around about a potential crackdown on the market, I figured it would be a smart idea to stock up on some extra syrup to help weather the storm so to speak. I apologize in advance for the fairly large order this time around, but I’ll make sure the pay is good.\n\nBest wishes.",
 	"Payment": 500,
@@ -253,7 +253,7 @@
 	"wait_day_to_unlock": 1
     },
     "maxime_3": {
-    	"Title": "PLACEHOLDER",
+    	"Title": "Harsh Reality",
      	"Distributer": "Maxime",
 	"Description": "Hey, bud.\n\nUnfortunately, {max_producer} seems to be under investigation, and the last shipment you sent my way got stopped by the cops. I don’t want you to feel down on yourself, these things just happen sometimes. Although, with all that’s going on, you may want to obtain some extra storage space, just as some additional redundancy. If you’d like, I can call in a few favours and try and get you a good deal.\n\nAnywho, I’m going to try to keep a low profile until all of this blows over. It’s been good working with you, {playername}.\n\nKeep yourself out of trouble.",
 	"Payment": 500,
@@ -266,7 +266,7 @@
 	"wait_day_to_unlock": 1
     },
     "wyman_5": {
-    	"Title": "PLACEHOLDER",
+    	"Title": "The End of our Correspondence",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nUnfortunately, I am going to have to end our business relationship here. Wyman inc. is currently suspected of partaking in illegal activities regarding the smuggling of maple syrup, and police are asking questions regarding our shipments. Please do not try to contact us past this point.\n\nIt’s been a pleasure working with you.\n\nRegards.",
 	"Payment": 0,
@@ -281,7 +281,7 @@
     "???_2": {
     	"Title": "Discretion is Advised",
      	"Distributer": "???",
-	"Description": "PLACEHOLDER",
+	"Description": "Well hello there, {playername}.\n\nSo it looks like you’ve made something of a name for yourself. Since you’ve proven yourself to be reliable, I have a favour to ask of you.\n\na buddy of mine is under investigation for withholding merchandise from the cartel, and the two of us have been working to smuggle his unaccounted-for product out of his sugar shack. Now, we need a middleman to help get the stuff away without incident. This, of course, is where you come in.\n\nWe’ve created a burner account on the market, so over the next few days, you’ll start to see items appear from a supplier using the name {???_burner}. Send it over once you’ve rounded it all up, and I’ll make sure you’re rewarded heavily.\n\nI know this is a big ask, even in an industry that’s already not particularly legal, but rest assured, we are taking your safety into account. As long as you send everything over in a timely manner, I’ll make sure everything goes precisely to plan.\n\nMany thanks.",
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,
@@ -294,7 +294,7 @@
     "???_3": {
     	"Title": "Goodbye?",
      	"Distributer": "???",
-	"Description": "PLACEHOLDER",
+	"Description": "Ah, thank you very much, {playername}.\n\nWell, this is where we’ll be parting ways for a long time I suppose. Your help did a lot to get me and my buddy out of trouble. Although, someone does need to deal with the fallout from this whole operation, and I thought you’d be a great fit for that job too! Please accept my apologies for not filling you in on this part of the plan earlier, but I have a feeling you wouldn’t have been quite as receptive if you had known.\n\nIf you’re smart and you’ve laundered your money properly, you might be able to use your profits to help with bail, but otherwise, well, good luck.",
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,
