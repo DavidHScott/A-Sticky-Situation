@@ -78,8 +78,10 @@ func change_master_volume(value):
 	if value == 0:
 		AudioServer.set_bus_mute(0, true)
 	else:
+		value = slider_val_to_db(value)
+		
 		AudioServer.set_bus_mute(0, false)
-		AudioServer.set_bus_volume_db(0, (45 * value) - 45)
+		AudioServer.set_bus_volume_db(0, value)
 
 
 func change_music_volume(value):
@@ -88,8 +90,10 @@ func change_music_volume(value):
 	if value == 0:
 		AudioServer.set_bus_mute(bus_id, true)
 	else:
+		value = slider_val_to_db(value)
+		
 		AudioServer.set_bus_mute(bus_id, false)
-		AudioServer.set_bus_volume_db(bus_id, (45 * value) - 45)
+		AudioServer.set_bus_volume_db(bus_id, value)
 
 
 func change_effects_volume(value):
@@ -98,5 +102,13 @@ func change_effects_volume(value):
 	if value == 0:
 		AudioServer.set_bus_mute(bus_id, true)
 	else:
+		value = slider_val_to_db(value)
+		
 		AudioServer.set_bus_mute(bus_id, false)
-		AudioServer.set_bus_volume_db(bus_id, (45 * value) - 45)
+		AudioServer.set_bus_volume_db(bus_id, value)
+
+
+func slider_val_to_db(slider_val):
+	var db_val = (log(slider_val) / log(10)) * 20
+	
+	return db_val
