@@ -39,6 +39,9 @@ var current_day = 0
 var unlocked_start_day = false
 var unlocked_warehouse = false
 
+var esc_button_stack = []
+
+
 func _ready():
 	# Connect signals
 	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")
@@ -138,7 +141,7 @@ func switch_screen(new_screen):
 			reference_to_new_scene = orders_page
 			current_page = UI_PAGES.ORDERS
 		_:
-			print("Error: Game::Trying to switch to a page that doesn't exist!")
+			print("Game::Error: Trying to switch to a page that doesn't exist!")
 			return
 	
 	# unload current screen

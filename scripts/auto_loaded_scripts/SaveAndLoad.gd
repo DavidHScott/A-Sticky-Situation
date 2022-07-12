@@ -309,9 +309,6 @@ func load_orders_from_savedata():
 	
 	for order_key in save_data.previous_quests:
 		OrderFulfillment.previous_quests.append(order_key)
-	
-	print(save_data.available_quests)
-	print(OrderFulfillment.available_quests)
 
 
 func save_options_to_file():

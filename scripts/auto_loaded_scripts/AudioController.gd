@@ -33,7 +33,7 @@ func _ready():
 func play_music(track_url:String):
 	
 	if music_files.get(track_url) == null:
-		print("Error: AudioController:audio track " + track_url + " cannot be found.")
+		print("AudioController::Error: audio track " + track_url + " cannot be found.")
 		return
 	
 	stop_music()

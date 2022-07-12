@@ -29,6 +29,7 @@ script = ExtResource( 17 )
 follow_viewport_enable = true
 
 [node name="Interface" type="Control" parent="GUI"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
@@ -36,10 +37,12 @@ theme = ExtResource( 2 )
 script = ExtResource( 8 )
 
 [node name="Page" type="Control" parent="GUI/Interface"]
+pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="LowerThird" type="Control" parent="GUI/Interface"]
+pause_mode = 1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -132,6 +135,7 @@ align = 2
 script = ExtResource( 5 )
 
 [node name="UpperThird" type="HBoxContainer" parent="GUI/Interface"]
+pause_mode = 1
 anchor_right = 1.0
 
 [node name="PauseButton" type="TextureButton" parent="GUI/Interface/UpperThird" groups=["FocusItems_Game"]]

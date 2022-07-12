@@ -2,7 +2,7 @@
     "???_0": {
         "Title": "Getting Started",
         "Distributer": "???",
-        "Description": "Well hello there {playername}.\n\nSo you want to get into the syrup black market, eh? You wanna stick it to the FPAQ? Or maybe you just want to capitalize on the conflict. Not my business either way I suppose.\n\nAnyway, I'm be helping you get set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. I want you to send me a shipment of just one 10 gallon barrel of syrup to prove that you can figure this out. The requirements for shipment are attached to this message.\n\nLet's hope that you can manage this simple task.",
+        "Description": "Well hello there {playername}.\n\nSo you want to get into the syrup black market, eh? You wanna stick it to the FPAQ? Or maybe you just want to capitalize on the conflict. Not my business either way I suppose.\n\nAnyway, I'll be helping you get set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. I want you to send me a shipment of just one 10 gallon barrel of syrup to prove that you can figure this out. The requirements for shipment are attached to this message.",
         "Payment": 500,
         "RepReward": 0,
         "Requirements": [{

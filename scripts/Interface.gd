@@ -4,6 +4,10 @@ extends Control
 func _ready():
 	Global._game().connect("open_new_page", self, "open_page")
 	Global._game().connect("game_state_switch", self, "refresh_ui")
+	$PausePopupMenu/MainPauseMenu/VBoxContainer/ResumeButton.connect("pressed", self, "unpause_game")
+	
+	# Update the escape stack
+	Global._game().esc_button_stack.append([self, "pause_game"])
 
 
 func open_page(ref_to_new_scene):
@@ -27,11 +31,23 @@ func _on_PauseButton_pressed():
 	pause_game()
 
 
+func unpause_game():
+	get_tree().paused = false
+	$PausePopupMenu.visible = false
+	
+	Global._game().esc_button_stack.pop_back()
+
+
 func pause_game():
+	Global._game().esc_button_stack.append([self, "unpause_game"])
+	
 	$PausePopupMenu.visible = true
 	get_tree().paused = true
 
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		pause_game()
+		var obj = Global._game().esc_button_stack.back()[0]
+		var function = Global._game().esc_button_stack.back()[1]
+		
+		obj.call(function)

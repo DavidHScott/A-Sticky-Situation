@@ -6,10 +6,11 @@ var item_array:Array
 var shipped_items_ui
 var popup_ship_item_scene = preload("res://scenes/gui_components/page_panels/OrderFulfillment/PopupShipItem.tscn")
 
-func _ready():
+func _ready():	
 	shipped_items_ui = $NinePatchRect/PopupLayout/ShippedItems
 
 func populate(order_key:String, item_arr:Array):
+	Global._game().esc_button_stack.append([self, "_on_CancelButton_pressed"])
 	
 	# Clear the to be shipped item sections
 	for node in shipped_items_ui.get_children():
@@ -32,11 +33,13 @@ func populate(order_key:String, item_arr:Array):
 
 func _on_ConfirmButton_pressed():
 	OrderFulfillment.fulfill_order(selected_order_key, item_array)
+	Global._game().esc_button_stack.pop_back()
 	
 	self.visible = false
 
 
 func _on_CancelButton_pressed():
+	Global._game().esc_button_stack.pop_back()
 	self.visible = false
 
 
