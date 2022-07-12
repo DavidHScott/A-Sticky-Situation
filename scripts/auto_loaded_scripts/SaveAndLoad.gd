@@ -82,13 +82,15 @@ func load_save(filename):
 	if ResourceLoader.exists(SAVE_FOLDER.plus_file(filename)):
 		save_data = ResourceLoader.load(SAVE_FOLDER.plus_file(filename))
 		load_inv_from_savedata()
+		load_orders_from_savedata()
 		
 		return save_data
 
 
 func save_current_game():
-	# Keep the inventory up to date
+	# Keep the inventory and orders up to date
 	save_inv_to_savedata()
+	save_orders_to_savedata()
 	
 	var modified_date = OS.get_datetime()
 	save_data.last_modified["Day"] = modified_date["day"]
@@ -152,10 +154,10 @@ func clear_save_game():
 	save_data.current_day = 0
 	
 	# Order data
-	save_data.previous_quest_keys.clear()
-	save_data.available_quest_keys.clear()
+	save_data.available_quests.clear()
+	save_data.previous_quests.clear()
 	
-	save_data.available_quest_keys[initial_order] = false
+	save_data.available_quests.append([initial_order, false, false, 0, 0])
 	save_data.max_orders = 2
 	save_data.generate_random_orders = false
 	
@@ -256,6 +258,60 @@ func load_inv_from_savedata():
 			
 			PlayerVariables.inventory[i] = Item.new(grade, prod, quality, quantity)
 			PlayerVariables.inventory[i].buy_price = buy_price
+
+
+func save_orders_to_savedata():
+	save_data.available_quests.clear()
+	save_data.previous_quests.clear()
+	
+	for order_key in OrderFulfillment.available_quests:
+		
+		var accepted = OrderFulfillment.available_quests[order_key].accepted
+		var overdue = OrderFulfillment.available_quests[order_key].overdue
+		var days_since_init = OrderFulfillment.available_quests[order_key].days_since_init
+		var days_since_accept = OrderFulfillment.available_quests[order_key].days_since_accept
+		
+		# 0: Key
+		# 1: Accepted bool
+		# 2: Overdue bool
+		# 3: Days since inititalization
+		# 4: Days since order accepted
+		var order = [order_key, accepted, overdue, days_since_init, days_since_accept]
+		save_data.available_quests.append(order)
+	
+	# Previous quests is easier at the moment. The only data that needs to be stored is the keys
+	for order_key in OrderFulfillment.previous_quests:
+		save_data.previous_quests.append(order_key)
+
+
+# This function is only ever called when loading a save
+func load_orders_from_savedata():
+	OrderFulfillment.available_quests.clear()
+	OrderFulfillment.previous_quests.clear()
+	
+	for order in save_data.available_quests:
+		
+		var order_key = order[0]
+		var accepted_bool = order[1]
+		var overdue_bool = order[2]
+		var days_since_init = order[3]
+		var days_since_accept = order[4]
+		
+		if OrderFulfillment.story_orders_dict.has(order_key):
+			OrderFulfillment.available_quests[order_key] = OrderFulfillment.story_orders_dict[order_key]
+		else:
+			OrderFulfillment.available_quests[order_key] = OrderFulfillment.random_orders_dict[order_key]
+		
+		OrderFulfillment.available_quests[order_key].accepted = accepted_bool
+		OrderFulfillment.available_quests[order_key].overdue = overdue_bool
+		OrderFulfillment.available_quests[order_key].days_since_init = days_since_init
+		OrderFulfillment.available_quests[order_key].days_since_accept = days_since_accept
+	
+	for order_key in save_data.previous_quests:
+		OrderFulfillment.previous_quests.append(order_key)
+	
+	print(save_data.available_quests)
+	print(OrderFulfillment.available_quests)
 
 
 func save_options_to_file():

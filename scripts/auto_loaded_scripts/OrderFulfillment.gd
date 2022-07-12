@@ -20,7 +20,7 @@ var available_quests = { }
 var order_purgatory = { }
 
 # Orders that the player previously completed or failed
-var previous_quests = { }
+var previous_quests = []
 
 signal order_slot_select(slot)
 signal refresh_order_panel()
@@ -205,21 +205,12 @@ func fulfill_order(order_key:String, item_arr):
 		else:
 			PlayerVariables.increment_players_money(available_quests[order_key].overdue_pay)
 	
-	previous_quests[order_key] = available_quests[order_key]
+	previous_quests.append(order_key)
 	
 	# Set the order as fulfilled
 	# Remove the order from available orders
 	available_quests[order_key].complete_order()
 	available_quests.erase(order_key)
-	
-	SaveAndLoad.save_data.available_quest_keys.clear()
-	SaveAndLoad.save_data.previous_quest_keys.clear()
-	
-	for key in available_quests.keys():
-		SaveAndLoad.save_data.available_quest_keys[key] = available_quests[key].accepted
-	
-	for key in previous_quests.keys():
-		SaveAndLoad.save_data.previous_quest_keys[key] = previous_quests[key].completed
 	
 	SaveAndLoad.save_current_game()
 	
@@ -240,7 +231,7 @@ func fulfill_order(order_key:String, item_arr):
 #
 ## TODO: Should this runs on a seperate thread?
 func unlock_any_new_orders():
-	for order_key in previous_quests.keys():
+	for order_key in previous_quests:
 		unlock_new_orders(order_key)
 
 
@@ -288,7 +279,7 @@ func unlock_new_orders(prereq_key):
 # Loop through an order's prereq keys. returns true or false if the order can be unlocked
 func loop_through_prereqs(order):
 	for prereq_order in order.prereq_keys:
-		if !previous_quests.keys().has(prereq_order):
+		if !previous_quests.has(prereq_order):
 			return false
 	
 	return true

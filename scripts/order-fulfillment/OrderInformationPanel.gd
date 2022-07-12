@@ -110,8 +110,6 @@ func _on_FulfillButton_pressed():
 	emit_signal("open_popup", selected_order_key, item_arr)
 
 func _on_AcceptButton_pressed():
-	# Save the change
-	SaveAndLoad.save_data.available_quest_keys[selected_order_key] = true
 	
 	# Set the order to accepted & put the slot into the acceptedOrders container
 	selected_order.accept_order()
@@ -122,6 +120,9 @@ func _on_AcceptButton_pressed():
 	if selected_order.requirements == null:
 		OrderFulfillment.fulfill_order(selected_order_key, null)
 		remove_selected_order()
+	
+	# Save the change
+	SaveAndLoad.save_orders_to_savedata()
 	
 	# Render buttons
 	render_buttons()

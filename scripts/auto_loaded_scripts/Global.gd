@@ -25,14 +25,17 @@ func start_game():
 	# First, load the scene
 	get_tree().change_scene("res://scenes/gameplay/Game.tscn")
 	
-	for key in SaveAndLoad.save_data.available_quest_keys:
-		if OrderFulfillment.story_orders_dict.has(key):
-			OrderFulfillment.available_quests[key] = OrderFulfillment.story_orders_dict[key]
-		elif OrderFulfillment.random_orders_dict.has(key):
-			OrderFulfillment.available_quests[key] = OrderFulfillment.random_orders_dict[key]
-		
-		OrderFulfillment.available_quests[key].accepted = SaveAndLoad.save_data.available_quest_keys[key]
+#	for order in SaveAndLoad.save_data.available_quests:
+#		var key = order[0]
+#
+#		if OrderFulfillment.story_orders_dict.has(key):
+#			OrderFulfillment.available_quests[key] = OrderFulfillment.story_orders_dict[key]
+#		elif OrderFulfillment.random_orders_dict.has(key):
+#			OrderFulfillment.available_quests[key] = OrderFulfillment.random_orders_dict[key]
+#
+#		OrderFulfillment.available_quests[key].accepted = SaveAndLoad.save_data.available_quests[key]
 	
+	SaveAndLoad.load_orders_from_savedata()
 	SaveAndLoad.load_market_trends()
 
 

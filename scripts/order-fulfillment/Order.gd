@@ -10,7 +10,6 @@ var pay: int
 var overdue_pay: int
 
 var requirements = []
-
 var prereq_keys = []
 
 # The amount of time the order remains in the menu before disapearing.
@@ -20,14 +19,15 @@ var accept_timelimit = 0
 # If the value is 0, the order does not expire
 var fulfill_timelimit = 0
 
-var days_since_init = 0
-var days_since_accept = 0
-
 # 0 = false, 1 = true
 var wait_day_to_unlock = 0
 
 var reward_reputation = 0
 var required_reputation = 0
+
+# Other variables
+var days_since_init = 0
+var days_since_accept = 0
 
 var accepted: bool = false
 var overdue: bool = false

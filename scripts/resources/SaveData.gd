@@ -13,7 +13,7 @@ export var last_modified = {
 export var player_name = ""
 export var money = 0
 export var inventory_size = 0
-export var inventory = []
+export var inventory:Array
 
 # TODO: Implement warehouse upgrades
 export var available_warehouse_upgrades = 0
@@ -24,15 +24,11 @@ export var current_day = 0
 export var max_orders = 2
 export var generate_random_orders = false
 
-# Key is the quest key. Value is bool; Accepted or not
-export var available_quest_keys = {
-	
-}
+# Lists available quests. Stores whether or not the order is accepted, if it's overdue, etc.
+export var available_quests:Array = []
 
-# Key is the quest key. Value is bool; successful or not
-export var previous_quest_keys = {
-	
-}
+# just lists the keys of the previous quests. This may be expanded in the future
+export var previous_quests:Array
 
 export var golden_trend_filename = ""
 export var amber_trend_filename = ""

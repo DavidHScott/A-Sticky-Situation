@@ -65,9 +65,11 @@ func add_item_to_inv(new_item):
 # if item quantity is 0, remove all of item
 func remove_item_from_inv(item:Item):
 	var succeeded = false
+	var index = -1
 	
 	for inv_item in inventory:
 		# Don't need to compare empty slots
+		index += 1
 		if inv_item == null:
 			continue
 		
@@ -84,6 +86,7 @@ func remove_item_from_inv(item:Item):
 			
 			if inv_item.quantity < 1:
 				inv_item = null
+				inventory[index] = null
 	
 	if succeeded == false:
 		print("PlayerVariables::Error: Tried to remove an item not in the inventory!")

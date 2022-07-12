@@ -14,7 +14,7 @@
         "RequiredRep": 0,
         "Prereq": null,
         "AcceptTimelimit": 0,
-        "Deadline": 1,
+        "Deadline": 0,
         "wait_day_to_unlock": 0
     },
     "???_1": {
