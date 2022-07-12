@@ -19,4 +19,9 @@ func import_main_orders():
 
 # TODO: Add functionality
 func import_random_order_templates():
-	pass
+	var rand_orderdata_file = File.new()
+	rand_orderdata_file.open("res://data/orders_rand_templates.json", File.READ)
+	var rand_orderdata_json = JSON.parse(rand_orderdata_file.get_as_text())
+	rand_orderdata_file.close()
+	
+	random_order_templates = rand_orderdata_json.result

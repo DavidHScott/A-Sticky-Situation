@@ -1,0 +1,18 @@
+{
+    "random_0": {
+        "Title": "RANDOM ORDER",
+        "Distributer": "RANDOM DIST",
+        "Description": "Eyyy description",
+        "Payment": 1000,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": null,
+            "ItemQuantity": 1
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    }
+}

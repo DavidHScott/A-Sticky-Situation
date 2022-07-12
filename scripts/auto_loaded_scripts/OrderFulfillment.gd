@@ -3,14 +3,9 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-var temp_rand_order_1 = Order.new("RAND_1", "PLACEHOLDER", "PLACEHOLDER", 1000, null, 1, 3, null, 0, 1, 0)
-var temp_rand_order_2 = Order.new("RAND_2", "PLACEHOLDERRR", "PLACEHOLDER", 2000, null, 1, 3, null, 0, 1, 0)
-
 var story_orders_dict = { }
 
 var random_orders_dict = {
-	"rand_1": temp_rand_order_1,
-	"rand_2": temp_rand_order_2
 }
 
 # Orders that the player can see, accepted & unaccepted
@@ -36,6 +31,7 @@ var generate_random_orders = false
 
 func _ready():
 	load_main_orders_to_dict()
+	load_random_orders_to_dict()
 	
 
 # Get the main order data and load all orders into a dictionary
@@ -72,6 +68,46 @@ func load_main_orders_to_dict():
 		
 		var new_quest = Order.new(title, distrib, description, pay, require_arr, timelimit, deadline, prereq_arr, wait, reward_reputation, required_reputation)
 		story_orders_dict[order_key] = new_quest
+
+
+func load_random_orders_to_dict():
+	for order_key in ImportData.random_order_templates.keys():
+		var order_dict = ImportData.random_order_templates[order_key]
+		
+		# Required variables
+		var title = order_dict["Title"]
+		var description = order_dict["Description"]
+		var pay = order_dict["Payment"]
+		var timelimit = 1
+		var wait = 0
+		
+		var require_arr = []
+		
+		for item in order_dict["Requirements"]:
+				var new_item = Item.new(item["ItemGrade"], item["ItemProducer"], item["ItemQuality"], item["ItemQuantity"])
+				
+				require_arr.append(new_item)
+		
+		# Attributes that may be set, but might be set on generation or set to a default
+		var distrib = null
+		var deadline = 5
+		var prereq = null
+		var rep_reward = 1
+		var required_rep = 0
+		
+		if order_dict.has("Distributer"):
+			distrib = order_dict["Distributer"]
+		if order_dict.has("Deadline"):
+			deadline = order_dict["Deadline"]
+		if order_dict.has("Prereq"):
+			prereq = order_dict["Prereq"]
+		if order_dict.has("RepReward"):
+			rep_reward = order_dict["RepReward"]
+		if order_dict.has("RequiredRep"):
+			required_rep = order_dict["RequiredRep"]
+		
+		var new_order = Order.new(title, distrib, description, pay, require_arr, timelimit, deadline, prereq, wait, rep_reward, required_rep)
+		random_orders_dict[order_key] = new_order
 
 
 func start_day():
@@ -292,6 +328,8 @@ func generate_random_order():
 	var rand_i = rng.randi_range(0, random_orders_dict.size() - 1)
 	
 	var new_key = random_orders_dict.keys()[rand_i]
+	
+	# TODO: IF: distributer is set to null, generate a random one
 	
 	# Add it to the available orders
 	available_quests[new_key] = random_orders_dict[new_key]
