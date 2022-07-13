@@ -14,6 +14,7 @@ const OPTIONS_FILE = "user://options.res"
 var save_data = SaveData.new()
 var options = Options.new()
 
+
 func _ready():
 	var info_file = File.new()
 	if !info_file.file_exists(USER_DATA):
@@ -46,11 +47,13 @@ func create_new_save(username:String):
 		
 		directoryname = SAVE_DIR_TEMPLATE % [username, "_" + str(id)]
 		directory.make_dir(SAVE_FOLDER.plus_file(directoryname))
+		directory.make_dir(SAVE_FOLDER.plus_file(directoryname).plus_file("Producers"))
 		
 		filename = directoryname.plus_file(SAVE_NAME_TEMPLATE % [username, "_" + str(id)])
 	else:
 		directoryname = SAVE_DIR_TEMPLATE % [username, ""]
 		directory.make_dir(SAVE_FOLDER.plus_file(directoryname))
+		directory.make_dir(SAVE_FOLDER.plus_file(directoryname).plus_file("Producers"))
 		
 		filename = directoryname.plus_file(SAVE_NAME_TEMPLATE % [username, ""])
 	
@@ -88,6 +91,9 @@ func load_save(filename):
 
 
 func save_current_game():
+	# Not sure where I want to save this so here it goes!
+	save_producers_to_file(save_data)
+	
 	# Keep the inventory and orders up to date
 	save_inv_to_savedata()
 	save_orders_to_savedata()
@@ -309,6 +315,42 @@ func load_orders_from_savedata():
 	
 	for order_key in save_data.previous_quests:
 		OrderFulfillment.previous_quests.append(order_key)
+
+
+func save_producers_to_file(save:SaveData):
+	# Producers directory path
+	var save_dir = save.filename.split("/")[0]
+	var path = SAVE_FOLDER.plus_file(save_dir).plus_file("Producers")
+	
+	for producer_abr in ShoppingController.producers_dict.keys():
+		var res_path = path.plus_file(producer_abr + ".res")
+		
+		ResourceSaver.save(res_path, ShoppingController.producers_dict[producer_abr])
+
+
+func load_producers_from_file(save:SaveData):
+	# Producers directory path
+	var save_dir = save.filename.split("/")[0]
+	var path = SAVE_FOLDER.plus_file(save_dir).plus_file("Producers")
+	
+	var dir = Directory.new()
+	
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var res_filename = dir.get_next()
+		
+		while res_filename != "":
+			# load the file to resource
+			if !dir.current_is_dir():
+				var producer_file = Producer.new()
+				producer_file = ResourceLoader.load(path.plus_file(res_filename))
+				
+				ShoppingController.producers_dict[producer_file.abr_name] = producer_file
+				
+			res_filename = dir.get_next()
+	else:
+		# Error handling
+		pass
 
 
 func save_options_to_file():

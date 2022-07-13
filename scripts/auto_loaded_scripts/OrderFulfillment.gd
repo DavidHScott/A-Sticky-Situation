@@ -5,8 +5,7 @@ var rng = RandomNumberGenerator.new()
 
 var story_orders_dict = { }
 
-var random_orders_dict = {
-}
+var random_orders_dict = { }
 
 # Orders that the player can see, accepted & unaccepted
 var available_quests = { }
@@ -111,7 +110,13 @@ func load_random_orders_to_dict():
 
 
 func start_day():
-	pass
+	
+	# Get all orders and their requirements, put them all into an array and send them off to the shopping controller to handle
+	var inserted_items:Array
+	
+	for order in available_quests.values():
+		inserted_items.append_array(order.requirements)
+	ShoppingController.insert_items_into_shop(inserted_items)
 
 
 func end_day():

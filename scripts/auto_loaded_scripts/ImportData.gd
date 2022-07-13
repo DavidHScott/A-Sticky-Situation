@@ -2,10 +2,12 @@ extends Node
 
 var main_order_data
 var random_order_templates
+var producer_data
 
 func _ready():
 	import_main_orders()
 	import_random_order_templates()
+	import_producer_data()
 
 
 func import_main_orders():
@@ -17,7 +19,6 @@ func import_main_orders():
 	main_order_data = main_orderdata_json.result
 
 
-# TODO: Add functionality
 func import_random_order_templates():
 	var rand_orderdata_file = File.new()
 	rand_orderdata_file.open("res://data/orders_rand_templates.json", File.READ)
@@ -25,3 +26,12 @@ func import_random_order_templates():
 	rand_orderdata_file.close()
 	
 	random_order_templates = rand_orderdata_json.result
+
+
+func import_producer_data():
+	var producerdata_file = File.new()
+	producerdata_file.open("res://data/producer_data.json", File.READ)
+	var producerdata_json = JSON.parse(producerdata_file.get_as_text())
+	producerdata_file.close()
+	
+	producer_data = producerdata_json.result

@@ -2,11 +2,9 @@ extends Node
 
 var shop = []
 
-var possible_producers = ["Test Producer", "Sugar Shack inc."]
+var producers_dict = { }
 
 var shop_generation_timer
-
-# var shop_max_items = 6
 
 var selected_item_index = null
 var selected_slot = null
@@ -18,6 +16,36 @@ signal refresh_shop_ui()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+
+# Called when starting a new game and loading a saved game.
+#
+# When loading a saved game, this is called after producers are loaded from save data,
+# 	So no save data is overridden, but if something is added in an update or user mod
+# 	it can still be added
+func load_producers_from_data():
+	for abr_name in ImportData.producer_data.keys():
+		# First check if the producer is already in the dict.
+		if producers_dict.has(abr_name):
+			continue
+		
+		var prod_dict = ImportData.producer_data[abr_name]
+		
+		var fullname = prod_dict["FullName"]
+		var active_on_load = prod_dict["Active"]
+		var pricing_habits = prod_dict["PricingHabits"]
+		
+		var restriction_grades = prod_dict["Restrictions"]["Grades"]
+		var restriction_min_qual = prod_dict["Restrictions"]["MinQuality"]
+		var restriction_max_qual = prod_dict["Restrictions"]["MaxQuality"]
+		
+		var new_producer = Producer.new(abr_name, fullname, active_on_load, pricing_habits,
+			restriction_grades, restriction_min_qual, restriction_max_qual)
+		
+		producers_dict[abr_name] = new_producer
+	
+	SaveAndLoad.save_producers_to_file(SaveAndLoad.save_data)
+
 
 ## Select an item in the shop
 func slot_selected(item_slot):
@@ -33,7 +61,7 @@ func start_shop_day():
 	shop.clear()
 	
 	# Generate 4 random items
-	for i in 4:
+	for i in 20:
 		shop.append(generate_shop_item())
 	
 	# Start time for generating new products throughout the day
@@ -57,6 +85,7 @@ func stop_shop_day():
 	shop.clear()
 	pass
 
+
 ## Generate shop items
 func generate_shop_item():
 	# Create the item
@@ -74,13 +103,19 @@ func generate_shop_item():
 			new_item.set_grade(Global._game().VERY_DARK)
 	
 	# Generate the producer
-	rand = randi() % possible_producers.size()
-	new_item.set_producer(possible_producers[rand])
+	rand = randi() % producers_dict.size()
+	var producer_key = producers_dict.keys()[rand]
+	var producer:Producer = producers_dict[producer_key]
 	
-	# Generate the quality
-	# TODO: Weigh the score somewhere on the higher end, and
-	# allow some producers to generally have better product
-	rand = (randi() % 100) + 1
+	# Redo it if the producer isn't active
+	while producer.active == false:
+		rand = randi() % producers_dict.size()
+		producer_key = producers_dict.keys()[rand]
+		producer = producers_dict[producer_key]
+	
+	new_item.producer = producer_key
+	
+	rand = (randi() % int((producer.maximum_quality + 1) - producer.minimum_quality)) + producer.minimum_quality
 	new_item.set_quality(rand)
 	
 	# Generate the buy price
@@ -100,6 +135,68 @@ func generate_shop_item():
 	rand = (randi() % 20) + 1
 	new_item.set_quantity(rand)
 	return new_item
+
+
+func insert_items_into_shop(items_arr:Array):
+	for item in items_arr:
+		var new_item = Item.new()
+		var rand
+		
+		# What grade does it need to be?
+		if item.grade != null:
+			new_item.grade = item.grade
+		else:
+			# If no requirement, randomize it
+			rand = randi() % 4
+			match rand:
+				0:
+					new_item.set_grade(Global._game().AMBER)
+				1:
+					new_item.set_grade(Global._game().GOLDEN)
+				2:
+					new_item.set_grade(Global._game().DARK)
+				3:
+					new_item.set_grade(Global._game().VERY_DARK)
+		
+		# Does it have a producer requirement?
+		
+		if item.producer != null:
+			new_item.producer = item.producer
+		else:
+			rand = randi() % producers_dict.size()
+			var producer_key = producers_dict.keys()[rand]
+			
+			new_item.producer = producer_key
+		
+		# Does it have a quality requirement?
+		if item.quality != null:
+			rand = randi() % int(101 - item.quality) + item.quality
+			new_item.set_quality(rand)
+		else:
+			# Default to the producer's quality range
+			var producer:Producer = producers_dict[new_item.producer]
+			
+			rand = (randi() % int((producer.maximum_quality + 1) - producer.minimum_quality)) + producer.minimum_quality
+			new_item.set_quality(rand)
+		
+		# Eventually when I feel like it, this should change so multiple differnet listings can be
+		# 	created that fill the requirements if the first generation doesn't have enough.
+		#
+		# Also this has the issue of if there is ever an order with more than 20 quantity of an item, 
+		# 	it won't generate enough in one day. Though it won't softlock as it will generate more
+		#	on subsequent days, but it might force the pay to be penalized
+		rand = (randi() % int(21 - item.quantity)) + item.quantity
+		new_item.set_quantity(rand)
+		
+		# TODO: Same as above, this need to be calculated properly. Maybe put this in its own function?
+		rand = (randi() % 1601) + 100
+		new_item.set_buy_price(rand)
+		
+		shop.append(new_item)
+	
+	# All items have been generated, randomize the shop array so it's not all just on the bottom
+	shop.shuffle()
+
 
 ## Shop item gets sold
 func sell_shop_item(quantity_sold):

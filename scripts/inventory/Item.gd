@@ -4,6 +4,7 @@ class_name Item
 
 # Item attributes
 var grade
+# Uses the key of a producer resource
 var producer
 var quality
 var buy_price

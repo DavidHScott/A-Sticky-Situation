@@ -1,0 +1,22 @@
+{
+    "PLH": {
+        "FullName": "Placeholder",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 0,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "OOH": {
+        "FullName": "Another Placeholder",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 50,
+            "MaxQuality": 55
+        },
+        "PricingHabits": 3
+    }
+}

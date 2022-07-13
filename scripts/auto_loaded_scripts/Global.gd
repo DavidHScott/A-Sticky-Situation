@@ -27,6 +27,8 @@ func start_game():
 	
 	SaveAndLoad.load_orders_from_savedata()
 	SaveAndLoad.load_market_trends()
+	# TODO: I don't need to give this as a parameter
+	SaveAndLoad.load_producers_from_file(SaveAndLoad.save_data)
 
 
 func exit_game():

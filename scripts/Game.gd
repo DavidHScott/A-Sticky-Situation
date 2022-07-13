@@ -32,7 +32,7 @@ var current_game_state = GAME_STATE.DOWNTIME
 const GOLDEN = "Golden"
 const AMBER = "Amber"
 const DARK = "Dark"
-const VERY_DARK = "Very Dark"
+const VERY_DARK = "V. Dark"
 
 var current_day = 0
 
@@ -43,6 +43,10 @@ var esc_button_stack = []
 
 
 func _ready():
+	# TODO: Load producers from file first
+	ShoppingController.load_producers_from_data()
+	
+	
 	# Connect signals
 	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")
 	OrderFulfillment.connect("order_fulfilled", self, "check_fulfilled_order")
@@ -67,7 +71,6 @@ func _ready():
 	unlocked_warehouse = SaveAndLoad.save_data.unlocked_warehouse
 	
 	limit_functions()
-	
 
 
 # TODO: It would be better to have this be data-driven instead of hardcoded as it is here
@@ -161,6 +164,7 @@ func switch_game_state():
 		
 		Market.new_day()
 		ShoppingController.start_shop_day()
+		OrderFulfillment.start_day()
 		
 		emit_signal("game_state_switch")
 	else:

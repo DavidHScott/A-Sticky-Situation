@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://scripts/order-fulfillment/Order.gd"
 }, {
 "base": "Resource",
+"class": "Producer",
+"language": "GDScript",
+"path": "res://scripts/resources/producer.gd"
+}, {
+"base": "Resource",
 "class": "SaveData",
 "language": "GDScript",
 "path": "res://scripts/resources/SaveData.gd"
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "MarketTrend": "",
 "Options": "",
 "Order": "",
+"Producer": "",
 "SaveData": ""
 }
 
