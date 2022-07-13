@@ -31,7 +31,6 @@ var generate_random_orders = false
 func _ready():
 	load_main_orders_to_dict()
 	load_random_orders_to_dict()
-	
 
 # Get the main order data and load all orders into a dictionary
 func load_main_orders_to_dict():

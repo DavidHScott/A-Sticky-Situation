@@ -57,7 +57,7 @@ func _ready():
 	
 	current_day = SaveAndLoad.save_data.current_day
 	
-	PlayerVariables.name = SaveAndLoad.save_data.player_name
+	PlayerVariables.username = SaveAndLoad.save_data.player_name
 	PlayerVariables.money = SaveAndLoad.save_data.money
 	PlayerVariables.inventory_size = SaveAndLoad.save_data.inventory_size
 	

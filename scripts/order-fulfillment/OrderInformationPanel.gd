@@ -43,7 +43,9 @@ func render_selected_order(order_slot):
 	$ScrollGrid/ItemInformation/From/DistributerName.text = selected_order.distributer
 	
 	# Description
-	$ScrollGrid/ItemInformation/OrderDescription.text = selected_order.job_description
+	# Make format the text first
+	var desc = format_text(selected_order.job_description)
+	$ScrollGrid/ItemInformation/OrderDescription.text = desc
 	
 	# Requirements
 	if selected_order.requirements != null:
@@ -134,3 +136,30 @@ func remove_selected_order():
 	selected_order = null
 	
 	render_buttons()
+
+
+func format_text(text:String) -> String:
+	text = text.format({"playername": PlayerVariables.username})
+	
+	var regex = RegEx.new()
+	regex.compile("\\{producer-[a-zA-Z]+\\}")
+	
+	var result = regex.search_all(text)
+	
+	for r in result:
+		# "r" is the item that will be used for text replacement
+		var abr_name = r.get_string().substr(10, 3)
+		var placeholder = r.get_string()
+		placeholder.erase(0, 1)
+		placeholder.erase(placeholder.length() - 1, 1)
+		
+		print(placeholder)
+		
+		# If there is a producer that matches the abbreviated name, then replace the string
+		if ShoppingController.producers_dict.has(abr_name):
+			text = text.format({placeholder: ShoppingController.producers_dict[abr_name].full_name})
+			pass
+		else:
+			continue
+	
+	return text
