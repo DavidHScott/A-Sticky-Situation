@@ -8,7 +8,7 @@ var reputation:int = 0
 var inventory:Array
 var inventory_size:int = 8
 
-var available_warehouse_upgrades = 0
+var available_warehouse_upgrades = 0 setget on_upgrades_changed
 var upcoming_upgrade_costs = [1000, 2000]
 var upgrade_size = 4
 
@@ -131,6 +131,12 @@ func upgrade_inventory():
 	SaveAndLoad.save_data.upcoming_upgrade_costs = upcoming_upgrade_costs
 	SaveAndLoad.save_data.available_warehouse_upgrades = available_warehouse_upgrades
 	SaveAndLoad.save_data.inventory.resize(inventory_size)
+
+
+func on_upgrades_changed(i):
+	available_warehouse_upgrades = i
+	if available_warehouse_upgrades > 0:
+		Global._game().page_notification(Global._game().UI_PAGES.WAREHOUSE)
 
 
 # Warehouse functions

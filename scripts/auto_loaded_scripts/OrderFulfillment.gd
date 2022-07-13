@@ -130,10 +130,14 @@ func end_day():
 	
 	if Global._game().current_page == Global._game().UI_PAGES.ORDERS:
 		# TODO: instead of completely refreshing, call animations to play for new orders
+		
 		order_purgatory.clear()
+		
 		refresh_order_panel_ui()
 	else:
-		order_purgatory.clear()
+		if order_purgatory.size() > 0:
+			order_purgatory.clear()
+			Global._game().page_notification(Global._game().UI_PAGES.ORDERS)
 
 
 # SHOULD BE IN EVENT BUS
@@ -252,6 +256,7 @@ func fulfill_order(order_key:String, item_arr):
 	
 	# Remove the order from the menu
 	emit_signal("remove_order")
+	order_fulfilled(order_key)
 	
 	# unlock any new orders
 	unlock_new_orders(order_key)
@@ -265,7 +270,7 @@ func fulfill_order(order_key:String, item_arr):
 #	being an issue, This can be changed to only be called when loading a save, and saving a cache
 #	of the most recent fulfilled orders, and calling unlock_new_orders with that
 #
-## TODO: Should this runs on a seperate thread?
+## TODO: Should this run on a seperate thread?
 func unlock_any_new_orders():
 	for order_key in previous_quests:
 		unlock_new_orders(order_key)
@@ -310,6 +315,8 @@ func unlock_new_orders(prereq_key):
 			
 			if story_orders_dict[order].wait_day_to_unlock != 0:
 				order_purgatory[order] = story_orders_dict.get(order)
+			else:
+				Global._game().page_notification(Global._game().UI_PAGES.ORDERS)
 
 
 # Loop through an order's prereq keys. returns true or false if the order can be unlocked

@@ -51,3 +51,20 @@ func _input(event):
 		var function = Global._game().esc_button_stack.back()[1]
 		
 		obj.call(function)
+
+
+func page_notification(page):
+	if page == Global._game().UI_PAGES.WAREHOUSE:
+		if !Global._game().current_page == Global._game().UI_PAGES.WAREHOUSE:
+			$LowerThird/Left/WarehouseTab.show_notification()
+	elif page == Global._game().UI_PAGES.ORDERS:
+		if !Global._game().current_page == Global._game().UI_PAGES.ORDERS:
+			$LowerThird/Right/OrdersTab.show_notification()
+	elif page == Global._game().UI_PAGES.BUY_SYRUP:
+		if !Global._game().current_page == Global._game().UI_PAGES.BUY_SYRUP:
+			$LowerThird/Right/BuySyrupTab.show_notification()
+	elif page == Global._game().UI_PAGES.MARKET:
+		if !Global._game().current_page == Global._game().UI_PAGES.MARKET:
+			$LowerThird/Left/MarketTab.show_notification()
+	else:
+		return

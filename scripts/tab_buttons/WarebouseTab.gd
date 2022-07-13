@@ -1,4 +1,4 @@
-extends Button
+extends "res://scripts/tab_buttons/PageTab.gd"
 
 
 func _on_WarebouseTab_pressed():

@@ -189,3 +189,8 @@ func get_syrup_sprite(grade):
 		return very_dark_sprite
 	else:
 		return null
+
+
+# Page should be a UI_PAGES enum var
+func page_notification(page):
+	$GUI/Interface.page_notification(page)
