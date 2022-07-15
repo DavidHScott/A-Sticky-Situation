@@ -76,9 +76,9 @@ func _ready():
 # TODO: It would be better to have this be data-driven instead of hardcoded as it is here
 #
 # Unlock features when a specific order is accepted
-func check_accepted_order(order_key):
+func check_accepted_order(order_slot):
 	# Check the name of the order, and if something needs to happen, do that thing
-	if order_key == "???_0":
+	if order_slot.order_key == "???_0":
 		unlocked_start_day = true
 		unlocked_warehouse = true
 		SaveAndLoad.save_data.unlocked_start_day = unlocked_start_day
@@ -86,6 +86,8 @@ func check_accepted_order(order_key):
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
 		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
+		
+		OrderFulfillment.generate_random_orders = true
 
 
 # (cont.) It would be better to have this be data-driven instead of hardcoded as it is here

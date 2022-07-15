@@ -19,7 +19,7 @@ var previous_quests = []
 signal order_slot_select(slot)
 signal refresh_order_panel()
 signal remove_order()
-signal order_accepted(order_key)
+signal order_accepted(order_slot)
 signal order_fulfilled(order_key)
 
 var thread
@@ -150,8 +150,8 @@ func select_order_slot(slot):
 
 
 # SHOULD BE IN EVENT BUS
-func order_accepted(order_key):
-	emit_signal("order_accepted", order_key)
+func order_accepted(order_slot):
+	emit_signal("order_accepted", order_slot)
 
 
 # SHOULD BE IN EVENT BUS
@@ -264,8 +264,6 @@ func fulfill_order(order_key:String, item_arr):
 	
 	# unlock any new orders
 	unlock_new_orders(order_key)
-	
-	refresh_order_panel_ui()
 
 
 # Go through ALL of the previous orders and unlock any orders. This is called at the end of every day
@@ -340,10 +338,15 @@ func generate_random_order():
 	
 	var new_key = random_orders_dict.keys()[rand_i]
 	
-	# TODO: IF: distributer is set to null, generate a random one
+	# TODO: IF: distributer is set to null, generate a random one?
 	
 	# Add it to the available orders
-	available_quests[new_key] = random_orders_dict[new_key]
+	var new_order = Order.new()
+	new_order.copy_values_from(random_orders_dict[new_key])
+	
+	available_quests[new_key] = new_order
+	
+	Global._game().page_notification(Global._game().UI_PAGES.ORDERS)
 
 
 func refresh_order_panel_ui():

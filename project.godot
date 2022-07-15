@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/resources/Options.gd"
 }, {
-"base": "Object",
+"base": "Resource",
 "class": "Order",
 "language": "GDScript",
 "path": "res://scripts/order-fulfillment/Order.gd"

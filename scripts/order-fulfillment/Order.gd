@@ -1,4 +1,4 @@
-extends Object
+extends Resource
 
 class_name Order
 
@@ -29,6 +29,8 @@ var required_reputation = 0
 var days_since_init = 0
 var days_since_accept = 0
 
+var shown_in_order_page = false
+
 var accepted: bool = false
 var overdue: bool = false
 var completed: bool = false
@@ -37,7 +39,7 @@ var expired: bool = false
 
 func _init(order_title:String = "Placeholder",
 		order_distributer:String = "Name", order_desc:String = "Lorem Ipsum...",
-		order_pay:int = 420, require_array = [null], timelimit: int = 0,
+		order_pay:int = 420, require_array = null, timelimit: int = 0,
 		deadline: int = 0, prereq = null, wait = 0, reward_rep = 0, required_rep = 0):
 	title = order_title
 	distributer = order_distributer
@@ -54,6 +56,19 @@ func _init(order_title:String = "Placeholder",
 
 func set_items(item_array: Array):
 	requirements = item_array
+
+
+func copy_values_from(from_order):
+	title = from_order.title
+	distributer = from_order.distributer
+	job_description = from_order.job_description
+	pay = from_order.pay
+	requirements = from_order.requirements
+	accept_timelimit = from_order.accept_timelimit
+	fulfill_timelimit = from_order.fulfill_timelimit
+	prereq_keys = from_order.prereq_keys
+	wait_day_to_unlock = from_order.wait_day_to_unlock
+
 
 func new_day():
 	if !overdue:

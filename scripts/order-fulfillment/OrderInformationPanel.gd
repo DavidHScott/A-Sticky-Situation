@@ -10,7 +10,7 @@ signal open_popup(order, item_arr)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	OrderFulfillment.connect("order_slot_select", self, "render_selected_order")
+	OrderFulfillment.connect("order_slot_select", self, "select_order_slot")
 	OrderFulfillment.connect("remove_order", self, "remove_selected_order")
 	
 	# Deactivate all the buttons until something gets selected
@@ -29,11 +29,21 @@ func clear_panel():
 	# The rest can just be disabled
 	$ScrollGrid/ItemInformation.visible = false
 
-func render_selected_order(order_slot):
+
+func select_order_slot(order_slot):
+	if selected_order_slot != null:
+		selected_order_slot.selected = false
+	
+	order_slot.selected = true
+	
 	selected_order_slot = order_slot
 	selected_order_key = order_slot.order_key
 	selected_order = order_slot.order
 	
+	render_selected_order(order_slot)
+
+
+func render_selected_order(order_slot):
 	# Clear the panel
 	clear_panel()
 	$ScrollGrid/ItemInformation.visible = true
@@ -115,9 +125,8 @@ func _on_AcceptButton_pressed():
 	
 	# Set the order to accepted & put the slot into the acceptedOrders container
 	selected_order.accept_order()
-	selected_order_slot.accept_order()
 	
-	OrderFulfillment.order_accepted(selected_order_key)
+	OrderFulfillment.order_accepted(selected_order_slot)
 	
 	if selected_order.requirements == null:
 		OrderFulfillment.fulfill_order(selected_order_key, null)
@@ -152,8 +161,6 @@ func format_text(text:String) -> String:
 		var placeholder = r.get_string()
 		placeholder.erase(0, 1)
 		placeholder.erase(placeholder.length() - 1, 1)
-		
-		print(placeholder)
 		
 		# If there is a producer that matches the abbreviated name, then replace the string
 		if ShoppingController.producers_dict.has(abr_name):
