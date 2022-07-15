@@ -7,7 +7,7 @@
             "MinQuality": 0,
             "MaxQuality": 100
         },
-        "PricingHabits": 3
+        "PricingHabits": 2
     },
     "OOH": {
         "FullName": "Another Placeholder",
@@ -17,6 +17,6 @@
             "MinQuality": 50,
             "MaxQuality": 55
         },
-        "PricingHabits": 3
+        "PricingHabits": 2
     }
 }

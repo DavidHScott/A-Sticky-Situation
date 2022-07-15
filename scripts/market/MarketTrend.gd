@@ -17,7 +17,7 @@ export var upper_delta = 0.05
 export var lower_delta = 0.05
 
 # Current price assumes 100/100 quality
-export var current_base_price = 1000
+export var current_base_price = 800
 export var price_history:Array
 
 export var day = 0
@@ -41,11 +41,11 @@ func randomize_trend():
 	trend_start_price = current_base_price
 	match current_trend:
 		trends.UPWARDS:
-			trend_target_price = (trend_start_price * rng.randf_range(1.3, 2)) as int
+			trend_target_price = (trend_start_price * rng.randf_range(1.2, 1.5)) as int
 		trends.STABLE:
 			trend_target_price = (trend_start_price * rng.randf_range(0.05, 1.05)) as int
 		trends.DOWNWARDS:
-			trend_target_price = (trend_start_price * rng.randf_range(0.2, 0.7)) as int
+			trend_target_price = (trend_start_price * rng.randf_range(0.1, 0.4)) as int
 	
 	day = 0
 
@@ -65,7 +65,7 @@ func clear_trend():
 	upper_delta = 0.05
 	lower_delta = 0.05
 	
-	current_base_price = 1000
+	current_base_price = 800
 	price_history.clear()
 	
 	day = 0

@@ -19,12 +19,12 @@ export(int) var maximum_quality = 100
 
 # Slightly changes the price of goods
 #
-# 1 - Undercharges by a lot
-# 2 - Undercharges a little
-# 3 - Keeps with the market
-# 4 - Overcharges a little
-# 5 - Overcharges by a lot
-export(int) var price_habits = 3
+# 0 - Undercharges by a lot
+# 1 - Undercharges a little
+# 2 - Keeps with the market
+# 3 - Overcharges a little
+# 4 - Overcharges by a lot
+export(int) var price_habits = 0
 
 
 # If a quest or event currenly demands it, there can be required items forced onto the market
@@ -35,7 +35,7 @@ export(bool) var important_goods = false
 export(Array) var important_goods_restrictions
 
 
-func _init(_abr_name = "ABR", _full_name = "Name", _active = false, _price_habits = 3, _allow_grades = [], _min_qual = 0, _max_qual = 100):
+func _init(_abr_name = "ABR", _full_name = "Name", _active = false, _price_habits = 0, _allow_grades = [], _min_qual = 0, _max_qual = 100):
 	abr_name = _abr_name
 	full_name = _full_name
 	active = _active

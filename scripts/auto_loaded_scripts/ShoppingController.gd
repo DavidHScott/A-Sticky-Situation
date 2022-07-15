@@ -4,6 +4,8 @@ var shop = []
 
 var producers_dict = { }
 
+var habit_percentages = [0.8, 0.9, 1, 1.1, 1.2]
+
 var shop_generation_timer
 
 var selected_item_index = null
@@ -119,16 +121,8 @@ func generate_shop_item():
 	new_item.set_quality(rand)
 	
 	# Generate the buy price
-	# TODO: make it based on producer, quality, and current market value
-	#	The "average" price of a 10 gallon barrel of syrup should START at ~$800
-	#	Low quality goods generally drop in price sharply
-	#	Some producers will sell for slightly higher and some sell for lower
-	#	And market value adjusts whatevers left
-	#
-	#	Most likely this will be calculated as a percentage (e.g. 1.0 * qual * prod * market)
-	#	And then the actual price is calculated from that
-	rand = (randi() % 1601) + 100
-	new_item.set_buy_price(rand)
+	var buy_price = generate_buy_price(new_item)
+	new_item.set_buy_price(buy_price)
 	
 	# Set shop quantity
 	# TODO: Set this based on date and market value?
@@ -188,9 +182,8 @@ func insert_items_into_shop(items_arr:Array):
 		rand = (randi() % int(21 - item.quantity)) + item.quantity
 		new_item.set_quantity(rand)
 		
-		# TODO: Same as above, this need to be calculated properly. Maybe put this in its own function?
-		rand = (randi() % 1601) + 100
-		new_item.set_buy_price(rand)
+		var buy_price = generate_buy_price(new_item)
+		new_item.set_buy_price(buy_price)
 		
 		shop.append(new_item)
 	
@@ -236,3 +229,48 @@ func sell_shop_item(quantity_sold):
 		emit_signal("shop_slot_select", selected_item_index)
 	
 	SaveAndLoad.save_current_game()
+
+
+func generate_buy_price(item:Item):
+	var percent_modifier
+	
+	# I basically played around on WolframAlpha for a little while and came up with this.
+	#	It's not amazing, and I'll probably change it at some point, but it has the general vibe
+	# 	I'm going for
+	var x = item.quality / 100
+	
+	if x < 0.7:
+		percent_modifier = pow(x, 1.6)
+	if x >= 0.7:
+		percent_modifier = x + 0.1
+	
+	# Round the numbers to make it a bit nicer to use
+	if percent_modifier > 1.0:
+		percent_modifier = 1.0
+	elif percent_modifier < 0.15:
+		percent_modifier = 0.15
+	
+	# Take the above. How much will the producer over/under-charge for it?
+	var producer:Producer = producers_dict[item.producer]
+	percent_modifier *= habit_percentages[producer.price_habits]
+	
+	# Get the current market price for the relavent grade
+	var market_price
+	
+	if item.grade == Global._game().GOLDEN:
+		market_price = Market.golden_trend.current_base_price
+	elif item.grade == Global._game().AMBER:
+		market_price = Market.amber_trend.current_base_price
+	elif item.grade == Global._game().DARK:
+		market_price = Market.dark_trend.current_base_price
+	elif item.grade == Global._game().VERY_DARK:
+		market_price = Market.verydark_trend.current_base_price
+	else:
+		market_price = 800
+		print("ShoppingController::Error: Tried to generate buy price for an item with an undefined grade.")
+	
+	# And put it all together :D
+	var buy_price = market_price * percent_modifier
+	buy_price = int(round(buy_price))
+	
+	return buy_price

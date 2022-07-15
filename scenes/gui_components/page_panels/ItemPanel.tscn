@@ -62,15 +62,14 @@ margin_right = 286.0
 margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="ItemInformation/Producer"]
-margin_right = 136.0
+margin_right = 68.0
 margin_bottom = 28.0
-size_flags_horizontal = 3
 theme = ExtResource( 1 )
 text = "PROD:"
 uppercase = true
 
 [node name="Variable" type="Label" parent="ItemInformation/Producer"]
-margin_left = 140.0
+margin_left = 72.0
 margin_right = 286.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -78,6 +77,7 @@ theme = ExtResource( 1 )
 text = "Sugar Shack"
 align = 2
 valign = 1
+clip_text = true
 
 [node name="Quality" type="HBoxContainer" parent="ItemInformation"]
 margin_top = 64.0
