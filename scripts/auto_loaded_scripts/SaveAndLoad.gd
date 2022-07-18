@@ -156,6 +156,7 @@ func clear_save_game():
 	save_data.inventory.resize(save_data.inventory_size)
 	save_data.available_warehouse_upgrades = 0
 	save_data.upcoming_upgrade_costs = [1000, 2000]
+	save_data.beat_game = false
 	
 	save_data.unlocked_warehouse = false
 	save_data.unlocked_market = false

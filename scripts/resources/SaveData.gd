@@ -16,7 +16,8 @@ export var reputation = 0
 export var inventory_size = 0
 export var inventory:Array
 
-# TODO: Implement warehouse upgrades
+export var beat_game = false
+
 export var available_warehouse_upgrades = 0
 export var upcoming_upgrade_costs = [1000, 2000]
 

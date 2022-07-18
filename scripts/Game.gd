@@ -91,6 +91,13 @@ func check_accepted_order(order_slot):
 		$GUI/Interface/LowerThird/WarehouseTab.visible = true
 		
 		OrderFulfillment.generate_random_orders = true
+	elif order_slot.order_key == "???_3":
+		# Lock the save, fade out the scene, and go to main menu
+		SaveAndLoad.save_data.beat_game = true
+		SaveAndLoad.save_current_game()
+		$FadePanel/AnimationPlayer.play("fade_to_black", -1, 0.5)
+		
+		Global.exit_game()
 
 
 # (cont.) It would be better to have this be data-driven instead of hardcoded as it is here
@@ -101,6 +108,18 @@ func check_fulfilled_order(order_key):
 		# Unlock random orders
 		OrderFulfillment.generate_random_orders = true
 		SaveAndLoad.save_data.generate_random_orders = true
+	elif order_key == "???_2":
+		# Remove all orders other than ???_3
+		for order_key in OrderFulfillment.available_quests.keys():
+			if order_key == "???_3":
+				continue
+			
+			OrderFulfillment.available_quests.erase(order_key)
+		
+		# Close all UI except for Orders
+		slide_out_ui()
+		
+		# TODO: Play sound effects and fade out all music
 
 
 func interface_anim():
@@ -125,6 +144,30 @@ func interface_anim():
 	
 	$GUI/Interface/LowerThird/OrdersTab.visible = true
 	yield($GUI/Interface/LowerThird/OrdersTab/Tween, "tween_completed")
+
+
+func slide_out_ui():
+	$GUI/Interface/UpperThird/PauseButton.disabled = true
+	$GUI/Interface/LowerThird/WarehouseTab.disabled = true
+	$GUI/Interface/LowerThird/MarketTab.disabled = true
+	$GUI/Interface/LowerThird/StartDayTab.disabled = true
+	$GUI/Interface/LowerThird/BuySyrupTab.disabled = true
+	
+	if $GUI/Interface/LowerThird/BuySyrupTab.visible == true:
+		$GUI/Interface/LowerThird/BuySyrupTab/Tween.slide_down()
+		yield($GUI/Interface/LowerThird/BuySyrupTab/Tween, "tween_completed")
+	
+	$GUI/Interface/LowerThird/StartDayTab.visible = true
+	yield($GUI/Interface/LowerThird/StartDayTab/Tween, "tween_completed")
+	
+	$GUI/Interface/LowerThird/MarketTab.visible = true
+	yield($GUI/Interface/LowerThird/MarketTab/Tween, "tween_completed")
+	
+	$GUI/Interface/LowerThird/WarehouseTab.visible = true
+	yield($GUI/Interface/LowerThird/WarehouseTab/Tween, "tween_completed")
+	
+	$GUI/Interface/UpperThird.visible = true
+	yield($GUI/Interface/UpperThird/Tween, "tween_completed")
 
 
 # Screen switcher
