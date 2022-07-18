@@ -38,6 +38,7 @@ var current_day = 0
 
 var unlocked_start_day = false
 var unlocked_warehouse = false
+var unlocked_market = false
 
 var esc_button_stack = []
 
@@ -69,8 +70,9 @@ func _ready():
 	# Unlock features
 	unlocked_start_day = SaveAndLoad.save_data.unlocked_start_day
 	unlocked_warehouse = SaveAndLoad.save_data.unlocked_warehouse
+	unlocked_market = SaveAndLoad.save_data.unlocked_market
 	
-	limit_functions()
+	interface_anim()
 
 
 # TODO: It would be better to have this be data-driven instead of hardcoded as it is here
@@ -85,7 +87,7 @@ func check_accepted_order(order_slot):
 		SaveAndLoad.save_data.unlocked_warehouse = unlocked_warehouse
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
-		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
+		$GUI/Interface/LowerThird/WarehouseTab.visible = true
 		
 		OrderFulfillment.generate_random_orders = true
 
@@ -100,12 +102,27 @@ func check_fulfilled_order(order_key):
 		SaveAndLoad.save_data.generate_random_orders = true
 
 
-func limit_functions():
-	if unlocked_start_day:
-		$GUI/Interface/LowerThird/StartDayTab.visible = true
+func interface_anim():
+	# This has no actual purpose atm. This is just here to give it an extra second for funsies
+	$FadePanel.visible = true
+	$FadePanel/AnimationPlayer.play("fade_to_screen")
+	yield($FadePanel/AnimationPlayer, "animation_finished")
+	
+	$GUI/Interface/UpperThird.visible = true
+	yield($GUI/Interface/UpperThird/Tween, "tween_completed")
 	
 	if unlocked_warehouse:
-		$GUI/Interface/LowerThird/Left/WarehouseTab.visible = true
+		$GUI/Interface/LowerThird/WarehouseTab.visible = true
+		yield($GUI/Interface/LowerThird/WarehouseTab/Tween, "tween_completed")
+	if unlocked_market:
+		$GUI/Interface/LowerThird/MarketTab.visible = true
+		yield($GUI/Interface/LowerThird/MarketTab/Tween, "tween_completed")
+	if unlocked_start_day:
+		$GUI/Interface/LowerThird/StartDayTab.visible = true
+		yield($GUI/Interface/LowerThird/StartDayTab/Tween, "tween_completed")
+	
+	$GUI/Interface/LowerThird/OrdersTab.visible = true
+	yield($GUI/Interface/LowerThird/OrdersTab/Tween, "tween_completed")
 
 
 # Screen switcher

@@ -65,6 +65,12 @@ func delete_save():
 
 func _on_PlayButton_pressed():
 	SaveAndLoad.load_save(selected_save_data.filename)
+	
+	$FadePanel.visible = true
+	$FadePanel/AnimationPlayer.play("fade_to_black")
+	yield($FadePanel/AnimationPlayer, "animation_finished")
+	
+	
 	Global.start_game()
 
 

@@ -19,11 +19,11 @@ func refresh_ui():
 	
 	if Global._game().current_game_state == Global._game().GAME_STATE.DOWNTIME:
 		$LowerThird/StartDayTab.visible = true
-		$LowerThird/Right/BuySyrupTab.visible = false
+		$LowerThird/BuySyrupTab.visible = false
 		$LowerThird/TimerPanel.visible = false
 	else:
 		$LowerThird/StartDayTab.visible = false
-		$LowerThird/Right/BuySyrupTab.visible = true
+		$LowerThird/BuySyrupTab.visible = true
 		$LowerThird/TimerPanel.visible = true
 
 
@@ -56,15 +56,15 @@ func _input(event):
 func page_notification(page):
 	if page == Global._game().UI_PAGES.WAREHOUSE:
 		if !Global._game().current_page == Global._game().UI_PAGES.WAREHOUSE:
-			$LowerThird/Left/WarehouseTab.show_notification()
+			$LowerThird/WarehouseTab.show_notification()
 	elif page == Global._game().UI_PAGES.ORDERS:
 		if !Global._game().current_page == Global._game().UI_PAGES.ORDERS:
-			$LowerThird/Right/OrdersTab.show_notification()
+			$LowerThird/OrdersTab.show_notification()
 	elif page == Global._game().UI_PAGES.BUY_SYRUP:
 		if !Global._game().current_page == Global._game().UI_PAGES.BUY_SYRUP:
-			$LowerThird/Right/BuySyrupTab.show_notification()
+			$LowerThird/BuySyrupTab.show_notification()
 	elif page == Global._game().UI_PAGES.MARKET:
 		if !Global._game().current_page == Global._game().UI_PAGES.MARKET:
-			$LowerThird/Left/MarketTab.show_notification()
+			$LowerThird/MarketTab.show_notification()
 	else:
 		return

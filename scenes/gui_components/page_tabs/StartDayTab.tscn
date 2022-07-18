@@ -3,6 +3,8 @@
 [ext_resource path="res://scenes/gui_components/page_tabs/PageTab.tscn" type="PackedScene" id=1]
 
 [node name="StartDayTab" instance=ExtResource( 1 )]
+margin_bottom = 70.0
+rect_min_size = Vector2( 150, 70 )
 
 [node name="Label" parent="." index="0"]
 text = "start day"

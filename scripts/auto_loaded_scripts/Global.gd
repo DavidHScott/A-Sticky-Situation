@@ -5,6 +5,8 @@ var current_game_version = "0.1"
 
 var currently_in_game = false
 
+var fade_panel
+
 signal slot_select(item)
 signal clear_info_panel()
 
@@ -45,3 +47,6 @@ func _notification(what):
 		
 		get_tree().quit()
 
+
+func fade_in_scene():
+	pass

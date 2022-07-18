@@ -156,6 +156,10 @@ func clear_save_game():
 	save_data.available_warehouse_upgrades = 0
 	save_data.upcoming_upgrade_costs = [1000, 2000]
 	
+	save_data.unlocked_warehouse = false
+	save_data.unlocked_market = false
+	save_data.unlocked_start_day = false
+	
 	# Global data
 	save_data.current_day = 0
 	

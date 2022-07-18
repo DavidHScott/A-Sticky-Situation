@@ -37,3 +37,4 @@ export var verydark_trend_filename = ""
 
 export var unlocked_start_day = false
 export var unlocked_warehouse = false
+export var unlocked_market = false

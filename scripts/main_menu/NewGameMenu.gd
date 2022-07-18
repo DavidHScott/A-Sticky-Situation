@@ -15,4 +15,8 @@ func _on_Button_pressed():
 	
 	var save_file = SaveAndLoad.create_new_save(username)
 	
+	$FadePanel.visible = true
+	$FadePanel/AnimationPlayer.play("fade_to_black")
+	yield($FadePanel/AnimationPlayer, "animation_finished")
+	
 	Global.start_game()
