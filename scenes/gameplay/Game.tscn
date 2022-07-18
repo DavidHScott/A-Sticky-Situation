@@ -188,6 +188,7 @@ script = ExtResource( 5 )
 [node name="PausePopupMenu" parent="GUI/Interface" instance=ExtResource( 20 )]
 
 [node name="FadePanel" parent="." instance=ExtResource( 22 )]
+mouse_filter = 0
 
 [connection signal="visibility_changed" from="GUI/Interface/UpperThird" to="GUI/Interface/UpperThird" method="_on_UpperThird_visibility_changed"]
 [connection signal="pressed" from="GUI/Interface/UpperThird/PauseButton" to="GUI/Interface" method="_on_PauseButton_pressed"]

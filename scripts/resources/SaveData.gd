@@ -12,6 +12,7 @@ export var last_modified = {
 # Player Variables
 export var player_name = ""
 export var money = 0
+export var reputation = 0
 export var inventory_size = 0
 export var inventory:Array
 

@@ -12,6 +12,8 @@ func _ready():
 		
 		$FadePanel/AnimationPlayer.play("fade_to_screen", -1, 0.5)
 		Global.should_fade_to_main = false
+		yield($FadePanel/AnimationPlayer, "animation_finished")
+		$FadePanel.visible = false
 	else:
 		$FadePanel.visible = false
 		pass

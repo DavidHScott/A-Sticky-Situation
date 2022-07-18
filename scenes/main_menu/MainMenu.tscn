@@ -139,6 +139,7 @@ custom_fonts/font = ExtResource( 8 )
 text = "Version"
 
 [node name="FadePanel" parent="MainMenu" instance=ExtResource( 9 )]
+mouse_filter = 0
 
 [connection signal="mouse_exited" from="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/NewGameButton" to="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/NewGameButton" method="_on_MenuButton_mouse_exited"]
 [connection signal="mouse_exited" from="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/LoadGameButton" to="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/LoadGameButton" method="_on_MenuButton_mouse_exited"]

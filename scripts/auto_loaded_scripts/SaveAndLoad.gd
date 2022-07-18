@@ -150,6 +150,7 @@ func clear_save_game():
 	# Player data
 	save_data.player_name = ""
 	save_data.money = initial_money
+	save_data.reputation = 0
 	save_data.inventory_size = initial_inventory_size
 	save_data.inventory.clear()
 	save_data.inventory.resize(save_data.inventory_size)

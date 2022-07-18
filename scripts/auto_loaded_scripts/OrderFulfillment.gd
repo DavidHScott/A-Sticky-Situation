@@ -246,6 +246,7 @@ func fulfill_order(order_key:String, item_arr):
 		# Check if the player should have pay penalty
 		if !available_quests[order_key].overdue:
 			PlayerVariables.increment_players_money(available_quests[order_key].pay)
+			PlayerVariables.reputation += available_quests[order_key].reward_reputation
 		else:
 			PlayerVariables.increment_players_money(available_quests[order_key].overdue_pay)
 	

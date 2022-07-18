@@ -60,6 +60,7 @@ func _ready():
 	
 	PlayerVariables.username = SaveAndLoad.save_data.player_name
 	PlayerVariables.money = SaveAndLoad.save_data.money
+	PlayerVariables.reputation = SaveAndLoad.save_data.reputation
 	PlayerVariables.inventory_size = SaveAndLoad.save_data.inventory_size
 	
 	PlayerVariables.available_warehouse_upgrades = SaveAndLoad.save_data.available_warehouse_upgrades
@@ -107,6 +108,7 @@ func interface_anim():
 	$FadePanel.visible = true
 	$FadePanel/AnimationPlayer.play("fade_to_screen")
 	yield($FadePanel/AnimationPlayer, "animation_finished")
+	$FadePanel.visible = false
 	
 	$GUI/Interface/UpperThird.visible = true
 	yield($GUI/Interface/UpperThird/Tween, "tween_completed")
