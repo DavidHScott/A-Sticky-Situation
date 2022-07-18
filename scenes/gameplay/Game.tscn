@@ -148,7 +148,7 @@ texture_hover = ExtResource( 21 )
 
 [node name="Counters" type="HBoxContainer" parent="GUI/Interface/UpperThird"]
 margin_left = 68.0
-margin_right = 896.0
+margin_right = 1280.0
 margin_bottom = 64.0
 grow_horizontal = 0
 size_flags_horizontal = 3
@@ -156,13 +156,13 @@ custom_constants/separation = -2
 alignment = 2
 
 [node name="DayCounter" parent="GUI/Interface/UpperThird/Counters" instance=ExtResource( 12 )]
-margin_left = 550.0
-margin_right = 650.0
+margin_left = 934.0
+margin_right = 1034.0
 margin_bottom = 64.0
 
 [node name="MoneyCounter" parent="GUI/Interface/UpperThird/Counters" instance=ExtResource( 18 )]
-margin_left = 648.0
-margin_right = 828.0
+margin_left = 1032.0
+margin_right = 1212.0
 margin_bottom = 64.0
 
 [node name="PausePopupMenu" parent="GUI/Interface" instance=ExtResource( 20 )]

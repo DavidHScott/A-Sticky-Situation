@@ -25,24 +25,24 @@ margin_right = -64.0
 margin_bottom = -40.0
 
 [node name="OptionsMargin" type="MarginContainer" parent="OptionsMenu/MarginContainer"]
-margin_right = 896.0
-margin_bottom = 510.0
-custom_constants/margin_right = 90
+margin_right = 1152.0
+margin_bottom = 630.0
+custom_constants/margin_right = 200
 custom_constants/margin_top = 85
-custom_constants/margin_left = 90
+custom_constants/margin_left = 200
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/MarginContainer/OptionsMargin"]
-margin_left = 90.0
+margin_left = 200.0
 margin_top = 85.0
-margin_right = 806.0
-margin_bottom = 510.0
+margin_right = 952.0
+margin_bottom = 630.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -10
 
 [node name="OptionCategories" type="VBoxContainer" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer"]
 margin_right = 100.0
-margin_bottom = 425.0
+margin_bottom = 545.0
 rect_min_size = Vector2( 100, 0 )
 
 [node name="AudioOptionsTab" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer/OptionCategories" instance=ExtResource( 2 )]
@@ -58,8 +58,8 @@ option_page = 1
 
 [node name="OptionsContainer" type="MarginContainer" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer"]
 margin_left = 90.0
-margin_right = 716.0
-margin_bottom = 425.0
+margin_right = 752.0
+margin_bottom = 545.0
 rect_min_size = Vector2( 600, 0 )
 size_flags_horizontal = 3
 custom_constants/margin_right = 10
@@ -69,8 +69,8 @@ custom_constants/margin_left = 10
 [node name="NinePatchRect" type="NinePatchRect" parent="OptionsMenu/MarginContainer/OptionsMargin/HBoxContainer/OptionsContainer"]
 margin_left = 10.0
 margin_top = -24.0
-margin_right = 616.0
-margin_bottom = 425.0
+margin_right = 652.0
+margin_bottom = 545.0
 texture = ExtResource( 5 )
 patch_margin_left = 25
 patch_margin_top = 25
