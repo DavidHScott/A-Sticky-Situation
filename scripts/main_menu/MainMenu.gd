@@ -7,6 +7,14 @@ func _ready():
 	
 	for button in $AspectRatioContainer/VBoxContainer/MarginContainer/Menu.get_children():
 		button.connect("pressed", self, "_on_menu_button_pressed", [button.selected_button_type, button.scene_path_to_load])
+	
+	if Global.should_fade_to_main:
+		
+		$FadePanel/AnimationPlayer.play("fade_to_screen", -1, 0.5)
+		Global.should_fade_to_main = false
+	else:
+		$FadePanel.visible = false
+		pass
 
 
 func quit_game():
@@ -24,3 +32,7 @@ func _on_menu_button_pressed(button_type, scene_to_load):
 		load_scene(scene_to_load)
 	elif button_type == 1:
 		quit_game()
+
+
+func fade_in():
+	pass

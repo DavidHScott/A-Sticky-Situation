@@ -4,6 +4,7 @@ extends Node2D
 var current_game_version = "0.1"
 
 var currently_in_game = false
+var should_fade_to_main = true
 
 var fade_panel
 
@@ -38,6 +39,7 @@ func exit_game():
 	
 	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")
 
+
 #### Handle notifications
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -46,7 +48,3 @@ func _notification(what):
 			SaveAndLoad.save_current_game()
 		
 		get_tree().quit()
-
-
-func fade_in_scene():
-	pass

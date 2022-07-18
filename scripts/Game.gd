@@ -44,9 +44,9 @@ var esc_button_stack = []
 
 
 func _ready():
-	# TODO: Load producers from file first
-	ShoppingController.load_producers_from_data()
+	Global.should_fade_to_main = true
 	
+	ShoppingController.load_producers_from_data()
 	
 	# Connect signals
 	OrderFulfillment.connect("order_accepted", self, "check_accepted_order")

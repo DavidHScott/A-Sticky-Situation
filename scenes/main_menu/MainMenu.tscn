@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/main_menu/buttons/ExitButton.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui_themes/fonts/title_dynamicfont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://scenes/main_menu/buttons/LoadGameButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui_themes/fonts/small_dynamicfont.tres" type="DynamicFont" id=8]
+[ext_resource path="res://scenes/gui_components/FadePanel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -36,14 +37,8 @@ anchor_bottom = 1.0
 color = Color( 1, 0.65098, 0.65098, 1 )
 
 [node name="MainMenu" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -448.0
-margin_top = -300.0
-margin_right = 448.0
-margin_bottom = 300.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 1 )
 script = ExtResource( 5 )
 
@@ -142,6 +137,8 @@ margin_right = 876.0
 margin_bottom = 738.0
 custom_fonts/font = ExtResource( 8 )
 text = "Version"
+
+[node name="FadePanel" parent="MainMenu" instance=ExtResource( 9 )]
 
 [connection signal="mouse_exited" from="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/NewGameButton" to="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/NewGameButton" method="_on_MenuButton_mouse_exited"]
 [connection signal="mouse_exited" from="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/LoadGameButton" to="MainMenu/AspectRatioContainer/VBoxContainer/MarginContainer/Menu/LoadGameButton" method="_on_MenuButton_mouse_exited"]
