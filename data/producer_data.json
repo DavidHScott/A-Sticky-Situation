@@ -1,22 +1,372 @@
 {
-    "PLH": {
-        "FullName": "Placeholder",
+    "SRO": {
+        "FullName": "Syrro",
         "Active": true,
         "Restrictions": {
             "Grades": [],
-            "MinQuality": 0,
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "SHS": {
+        "FullName": "Shady Sips",
+        "Active": false,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 80,
             "MaxQuality": 100
         },
         "PricingHabits": 2
     },
-    "OOH": {
-        "FullName": "Another Placeholder",
+    "DRD": {
+        "FullName": "DripDrops",
         "Active": true,
         "Restrictions": {
             "Grades": [],
-            "MinQuality": 50,
-            "MaxQuality": 55
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "SSG": {
+        "FullName": "Sugar Signal",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 4
+    },
+    "SPC": {
+        "FullName": "SpicySyrup",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 25,
+            "MaxQuality": 50
+        },
+        "PricingHabits": 3
+    },
+    "YGS": {
+        "FullName": "yumyGooodSyrup",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 15,
+            "MaxQuality": 30
+        },
+        "PricingHabits": 4
+    },
+    "TMC": {
+        "FullName": "The Maple Cabin",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 0
+    },
+    "SOR": {
+        "FullName": "Sugar Orchard",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "PRM": {
+        "FullName": "Purely Maple",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 4
+    },
+    "OLF": {
+        "FullName": "OnlyFarms",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 90,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "BLF": {
+        "FullName": "Blanco Farms",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "BHE": {
+        "FullName": "Blanche",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 0
+    },
+    "MSR": {
+        "FullName": "MapleSour",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
         },
         "PricingHabits": 2
+    },
+    "SHV": {
+        "FullName": "Sugar Harvest",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "ALT": {
+        "FullName": "AlmondTree",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 12,
+            "MaxQuality": 20
+        },
+        "PricingHabits": 4
+    },
+    "SLF": {
+        "FullName": "SugarLoaf",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "BAU": {
+        "FullName": "Sugar Bureau",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 85,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "GOO": {
+        "FullName": "Maple Goose",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 0
+    },
+    "HAM": {
+        "FullName": "Honey and Maple",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "NUR": {
+        "FullName": "Nourish Syrup",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "MBR": {
+        "FullName": "Maple Barrel",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "AME": {
+        "FullName": "Amélie",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
+    },
+    "CML": {
+        "FullName": "Camille",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "ELR": {
+        "FullName": "Éleanore",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 0
+    },
+    "FRQ": {
+        "FullName": "Frédérique",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "REN": {
+        "FullName": "Renée",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "ADR": {
+        "FullName": "Adrián",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "ANT": {
+        "FullName": "Antoine",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "BEN": {
+        "FullName": "Benjamin",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 4
+    },
+    "CHR": {
+        "FullName": "Charles",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "EML": {
+        "FullName": "Emile",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "FLX": {
+        "FullName": "Felix",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 0
+    },
+    "AXS": {
+        "FullName": "Alexis",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 4
+    },
+    "BOT": {
+        "FullName": "Benoit",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 2
+    },
+    "CED": {
+        "FullName": "Cédric",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 1
+    },
+    "DOM": {
+        "FullName": "Domenique",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 4
+    },
+    "CHN": {
+        "FullName": "Chandell",
+        "Active": true,
+        "Restrictions": {
+            "Grades": [],
+            "MinQuality": 70,
+            "MaxQuality": 100
+        },
+        "PricingHabits": 3
     }
 }
