@@ -4,7 +4,7 @@ class_name Order
 
 # Order attributes
 var title: String
-var distributer: String
+var distributer
 var job_description: String
 var pay: int
 var overdue_pay: int
@@ -38,7 +38,7 @@ var completed: bool = false
 var expired: bool = false
 
 func _init(order_title:String = "Placeholder",
-		order_distributer:String = "Name", order_desc:String = "Lorem Ipsum...",
+		order_distributer = "Name", order_desc:String = "Lorem Ipsum...",
 		order_pay:int = 420, require_array = null, timelimit: int = 0,
 		deadline: int = 0, prereq = null, wait = 0, reward_rep = 0, required_rep = 0):
 	title = order_title

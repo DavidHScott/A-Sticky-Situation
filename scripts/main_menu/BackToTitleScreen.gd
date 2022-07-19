@@ -3,7 +3,7 @@ extends Button
 
 func _on_BackToTitleScreen_pressed():
 	AudioController.play_clip("button_click")
-	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")
+	Global.exit_game()
 
 
 func _on_BackToTitleScreen_mouse_entered():

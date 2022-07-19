@@ -89,15 +89,20 @@ func check_accepted_order(order_slot):
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
 		$GUI/Interface/LowerThird/WarehouseTab.visible = true
+	elif order_slot.order_key == "maxime_1":
+		# First warehouse upgrade
+		PlayerVariables.available_warehouse_upgrades += 1
+	elif order_slot.order_key == "wyman_3":
+		# Unlock market tab
+		unlocked_market = true
+		SaveAndLoad.save_data.unlocked_market = true
 		
-		OrderFulfillment.generate_random_orders = true
-	elif order_slot.order_key == "???_3":
-		# Lock the save, fade out the scene, and go to main menu
-		SaveAndLoad.save_data.beat_game = true
 		SaveAndLoad.save_current_game()
-		$FadePanel/AnimationPlayer.play("fade_to_black", -1, 0.5)
-		
-		Global.exit_game()
+	elif order_slot.order_key == "maxime_3":
+		# Second warehouse upgrade
+		PlayerVariables.available_warehouse_upgrades += 1
+	elif order_slot.order_key == "???_3":
+		end_game_sequence()
 
 
 # (cont.) It would be better to have this be data-driven instead of hardcoded as it is here
@@ -109,6 +114,9 @@ func check_fulfilled_order(order_key):
 		OrderFulfillment.generate_random_orders = true
 		SaveAndLoad.save_data.generate_random_orders = true
 	elif order_key == "???_2":
+		OrderFulfillment.generate_random_orders = false
+		SaveAndLoad.save_data.generate_random_orders = false
+		
 		# Remove all orders other than ???_3
 		for order_key in OrderFulfillment.available_quests.keys():
 			if order_key == "???_3":
@@ -168,6 +176,24 @@ func slide_out_ui():
 	
 	$GUI/Interface/UpperThird.visible = true
 	yield($GUI/Interface/UpperThird/Tween, "tween_completed")
+
+
+func end_game_sequence():
+	SaveAndLoad.save_data.beat_game = true
+	SaveAndLoad.save_current_game()
+	
+	$FadePanel.visible = true
+	$FadePanel/AnimationPlayer.play("fade_to_black", -1, 0.4)
+	yield($FadePanel/AnimationPlayer, "animation_finished")
+	
+	# Stop playing the sound effects
+	
+	# Open a menu
+	$GUI/EndGamePanel.visible = true
+	
+	$FadePanel/AnimationPlayer.play("fade_to_screen", -1, 1)
+	yield($FadePanel/AnimationPlayer, "animation_finished")
+	$FadePanel.visible = false
 
 
 # Screen switcher

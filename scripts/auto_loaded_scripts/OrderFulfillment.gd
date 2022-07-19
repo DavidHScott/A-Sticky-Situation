@@ -3,6 +3,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+var distributor_names = ["GroceryWorks", "Green Basket", "AweMarket", "Yonder Gourmet", "SnackTown", "PantryGoods", "Home Grown", "Lizzy's Home Grown", "Farmstok", "Hooligan Foods"]
+
 var story_orders_dict = { }
 
 var random_orders_dict = { }
@@ -344,6 +346,10 @@ func generate_random_order():
 	# Add it to the available orders
 	var new_order = Order.new()
 	new_order.copy_values_from(random_orders_dict[new_key])
+	
+	if new_order.distributer == null:
+		var distributor_key = rng.randi_range(0, distributor_names.size() - 1)
+		new_order.distributer = distributor_names[distributor_key]
 	
 	available_quests[new_key] = new_order
 	

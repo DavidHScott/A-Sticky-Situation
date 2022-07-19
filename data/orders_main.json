@@ -3,7 +3,7 @@
         "Title": "Getting Started",
         "Distributer": "???",
         "Description": "Well hello there {playername}.\n\nSo you want to get into the syrup black market, eh? You wanna stick it to the FPAQ? Or maybe you just want to capitalize on the conflict. Not my business either way I suppose.\n\nAnyway, I'll be helping you get set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. I want you to send me a shipment of just one 10 gallon barrel of syrup to prove that you can figure this out. The requirements for shipment are attached to this message.",
-        "Payment": 500,
+        "Payment": 800,
         "RepReward": 0,
         "Requirements": [{
             "ItemGrade": "Amber",
@@ -20,7 +20,7 @@
     "???_1": {
     	"Title": "Shipment Received",
      	"Distributer": "???",
-	"Description": "So it seems you’re not as hopeless as the last guy, huh. The shipment has arrived safely.\n\nI'm going to refer you to an old client of mine. They’ll pay decent, and I’ve heard that they have a need for a new middleman after their last source got locked up. You’ll start getting requests from them in a little while.",
+	"Description": "So it seems you’re not as hopeless as the last guy, huh. The shipment has arrived safely.\n\nI'm going to refer you to an old client of mine. They’ll pay decent, and I’ve heard that they have a need for a new middleman after their last source got locked up. You’ll start getting orders from them in a little while.",
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,
@@ -34,7 +34,7 @@
     	"Title": "Your First Job",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI am contacting you as a representative of Wyman incorporated. A mutual associate of ours told me that you were interested in getting into the syrup industry. As it happens, we have a vacancy for a contract worker at this time.\n\nTo get to acclimated to the job, we have a low stakes contract for you. The details of this job are attached below. Keep in mind that our company has a reputation for selling high quality products, so please ensure that everything you send has a quality score of 85 or above.\n\nWe highly anticipate the fulfillment of this order.\n\nRegards",
-	"Payment": 0,
+	"Payment": 1800,
     "RepReward": 0,
 	"Requirements": [{
             "ItemGrade": "Golden",
@@ -43,7 +43,7 @@
             "ItemQuantity": 1
         },
         {
-            "ItemGrade": "Very Dark",
+            "ItemGrade": "V. Dark",
             "ItemProducer": null,
             "ItemQuality": 85,
             "ItemQuantity": 1
@@ -58,7 +58,7 @@
     	"Title": "Quick Restock",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI hope that your payment was satisfactory. The barrels have arrived safely at the store that needed them, and their quality seems to be up to our standards. With all that in mind, we would like to take you on as a semi-permanent contractor. We unfortunately do not provide any benefits to contractors because of the circumstances and legality of the services we are paying you for.\n\nBut as it happens already have a new job for you. Golden grade syrup is plentiful this time of year, so we’d like to stock up on a few extra barrels of it now.\n\nWe’re going to need it within the next 5 business days. If you are late, your payment will be penalized.\n\nRegards",
-	"Payment": 0,
+	"Payment": 2400,
     "RepReward": 0,
 	"Requirements": [{
             "ItemGrade": "Golden",
@@ -76,7 +76,7 @@
     	"Title": "Urgent!",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nThere has been surge of demand for syrup at one of our locations, and we are unfortunately understocked. We expect the syrup to be shipped within the next three days.\n\nRegards.",
-	"Payment": 0,
+	"Payment": 4300,
     "RepReward": 1,
 	"Requirements": [{
             "ItemGrade": "Golden",
@@ -91,7 +91,7 @@
             "ItemQuantity": 2
         },
         {
-            "ItemGrade": "Very Dark",
+            "ItemGrade": "V. Dark",
             "ItemProducer": null,
             "ItemQuality": 80,
             "ItemQuantity": 1
@@ -105,24 +105,30 @@
     "maxime_0": {
     	"Title": "A New Partnership",
      	"Distributer": "Maxime",
-	"Description": "Well hello there stranger!\n\nYou seem to be making a name for yourself around these parts, so I thought I’d introduce myself. I’m simply known as Maxime. I own a small business in Québec, and I’ve been a part of this endeavour since the black market went online. In that time I’ve learned that having plenty of connections and friends in high places is the key to success in this type of business.\n\nAs it happens, I’m suddenly in need of some new connections, and you seem to be going places. At the moment, I’m getting a little low on a few key products in my store. I need one barrel of each syrup grade from {max_producer}. They’re old friends of mine, so I like to showcase their product.\n\nThanks in advance bud!",
-	"Payment": 500,
+	"Description": "Well hello there stranger!\n\nYou seem to be making a name for yourself around these parts, so I thought I’d introduce myself. I’m simply known as Maxime. I own a small business in Québec, and I’ve been a part of this endeavour since the black market went online. In that time I’ve learned that having plenty of connections and friends in high places is the key to success in this type of business.\n\nAs it happens, I’m suddenly in need of some new connections, and you seem to be going places. At the moment, I’m getting a little low on a few key products in my store. I need one barrel of each syrup grade from {producer_HAM}. They’re old friends of mine, so I like to showcase their product.\n\nThanks in advance bud!",
+	"Payment": 3500,
     "RepReward": 1,
 	"Requirements": [{
             "ItemGrade": "Golden",
-            "ItemProducer": null,
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "Amber",
+            "ItemProducer": "HAM",
+            "ItemQuality": 70,
+            "ItemQuantity": 1
         },
         {
             "ItemGrade": "Dark",
-            "ItemProducer": null,
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuantity": 1
         },
         {
-            "ItemGrade": "Very Dark",
-            "ItemProducer": null,
+            "ItemGrade": "V. Dark",
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
             "ItemQuantity": 1
         }],
@@ -135,31 +141,25 @@
     "maxime_1": {
     	"Title": "Trouble Brewing",
      	"Distributer": "Maxime",
-	"Description": "Hello again {playername}!\n\nI don’t suppose you’ve heard the news eh? There’s some stirring from the FPAQ that they’ve got a lead on some of the producers that are selling here on the black market. They sure don’t take kindly to people holding out on them, and they seem to have only gotten more persistent after that little heist incident.\n\nAnyhow, my order is attached below as always. Nothing too out of the ordinary.\n\nKeep yourself safe, bud.",
-	"Payment": 500,
+	"Description": "Hello again {playername}!\n\nI don’t suppose you’ve heard the news eh? There’s some stirring from the FPAQ that they’ve got a lead on some of the producers that are selling here on the black market. They sure don’t take kindly to people holding out on them, and they seem to have only gotten more persistent after that little heist incident.\n\nIt might be worth looking into getting a hold of some extra secure storage locations if you haven't already. I'll send for information about some good candidates.\n\nAnyhow, my order is attached below as always. Nothing too out of the ordinary.\n\nKeep yourself safe, bud.",
+	"Payment": 4300,
     "RepReward": 1,
 	"Requirements": [{
             "ItemGrade": "Golden",
-            "ItemProducer": null,
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
             "ItemQuantity": 2
         },
         {
-            "ItemGrade": "Dark",
-            "ItemProducer": null,
+            "ItemGrade": "V. Dark",
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 2
-        },
-        {
-            "ItemGrade": "Very Dark",
-            "ItemProducer": null,
-            "ItemQuality": 70,
-            "ItemQuantity": 1
+            "ItemQuantity": 3
         }],
-    "RequiredRep": 3,
+    "RequiredRep": 8,
 	"Prereq": ["maxime_0"],
 	"AcceptTimelimit": 0,
-	"Deadline": 3,
+	"Deadline": 4,
 	"wait_day_to_unlock": 1
     },
     "wyman_3": {
@@ -171,22 +171,22 @@
 	"Requirements": [{
             "ItemGrade": "Golden",
             "ItemProducer": null,
-            "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuality": 85,
+            "ItemQuantity": 1
         },
         {
             "ItemGrade": "Dark",
             "ItemProducer": null,
-            "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuality": 85,
+            "ItemQuantity": 3
         },
         {
-            "ItemGrade": "Very Dark",
+            "ItemGrade": "V. Dark",
             "ItemProducer": null,
-            "ItemQuality": 70,
+            "ItemQuality": 85,
             "ItemQuantity": 1
         }],
-    "RequiredRep": 3,
+    "RequiredRep": 12,
 	"Prereq": ["maxime_1"],
 	"AcceptTimelimit": 0,
 	"Deadline": 3,
@@ -195,71 +195,77 @@
     "wyman_4": {
     	"Title": "Be Vigilant",
      	"Distributer": "Wyman Inc.",
-	"Description": "Hello {playername},\n\nI hope you have been well.\n\nFirstly I would like to make you aware that a source of ours has confirmed that the syrup producer {investigated_producer} is currently under police investigation. I would highly suggest that you refrain from purchasing merchandise from them for the foreseeable future. The FPAQ does not look fondly on the sale of syrup behind their back\n\nOtherwise, our order is attached as expected.\n\nRegards.",
-	"Payment": 500,
+	"Description": "Hello {playername},\n\nI hope you have been well.\n\nFirstly I would like to make you aware that a source of ours has confirmed that the syrup producer {producer_NUR} is currently under police investigation. I would highly suggest that you refrain from purchasing merchandise from them for the foreseeable future. The FPAQ does not look fondly on the sale of syrup behind their back\n\nOtherwise, our order is attached as expected.\n\nRegards.",
+	"Payment": 5100,
     "RepReward": 1,
 	"Requirements": [{
             "ItemGrade": "Golden",
             "ItemProducer": null,
-            "ItemQuality": 70,
+            "ItemQuality": 85,
+            "ItemQuantity": 2
+        },
+        {
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": 85,
             "ItemQuantity": 2
         },
         {
             "ItemGrade": "Dark",
             "ItemProducer": null,
-            "ItemQuality": 70,
+            "ItemQuality": 85,
             "ItemQuantity": 2
-        },
-        {
-            "ItemGrade": "Very Dark",
-            "ItemProducer": null,
-            "ItemQuality": 70,
-            "ItemQuantity": 1
         }],
-    "RequiredRep": 3,
+    "RequiredRep": 17,
 	"Prereq": ["wyman_3"],
 	"AcceptTimelimit": 0,
-	"Deadline": 3,
+	"Deadline": 4,
 	"wait_day_to_unlock": 1
     },
     "maxime_2": {
     	"Title": "Wealth Hoarding",
      	"Distributer": "Maxime",
 	"Description": "Hey there bud!\n\nWith all the news going around about a potential crackdown on the market, I figured it would be a smart idea to stock up on some extra syrup to help weather the storm so to speak. I apologize in advance for the fairly large order this time around, but I’ll make sure the pay is good.\n\nBest wishes.",
-	"Payment": 500,
+	"Payment": 10000,
     "RepReward": 1,
 	"Requirements": [{
             "ItemGrade": "Golden",
-            "ItemProducer": null,
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuantity": 3
+        },
+        {
+            "ItemGrade": "Amber",
+            "ItemProducer": "HAM",
+            "ItemQuality": 70,
+            "ItemQuantity": 3
         },
         {
             "ItemGrade": "Dark",
-            "ItemProducer": null,
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 2
+            "ItemQuantity": 3
         },
         {
-            "ItemGrade": "Very Dark",
-            "ItemProducer": null,
+            "ItemGrade": "V. Dark",
+            "ItemProducer": "HAM",
             "ItemQuality": 70,
-            "ItemQuantity": 1
+            "ItemQuantity": 3
         }],
-    "RequiredRep": 3,
+    "RequiredRep": 22,
 	"Prereq": ["wyman_4"],
 	"AcceptTimelimit": 0,
-	"Deadline": 3,
+	"Deadline": 6,
 	"wait_day_to_unlock": 1
     },
     "maxime_3": {
     	"Title": "Harsh Reality",
      	"Distributer": "Maxime",
-	"Description": "Hey, bud.\n\nUnfortunately, {max_producer} seems to be under investigation, and the last shipment you sent my way got stopped by the cops. I don’t want you to feel down on yourself, these things just happen sometimes. Although, with all that’s going on, you may want to obtain some extra storage space, just as some additional redundancy. If you’d like, I can call in a few favours and try and get you a good deal.\n\nAnywho, I’m going to try to keep a low profile until all of this blows over. It’s been good working with you, {playername}.\n\nKeep yourself out of trouble.",
-	"Payment": 500,
-    "RepReward": 1,
+	"Description": "Hey, bud.\n\nUnfortunately, {producer_HAM} seems to be under investigation, and the last shipment you sent my way got stopped by the cops. I don’t want you to feel down on yourself, these things just happen sometimes. Although, with all that’s going on, you may want to obtain some extra storage space, just as some additional redundancy. If you’d like, I can call in a few favours and try and get you a good deal.\n\nAnywho, I’m going to try to keep a low profile until all of this blows over. It’s been good working with you, {playername}.\n\nKeep yourself out of trouble.",
+	"Payment": 0,
+    "RepReward": 0,
 	"Requirements": null,
-    "RequiredRep": 3,
+    "RequiredRep": 23,
 	"Prereq": ["maxime_2"],
 	"AcceptTimelimit": 0,
 	"Deadline": 0,
@@ -272,7 +278,7 @@
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,
-    "RequiredRep": 3,
+    "RequiredRep": 26,
 	"Prereq": ["maxime_3"],
 	"AcceptTimelimit": 0,
 	"Deadline": 0,
@@ -281,20 +287,43 @@
     "???_2": {
     	"Title": "Discretion is Advised",
      	"Distributer": "???",
-	"Description": "Well hello there, {playername}.\n\nSo it looks like you’ve made something of a name for yourself. Since you’ve proven yourself to be reliable, I have a favour to ask of you.\n\na buddy of mine is under investigation for withholding merchandise from the cartel, and the two of us have been working to smuggle his unaccounted-for product out of his sugar shack. Now, we need a middleman to help get the stuff away without incident. This, of course, is where you come in.\n\nWe’ve created a burner account on the market, so over the next few days, you’ll start to see items appear from a supplier using the name {???_burner}. Send it over once you’ve rounded it all up, and I’ll make sure you’re rewarded heavily.\n\nI know this is a big ask, even in an industry that’s already not particularly legal, but rest assured, we are taking your safety into account. As long as you send everything over in a timely manner, I’ll make sure everything goes precisely to plan.\n\nMany thanks.",
-	"Payment": 0,
-    "RepReward": 0,
-	"Requirements": null,
+	"Description": "Well hello there, {playername}.\n\nSo it looks like you’ve made something of a name for yourself. Since you’ve proven yourself to be reliable, I have a favour to ask of you.\n\na buddy of mine is under investigation for withholding merchandise from the cartel, and the two of us have been working to smuggle his unaccounted-for product out of his sugar shack. Now, we need a middleman to help get the stuff away without incident. This, of course, is where you come in.\n\nWe’ve created a burner account on the market, so over the next few days, you’ll start to see items appear from a supplier using the name {producer_SHS}. Send it over once you’ve rounded it all up, and I’ll make sure you’re rewarded heavily.\n\nI know this is a big ask, even in an industry that’s already not particularly legal, but rest assured, we are taking your safety into account. As long as you send everything over in a timely manner, I’ll make sure everything goes precisely to plan.\n\nMany thanks.",
+	"Payment": 12000,
+    "RepReward": 30,
+	"Requirements": [{
+        "ItemGrade": "Golden",
+        "ItemProducer": "SHS",
+        "ItemQuality": 70,
+        "ItemQuantity": 4
+    },
+    {
+        "ItemGrade": "Amber",
+        "ItemProducer": "SHS",
+        "ItemQuality": 70,
+        "ItemQuantity": 6
+    },
+    {
+        "ItemGrade": "Dark",
+        "ItemProducer": "SHS",
+        "ItemQuality": 70,
+        "ItemQuantity": 2
+    },
+    {
+        "ItemGrade": "V. Dark",
+        "ItemProducer": "SHS",
+        "ItemQuality": 70,
+        "ItemQuantity": 2
+    }],
     "RequiredRep": 0,
 	"Prereq": ["wyman_5"],
 	"AcceptTimelimit": 0,
-	"Deadline": 0,
+	"Deadline": 10,
 	"wait_day_to_unlock": 0
     },
     "???_3": {
     	"Title": "Goodbye?",
      	"Distributer": "???",
-	"Description": "Ah, thank you very much, {playername}.\n\nWell, this is where we’ll be parting ways for a long time I suppose. Your help did a lot to get me and my buddy out of trouble. Although, someone does need to deal with the fallout from this whole operation, and I thought you’d be a great fit for that job too! Please accept my apologies for not filling you in on this part of the plan earlier, but I have a feeling you wouldn’t have been quite as receptive if you had known.\n\nIf you’re smart and you’ve laundered your money properly, you might be able to use your profits to help with bail, but otherwise, well, good luck.",
+	"Description": "Ah, thank you very much, {playername}.\n\nWell, this is where we’ll be parting ways for a long time I suppose. Your help did a lot to get me and my buddy out of trouble. Although, someone does need to deal with the fallout from this whole operation, and I thought you’d be a great fit for that job too! Please accept my apologies for not filling you in on this part of the plan earlier, but I have a feeling you wouldn’t have been quite as receptive if you had known. I guess you can consider this me getting back my initial investment.",
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,

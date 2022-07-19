@@ -1,18 +1,279 @@
 {
-    "random_0": {
+    "friendly_0": {
         "Title": "RANDOM ORDER",
-        "Distributer": "RANDOM DIST",
-        "Description": "Eyyy description",
-        "Payment": 1000,
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 4500,
+        "RepReward": 1,
+        "Requirements": [
+        {
+            "ItemGrade": "Dark",
+            "ItemProducer": "TMC",
+            "ItemQuality": 80,
+            "ItemQuantity": 2
+        },
+        {
+            "ItemGrade": "V. Dark",
+            "ItemProducer": "TMC",
+            "ItemQuality": 80,
+            "ItemQuantity": 2
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "friendly_1": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 80,
+            "ItemQuantity": 3
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "friendly_2": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3700,
         "RepReward": 1,
         "Requirements": [{
             "ItemGrade": "Amber",
             "ItemProducer": null,
-            "ItemQuality": null,
+            "ItemQuality": 80,
+            "ItemQuantity": 3
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "friendly_3": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 80,
+            "ItemQuantity": 3
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "friendly_4": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "V. Dark",
+            "ItemProducer": null,
+            "ItemQuality": 80,
+            "ItemQuantity": 3
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "rude_0": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 4000,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 2
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "rude_1": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3500,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": "BLF",
+            "ItemQuality": 75,
+            "ItemQuantity": 4
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "rude_2": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3500,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 4
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "rude_3": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3500,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 4
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "rude_4": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 3500,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "V. Dark",
+            "ItemProducer": null,
+            "ItemQuality": 75,
+            "ItemQuantity": 4
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "professional_0": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 5500,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 2
+        },
+        {
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 1
+        },
+        {
+            "ItemGrade": "V. Dark",
+            "ItemProducer": null,
+            "ItemQuality": 90,
             "ItemQuantity": 1
         }],
         "RequiredRep": 0,
         "Prereq": null,
         "Deadline": 0
+    },
+    "professional_1": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 4700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Golden",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 5
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "professional_2": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 4700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Amber",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 5
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "professional_3": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "DESCRIPTION",
+        "Payment": 4700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "Dark",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 5
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 0
+    },
+    "professional_4": {
+        "Title": "RANDOM ORDER",
+        "Distributer": null,
+        "Description": "Dear {playername},\n\nI am contacting you to request a shipment of all Very Dark grade syrup. Our exact requirements are attached to this email. I hope we can come to a mutually beneficial arrangement.\n\nKind regards.",
+        "Payment": 4700,
+        "RepReward": 1,
+        "Requirements": [{
+            "ItemGrade": "V. Dark",
+            "ItemProducer": null,
+            "ItemQuality": 90,
+            "ItemQuantity": 5
+        }],
+        "RequiredRep": 0,
+        "Prereq": null,
+        "Deadline": 3
     }
 }

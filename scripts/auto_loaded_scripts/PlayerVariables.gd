@@ -135,6 +135,8 @@ func upgrade_inventory():
 
 func on_upgrades_changed(i):
 	available_warehouse_upgrades = i
+	SaveAndLoad.save_data.available_warehouse_upgrades = i
+	
 	if available_warehouse_upgrades > 0:
 		Global._game().page_notification(Global._game().UI_PAGES.WAREHOUSE)
 
