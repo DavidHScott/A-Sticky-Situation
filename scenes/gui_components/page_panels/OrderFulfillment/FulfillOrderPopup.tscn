@@ -28,16 +28,22 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
 
-[node name="PopupLayout" type="VBoxContainer" parent="NinePatchRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
+margin_left = 4.0
 margin_top = 3.0
-margin_right = -5.0
-margin_bottom = -3.0
+margin_right = -4.0
+margin_bottom = -5.0
 
-[node name="Header" type="Label" parent="NinePatchRect/PopupLayout"]
-margin_right = 370.0
+[node name="PopupLayout" type="VBoxContainer" parent="NinePatchRect/ScrollContainer"]
+margin_right = 372.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Header" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout"]
+margin_right = 372.0
 margin_bottom = 14.0
 text = "FULFILL ORDER?"
 align = 1
@@ -45,59 +51,59 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="NinePatchRect/PopupLayout"]
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 18.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 22.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YouShipLabel" type="Label" parent="NinePatchRect/PopupLayout"]
+[node name="YouShipLabel" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 26.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 40.0
 text = "You'll ship:"
 
-[node name="ShippedItems" type="VBoxContainer" parent="NinePatchRect/PopupLayout"]
+[node name="ShippedItems" type="VBoxContainer" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 44.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 44.0
 
-[node name="HSeparator2" type="HSeparator" parent="NinePatchRect/PopupLayout"]
+[node name="HSeparator2" type="HSeparator" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 48.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 52.0
 
-[node name="PayHeader" type="Label" parent="NinePatchRect/PopupLayout"]
+[node name="PayHeader" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 56.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 70.0
 text = "Order pay:"
 
-[node name="PaymentLabel" type="Label" parent="NinePatchRect/PopupLayout"]
+[node name="PaymentLabel" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 74.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 88.0
 text = "$150500"
 align = 1
 
-[node name="HSeparator3" type="HSeparator" parent="NinePatchRect/PopupLayout"]
+[node name="HSeparator3" type="HSeparator" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 92.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 96.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/PopupLayout"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/ScrollContainer/PopupLayout"]
 margin_top = 100.0
-margin_right = 370.0
+margin_right = 372.0
 margin_bottom = 120.0
 
-[node name="ConfirmButton" type="Button" parent="NinePatchRect/PopupLayout/HBoxContainer"]
-margin_right = 183.0
+[node name="ConfirmButton" type="Button" parent="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer"]
+margin_right = 184.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="NinePatchRect/PopupLayout/HBoxContainer/ConfirmButton"]
+[node name="Label" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer/ConfirmButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "CONFIRM"
@@ -107,13 +113,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CancelButton" type="Button" parent="NinePatchRect/PopupLayout/HBoxContainer"]
-margin_left = 187.0
-margin_right = 370.0
+[node name="CancelButton" type="Button" parent="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer"]
+margin_left = 188.0
+margin_right = 372.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="NinePatchRect/PopupLayout/HBoxContainer/CancelButton"]
+[node name="Label" type="Label" parent="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer/CancelButton"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "CANCEL"
@@ -123,5 +129,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="NinePatchRect/PopupLayout/HBoxContainer/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
-[connection signal="pressed" from="NinePatchRect/PopupLayout/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer/ConfirmButton" to="." method="_on_ConfirmButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/ScrollContainer/PopupLayout/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

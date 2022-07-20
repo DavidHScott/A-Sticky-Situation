@@ -8,6 +8,7 @@ var selected_order:Order = null
 
 signal open_popup(order, item_arr)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	OrderFulfillment.connect("order_slot_select", self, "select_order_slot")
@@ -19,6 +20,7 @@ func _ready():
 	
 	# Clear the panel
 	clear_panel()
+
 
 func clear_panel():
 	# Remove the requirements. They're added programmatically

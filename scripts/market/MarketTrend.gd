@@ -13,8 +13,8 @@ export var current_trend = trends.STABLE
 export var trend_start_price:int
 export var trend_target_price:int
 
-export var upper_delta = 0.05
-export var lower_delta = 0.05
+export var upper_delta = 0.03
+export var lower_delta = 0.03
 
 # Current price assumes 100/100 quality
 export var current_base_price = 800

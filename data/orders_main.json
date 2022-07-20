@@ -3,7 +3,7 @@
         "Title": "Getting Started",
         "Distributer": "???",
         "Description": "Well hello there {playername}.\n\nSo you want to get into the syrup black market, eh? You wanna stick it to the FPAQ? Or maybe you just want to capitalize on the conflict. Not my business either way I suppose.\n\nAnyway, I'll be helping you get set up. I’ve wired you some cash to start you off with, and given you access to the marketplace. I want you to send me a shipment of just one 10 gallon barrel of syrup to prove that you can figure this out. The requirements for shipment are attached to this message.",
-        "Payment": 800,
+        "Payment": 900,
         "RepReward": 0,
         "Requirements": [{
             "ItemGrade": "Amber",
@@ -34,7 +34,7 @@
     	"Title": "Your First Job",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI am contacting you as a representative of Wyman incorporated. A mutual associate of ours told me that you were interested in getting into the syrup industry. As it happens, we have a vacancy for a contract worker at this time.\n\nTo get to acclimated to the job, we have a low stakes contract for you. The details of this job are attached below. Keep in mind that our company has a reputation for selling high quality products, so please ensure that everything you send has a quality score of 85 or above.\n\nWe highly anticipate the fulfillment of this order.\n\nRegards",
-	"Payment": 1800,
+	"Payment": 2000,
     "RepReward": 0,
 	"Requirements": [{
             "ItemGrade": "Golden",
@@ -58,7 +58,7 @@
     	"Title": "Quick Restock",
      	"Distributer": "Wyman Inc.",
 	"Description": "Hello {playername},\n\nI hope that your payment was satisfactory. The barrels have arrived safely at the store that needed them, and their quality seems to be up to our standards. With all that in mind, we would like to take you on as a semi-permanent contractor. We unfortunately do not provide any benefits to contractors because of the circumstances and legality of the services we are paying you for.\n\nBut as it happens already have a new job for you. Golden grade syrup is plentiful this time of year, so we’d like to stock up on a few extra barrels of it now.\n\nWe’re going to need it within the next 5 business days. If you are late, your payment will be penalized.\n\nRegards",
-	"Payment": 2400,
+	"Payment": 2500,
     "RepReward": 0,
 	"Requirements": [{
             "ItemGrade": "Golden",

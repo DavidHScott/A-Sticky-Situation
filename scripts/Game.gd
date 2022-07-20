@@ -89,6 +89,12 @@ func check_accepted_order(order_slot):
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
 		$GUI/Interface/LowerThird/WarehouseTab.visible = true
+		
+		
+		unlocked_market = true
+		SaveAndLoad.save_data.unlocked_market = unlocked_market
+		$GUI/Interface/LowerThird/MarketTab.visible = true
+		
 	elif order_slot.order_key == "maxime_1":
 		# First warehouse upgrade
 		PlayerVariables.available_warehouse_upgrades += 1

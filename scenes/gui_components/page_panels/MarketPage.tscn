@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/market/MarketPage.gd" type="Script" id=1]
 [ext_resource path="res://scripts/market/MarketPrices.gd" type="Script" id=2]
 [ext_resource path="res://assets/UI/panel.png" type="Texture" id=3]
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/cursors/cursor_slot.png" type="Texture" id=5]
 [ext_resource path="res://scripts/market/MarketCategoryTab.gd" type="Script" id=6]
 [ext_resource path="res://scripts/market/MarketPanel.gd" type="Script" id=7]
 [ext_resource path="res://scripts/market/TimelineButton.gd" type="Script" id=8]
@@ -16,6 +17,7 @@ margin_left = 1.0
 margin_top = -2.0
 margin_right = 1.0
 margin_bottom = -2.0
+theme = ExtResource( 4 )
 script = ExtResource( 1 )
 
 [node name="MarketPanel" type="NinePatchRect" parent="."]
@@ -39,14 +41,11 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tabs" type="VBoxContainer" parent="MarketPanel"]
-margin_left = -109.0
+margin_left = -115.0
 margin_top = 10.0
-margin_right = 1.0
+margin_right = -5.0
 margin_bottom = 226.0
 rect_min_size = Vector2( 110, 100 )
 __meta__ = {
@@ -74,9 +73,20 @@ theme = ExtResource( 4 )
 text = "AMBER"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="FocusCursor" type="NinePatchRect" parent="MarketPanel/Tabs/AmberTab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="GoldenTab" type="NinePatchRect" parent="MarketPanel/Tabs"]
 margin_top = 54.0
@@ -102,6 +112,20 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FocusCursor" type="NinePatchRect" parent="MarketPanel/Tabs/GoldenTab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="DarkTab" type="NinePatchRect" parent="MarketPanel/Tabs"]
 margin_top = 108.0
@@ -129,6 +153,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FocusCursor" type="NinePatchRect" parent="MarketPanel/Tabs/DarkTab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
 [node name="VerydarkTab" type="NinePatchRect" parent="MarketPanel/Tabs"]
 margin_top = 162.0
 margin_right = 110.0
@@ -155,11 +193,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FocusCursor" type="NinePatchRect" parent="MarketPanel/Tabs/VerydarkTab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
 [node name="TimelineButton" type="NinePatchRect" parent="MarketPanel"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = -125.0
+margin_left = -130.0
 margin_top = -75.0
+margin_right = -5.0
 margin_bottom = -10.0
 rect_min_size = Vector2( 125, 50 )
 mouse_filter = 0
@@ -181,3 +234,48 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FocusCursor" type="NinePatchRect" parent="MarketPanel/TimelineButton"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = 1.0
+texture = ExtResource( 5 )
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarketPanel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -64.0
+margin_right = -3.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PredictedTrendLabel" type="Label" parent="MarketPanel/HBoxContainer"]
+margin_right = 112.0
+margin_bottom = 59.0
+text = "Predicted
+Trend:"
+align = 1
+valign = 1
+
+[node name="PredictedTrendVar" type="Label" parent="MarketPanel/HBoxContainer"]
+margin_left = 116.0
+margin_top = 15.0
+margin_right = 221.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+text = "STABLE"
+align = 1
+valign = 1

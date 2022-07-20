@@ -4,7 +4,7 @@ extends NinePatchRect
 func _ready():
 	PlayerVariables.connect("money_was_updated", self, "update_money_counter")
 	
-	$Label.text = "$ " + str(PlayerVariables.get_players_money())
+	$Label.text = "$ " + str(PlayerVariables.money)
 
 func update_money_counter(new_total):
 	$Label.text = "$ " + str(new_total)

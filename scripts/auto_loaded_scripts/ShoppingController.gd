@@ -202,7 +202,7 @@ func sell_shop_item(quantity_sold):
 		return
 	
 	# Make sure player has enough money
-	if PlayerVariables.get_players_money() < new_item.get_buy_price() * quantity_sold:
+	if PlayerVariables.money < new_item.get_buy_price() * quantity_sold:
 		return
 	
 	# Remove money from player

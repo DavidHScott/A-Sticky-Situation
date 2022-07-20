@@ -2,7 +2,7 @@ extends Node2D
 
 var username:String
 
-var money:int = 5000
+var money:int = 0 setget set_players_money
 var reputation:int = 0
 
 var inventory:Array
@@ -16,9 +16,6 @@ signal money_was_updated(new_total)
 signal slot_select(item)
 signal clear_info_panel()
 
-
-func get_players_money():
-	return money
 
 func set_players_money(new_money):
 	money = new_money
@@ -42,7 +39,7 @@ func update_inventory_size(new_size:int):
 
 func inc_inventory_size(new_size:int):
 	inventory_size += new_size
-	# TODO: If the new size is smaller, remove some items
+	# TODO: If the new size is smaller, remove some items?
 	
 	SaveAndLoad.save_data.inventory_size = inventory_size
 

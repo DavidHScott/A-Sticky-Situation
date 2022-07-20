@@ -7,7 +7,7 @@ var shipped_items_ui
 var popup_ship_item_scene = preload("res://scenes/gui_components/page_panels/OrderFulfillment/PopupShipItem.tscn")
 
 func _ready():	
-	shipped_items_ui = $NinePatchRect/PopupLayout/ShippedItems
+	shipped_items_ui = $NinePatchRect/ScrollContainer/PopupLayout/ShippedItems
 
 func populate(order_key:String, item_arr:Array):
 	Global._game().esc_button_stack.append([self, "_on_CancelButton_pressed"])
@@ -27,9 +27,9 @@ func populate(order_key:String, item_arr:Array):
 		
 		shipped_items_ui.add_child(new_scene)
 	
-	$NinePatchRect/PopupLayout/PaymentLabel.text = "$" + str(selected_order.pay)
+	$NinePatchRect/ScrollContainer/PopupLayout/PaymentLabel.text = "$" + str(selected_order.pay)
 	
-	self.rect_min_size = Vector2(0, $NinePatchRect/PopupLayout.rect_size.y)
+	self.rect_min_size = Vector2(0, $NinePatchRect/ScrollContainer/PopupLayout.rect_size.y)
 
 func _on_ConfirmButton_pressed():
 	OrderFulfillment.fulfill_order(selected_order_key, item_array)

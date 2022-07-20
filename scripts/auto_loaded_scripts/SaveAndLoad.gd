@@ -1,6 +1,6 @@
 extends Node
 
-var initial_money = 5000
+var initial_money = 2000
 var initial_inventory_size = 8
 var initial_order = "???_0"
 

@@ -121,11 +121,12 @@ func start_day():
 
 
 func end_day():
-	for order in available_quests.values():
-		order.new_day()
+	for order in available_quests.keys():
+		available_quests[order].new_day()
 		
-		if order.expired:
-			order.queue_free()
+		if available_quests[order].expired:
+			
+			available_quests[order].queue_free()
 	
 	unlock_any_new_orders()
 	
@@ -186,7 +187,8 @@ func can_be_fulfilled(order_key:String):
 		
 		for inv_item in inventory_copy:
 			# Make sure we're looking at an acutal item and not a null
-			# space in the inventory array
+			# 	space in the inventory array. There shouldn't be any,
+			# 	but I don't trust my own code lol
 			if inv_item == null:
 				continue
 			
@@ -196,6 +198,9 @@ func can_be_fulfilled(order_key:String):
 			
 			# Compare quality
 			if (req_item.quality != null) and (req_item.quality > inv_item.quality):
+				continue
+			
+			if (req_item.producer != null) and (req_item.producer == inv_item.producer):
 				continue
 			
 			# If the program gets to this point, the item is required.
@@ -211,7 +216,7 @@ func can_be_fulfilled(order_key:String):
 				found = true
 				item_arr.append(new_item)
 				
-				break
+				continue
 			elif found_amount + new_item.quantity > req_item.quantity:
 				found = true
 				
@@ -223,11 +228,11 @@ func can_be_fulfilled(order_key:String):
 				# Leave the item with the leftover quantity
 				inv_item.quantity = n
 				
-				break
+				continue
 			
 			found_amount += new_item.quantity
 			item_arr.append(new_item)
-			inventory_copy.erase(inv_item)
+			inv_item = null
 		
 		# if made to this point, the item has either been found, or all items have been checked
 		if found == false:
