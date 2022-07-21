@@ -191,7 +191,7 @@ script = ExtResource( 5 )
 [node name="EndGamePanel" parent="GUI" instance=ExtResource( 24 )]
 visible = false
 
-[node name="FadePanel" parent="." instance=ExtResource( 22 )]
+[node name="FadePanel" parent="GUI" instance=ExtResource( 22 )]
 mouse_filter = 0
 
 [connection signal="visibility_changed" from="GUI/Interface/UpperThird" to="GUI/Interface/UpperThird" method="_on_UpperThird_visibility_changed"]

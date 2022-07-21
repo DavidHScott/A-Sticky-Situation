@@ -88,13 +88,7 @@ func check_accepted_order(order_slot):
 		SaveAndLoad.save_data.unlocked_warehouse = unlocked_warehouse
 		
 		$GUI/Interface/LowerThird/StartDayTab.visible = true
-		$GUI/Interface/LowerThird/WarehouseTab.visible = true
-		
-		
-		unlocked_market = true
-		SaveAndLoad.save_data.unlocked_market = unlocked_market
-		$GUI/Interface/LowerThird/MarketTab.visible = true
-		
+		$GUI/Interface/LowerThird/WarehouseTab.visible = true		
 	elif order_slot.order_key == "maxime_1":
 		# First warehouse upgrade
 		PlayerVariables.available_warehouse_upgrades += 1
@@ -135,13 +129,12 @@ func check_fulfilled_order(order_key):
 		
 		# TODO: Play sound effects and fade out all music
 
-
 func interface_anim():
 	# This has no actual purpose atm. This is just here to give it an extra second for funsies
-	$FadePanel.visible = true
-	$FadePanel/AnimationPlayer.play("fade_to_screen")
-	yield($FadePanel/AnimationPlayer, "animation_finished")
-	$FadePanel.visible = false
+	$GUI/FadePanel.visible = true
+	$GUI/FadePanel/AnimationPlayer.play("fade_to_screen")
+	yield($GUI/FadePanel/AnimationPlayer, "animation_finished")
+	$GUI/FadePanel.visible = false
 	
 	$GUI/Interface/UpperThird.visible = true
 	yield($GUI/Interface/UpperThird/Tween, "tween_completed")
@@ -188,18 +181,20 @@ func end_game_sequence():
 	SaveAndLoad.save_data.beat_game = true
 	SaveAndLoad.save_current_game()
 	
-	$FadePanel.visible = true
-	$FadePanel/AnimationPlayer.play("fade_to_black", -1, 0.4)
-	yield($FadePanel/AnimationPlayer, "animation_finished")
+	$GUI/FadePanel.visible = true
+	$GUI/FadePanel/AnimationPlayer.play("fade_to_black", -1, 0.4)
+	yield($GUI/FadePanel/AnimationPlayer, "animation_finished")
+	
+	$GUI/Interface.visible = false
 	
 	# Stop playing the sound effects
 	
 	# Open a menu
 	$GUI/EndGamePanel.visible = true
 	
-	$FadePanel/AnimationPlayer.play("fade_to_screen", -1, 1)
-	yield($FadePanel/AnimationPlayer, "animation_finished")
-	$FadePanel.visible = false
+	$GUI/FadePanel/AnimationPlayer.play("fade_to_screen", -1, 1)
+	yield($GUI/FadePanel/AnimationPlayer, "animation_finished")
+	$GUI/FadePanel.visible = false
 
 
 # Screen switcher
