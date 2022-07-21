@@ -5,7 +5,6 @@ var initial_inventory_size = 8
 var initial_order = "???_0"
 
 const SAVE_FOLDER = "user://saves"
-const USER_DATA = "user://user_data.json"
 const SAVE_DIR_TEMPLATE = "%s_userdata%s"
 const SAVE_NAME_TEMPLATE = "%s_userdata%s.res"
 
@@ -16,16 +15,26 @@ var options = Options.new()
 
 
 func _ready():
-	var info_file = File.new()
-	if !info_file.file_exists(USER_DATA):
-		first_time_setup()
+	var dir = Directory.new()
+	dir.open("usr://")
 	
+	# Make sure essential files and folders exist
+	#
+	# Check for the options file
 	if ResourceLoader.exists(OPTIONS_FILE):
+		# Load the saved options file
 		options = ResourceLoader.load(OPTIONS_FILE)
+	else:
+		# The options resource has all the boilerplate settings by default, so save it
+		ResourceSaver.save(OPTIONS_FILE, options)
+	
+	# Check for saves directory
+	if !dir.dir_exists(SAVE_FOLDER):
+		dir.make_dir("saves")
+	
 	
 	if options.fullscreen == true:
 		OS.window_fullscreen = true
-
 
 func create_new_save(username:String):
 	# Reset the save_data resource to new game variables
@@ -74,10 +83,6 @@ func create_new_save(username:String):
 	# TODO: Add proper error handling
 	assert(ResourceSaver.save(save_path, save_data) == OK)
 	
-	# Update the save map
-	inc_num_saves(1)
-	add_save_to_arr(filename)
-	
 	return save_data
 
 
@@ -104,43 +109,6 @@ func save_current_game():
 	save_data.last_modified["Year"] = modified_date["year"]
 	
 	ResourceSaver.save(SAVE_FOLDER.plus_file(save_data.filename), save_data)
-
-
-func get_num_saves():
-	var file = File.new()
-	file.open(USER_DATA, File.READ)
-	var json = JSON.parse(file.get_as_text())
-	var data = json.result
-	file.close()
-	
-	return str(data["NumberOfSaves"])
-
-
-func inc_num_saves(i):
-	var file = File.new()
-	file.open(USER_DATA, File.READ_WRITE)
-	
-	var json = JSON.parse(file.get_as_text())
-	var data = json.result
-	data["NumberOfSaves"] += i
-	
-	file.store_string(to_json(data))
-	file.close()
-
-
-func add_save_to_arr(filename:String):
-	var file = File.new()
-	file.open(USER_DATA, File.READ_WRITE)
-	
-	var json = JSON.parse(file.get_as_text())
-	var data = json.result
-	
-	data["SaveNames"].append(filename)
-	
-	file.store_string(to_json(data))
-	
-	file.close()
-
 
 # Clear the save game to the default new game settings
 func clear_save_game():
@@ -180,40 +148,26 @@ func clear_save_game():
 	Market.verydark_trend.clear_trend()
 
 
-func first_time_setup():
-	var boilerplate = {
-		"NumberOfSaves": 0,
-		"SaveNames": [
-			
-		]
-	}
-	
-	# Set up the directory for save data
-	var dir = Directory.new()
-	dir.open("user://")
-	dir.make_dir("saves")
-	
-	var file = File.new()
-	file.open(USER_DATA, File.WRITE)
-	file.store_string(to_json(boilerplate))
-	file.close()
-	
-	ResourceSaver.save(OPTIONS_FILE, options)
-
-
 func get_all_saves_arr():
-	var file = File.new()
-	file.open(USER_DATA, File.READ)
-	var json = JSON.parse(file.get_as_text())
-	var data = json.result
-	file.close()
 	
-	var filename_arr = data["SaveNames"]
+	var dir = Directory.new()
 	var save_data_arr:Array
 	
-	for filename in filename_arr:
-		if ResourceLoader.exists(SAVE_FOLDER.plus_file(filename)):
-			save_data_arr.append(ResourceLoader.load(SAVE_FOLDER.plus_file(filename)))
+	
+	if dir.open(SAVE_FOLDER) == OK:
+		dir.list_dir_begin()
+		
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.begins_with("."):
+				filename = dir.get_next()
+				continue
+			
+			if dir.current_is_dir():
+				filename = filename.plus_file(filename) + ".res"
+				save_data_arr.append(ResourceLoader.load(SAVE_FOLDER.plus_file(filename)))
+				
+				filename = dir.get_next()
 	
 	return save_data_arr
 
@@ -355,8 +309,7 @@ func load_producers_from_file(save:SaveData):
 				
 			res_filename = dir.get_next()
 	else:
-		# Error handling
-		pass
+		return
 
 
 func save_options_to_file():
@@ -369,24 +322,33 @@ func delete_save(save:SaveData):
 		# Delete the directory and file
 		var split_arr = save.filename.split("/")
 		
-		dir.remove(SAVE_FOLDER.plus_file(save.filename))
+		# usr/saves/user_data_dir
+		delete_files_in_dir(SAVE_FOLDER.plus_file(split_arr[0]))
 		dir.remove(SAVE_FOLDER.plus_file(split_arr[0]))
 	else:
 		return
+
+
+# Delete all files in a directory
+func delete_files_in_dir(dir_name:String):
 	
-	# remove it from the user_data.json file
-	var file = File.new()
-	file.open(USER_DATA, File.READ_WRITE)
-	var json = JSON.parse(file.get_as_text())
-	var data = json.result
+	var dir = Directory.new()
 	
-	data["SaveNames"].erase(save.filename)
-	data["NumberOfSaves"] -= 1
-	
-	file.close()
-	
-	dir.remove(USER_DATA)
-	
-	file.open(USER_DATA, file.WRITE)
-	file.store_string(to_json(data))
-	file.close()
+	if dir.open(dir_name) == OK:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		
+		while filename != "":
+			# Don't deal with the annoying stuff
+			if filename.begins_with("."):
+				filename = dir.get_next()
+				continue
+			
+			if dir.current_is_dir():
+				# Call this function recursively to delete files in the current dir
+				delete_files_in_dir(dir_name.plus_file(filename))
+			
+			# Remove the current file
+			dir.remove(dir_name.plus_file(filename))
+			
+			filename = dir.get_next()
