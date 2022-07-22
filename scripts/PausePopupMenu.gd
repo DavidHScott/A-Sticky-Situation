@@ -12,11 +12,7 @@ func _on_OptionsButton_pressed():
 
 
 func _on_TitleButton_pressed():
-	SaveAndLoad.save_current_game()
-	
-	get_tree().paused = false
-	
-	Global.exit_game()
+	Global._game().exit_game()
 
 
 func _on_QuitButton_pressed():

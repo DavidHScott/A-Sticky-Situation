@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/UI/buttons/pause_button.png" type="Texture" id=1]
 [ext_resource path="res://ui_themes/themes/default_theme.tres" type="Theme" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://scenes/gui_components/FadePanel.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/gui_components/game_interface/UpperThird.gd" type="Script" id=23]
 [ext_resource path="res://scenes/gameplay/EndGamePanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://scenes/gameplay/SceneTransitionPanel.tscn" type="PackedScene" id=25]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 17 )
@@ -192,7 +193,11 @@ script = ExtResource( 5 )
 visible = false
 
 [node name="FadePanel" parent="GUI" instance=ExtResource( 22 )]
+visible = false
 mouse_filter = 0
+
+[node name="SceneTransitionPanel" parent="GUI" instance=ExtResource( 25 )]
+visible = false
 
 [connection signal="visibility_changed" from="GUI/Interface/UpperThird" to="GUI/Interface/UpperThird" method="_on_UpperThird_visibility_changed"]
 [connection signal="pressed" from="GUI/Interface/UpperThird/PauseButton" to="GUI/Interface" method="_on_PauseButton_pressed"]

@@ -16,7 +16,7 @@ var options = Options.new()
 
 func _ready():
 	var dir = Directory.new()
-	dir.open("usr://")
+	dir.open("user://")
 	
 	# Make sure essential files and folders exist
 	#
@@ -30,6 +30,7 @@ func _ready():
 	
 	# Check for saves directory
 	if !dir.dir_exists(SAVE_FOLDER):
+		print("Test")
 		dir.make_dir("saves")
 	
 	

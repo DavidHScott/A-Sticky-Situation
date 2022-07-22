@@ -18,6 +18,7 @@ var selected_save_data:SaveData = null
 
 func _ready():
 	$DeleteConfirm.connect("delete_confirmed", self, "delete_save")
+	$MarginContainer/BackToTitleScreen.connect("pressed", self, "exiting_scene")
 	
 	play_button = $MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/PlayButton
 	delete_button = $MarginContainer/SaveSelect/VBoxContainer/HBoxContainer/DeleteButton
@@ -32,6 +33,12 @@ func _ready():
 	# Connect to signals from the slots when they're pressed
 	for node in save_container.get_children():
 		node.connect("slot_selected", self, "slot_select", [node.slot_save_data])
+	
+	
+	$SceneTransitionPanel.visible = true
+	$SceneTransitionPanel/AnimationPlayer.play("transition_to_screen")
+	yield($SceneTransitionPanel/AnimationPlayer, "animation_finished")
+	$SceneTransitionPanel.visible = false
 
 
 func populate_menu():
@@ -66,10 +73,7 @@ func delete_save():
 func _on_PlayButton_pressed():
 	SaveAndLoad.load_save(selected_save_data.filename)
 	
-	$FadePanel.visible = true
-	$FadePanel/AnimationPlayer.play("fade_to_black")
-	yield($FadePanel/AnimationPlayer, "animation_finished")
-	
+	exiting_scene()
 	
 	Global.start_game()
 
@@ -77,3 +81,11 @@ func _on_PlayButton_pressed():
 func _on_DeleteButton_pressed():
 	# Open a popup menu to confirm
 	emit_signal("open_popup", selected_save_data)
+
+
+func exiting_scene():
+	$SceneTransitionPanel.visible = true
+	$SceneTransitionPanel/AnimationPlayer.play("transition_to_black")
+	yield($SceneTransitionPanel/AnimationPlayer, "animation_finished")
+	
+	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")

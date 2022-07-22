@@ -4,7 +4,8 @@ extends Node2D
 var current_game_version = "0.1"
 
 var currently_in_game = false
-var should_fade_to_main = true
+var should_fade_to_main = false
+var startup = true
 
 var fade_panel
 

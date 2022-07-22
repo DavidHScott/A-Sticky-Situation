@@ -19,9 +19,6 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ItemInformation" type="VBoxContainer" parent="."]
 anchor_right = 1.0

@@ -289,3 +289,15 @@ func get_syrup_sprite(grade):
 # Page should be a UI_PAGES enum var
 func page_notification(page):
 	$GUI/Interface.page_notification(page)
+
+
+func exit_game():
+	SaveAndLoad.save_current_game()
+	
+	get_tree().paused = false
+	
+	$GUI/SceneTransitionPanel.visible = true
+	$GUI/SceneTransitionPanel/AnimationPlayer.play("transition_to_black")
+	yield($GUI/SceneTransitionPanel/AnimationPlayer, "animation_finished")
+	
+	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")

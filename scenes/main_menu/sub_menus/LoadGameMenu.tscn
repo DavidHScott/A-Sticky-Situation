@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/UI/ui_panel_2.png" type="Texture" id=5]
 [ext_resource path="res://ui_themes/fonts/small_dynamicfont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://scripts/main_menu/DeleteConfirm.gd" type="Script" id=7]
-[ext_resource path="res://scenes/gui_components/FadePanel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/gameplay/SceneTransitionPanel.tscn" type="PackedScene" id=8]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 follow_viewport_enable = true
@@ -212,7 +212,7 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="FadePanel" parent="LoadGameMenu" instance=ExtResource( 8 )]
+[node name="SceneTransitionPanel" parent="LoadGameMenu" instance=ExtResource( 8 )]
 visible = false
 
 [connection signal="open_popup" from="LoadGameMenu" to="LoadGameMenu/DeleteConfirm" method="_on_LoadGameMenu_open_popup"]

@@ -15,6 +15,11 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="MainPauseMenu" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -120,8 +125,8 @@ margin_right = -64.0
 margin_bottom = -40.0
 
 [node name="OptionsMargin" type="MarginContainer" parent="OptionsMenu/MarginContainer"]
-margin_right = 896.0
-margin_bottom = 510.0
+margin_right = 1152.0
+margin_bottom = 630.0
 custom_constants/margin_right = 90
 custom_constants/margin_top = 85
 custom_constants/margin_left = 90
@@ -129,8 +134,8 @@ custom_constants/margin_left = 90
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/MarginContainer/OptionsMargin"]
 margin_left = 90.0
 margin_top = 85.0
-margin_right = 806.0
-margin_bottom = 510.0
+margin_right = 1062.0
+margin_bottom = 630.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -10

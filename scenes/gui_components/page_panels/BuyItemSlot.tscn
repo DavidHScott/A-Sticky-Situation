@@ -22,10 +22,12 @@ patch_margin_bottom = 25
 script = ExtResource( 5 )
 
 [node name="IconBackground" type="NinePatchRect" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
 margin_left = 5.0
-margin_top = 5.0
+margin_top = -25.0
 margin_right = 55.0
-margin_bottom = 55.0
+margin_bottom = 25.0
 texture = ExtResource( 1 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -33,11 +35,18 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Icon" type="TextureRect" parent="IconBackground"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 21.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 40, 40 )
 mouse_filter = 2
 texture = ExtResource( 2 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }

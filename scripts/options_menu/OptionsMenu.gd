@@ -14,7 +14,16 @@ func _ready():
 	for obj in $MarginContainer/OptionsMargin/HBoxContainer/OptionCategories.get_children():
 		obj.connect("mouse_entered", self, "play_blip")
 	
-	pass # Replace with function body.
+	
+	if Global._game() == null:
+		$MarginContainer/BackToTitleScreen.connect("pressed", self, "exiting_scene")
+		
+		$SceneTransitionPanel.visible = true
+		$SceneTransitionPanel/AnimationPlayer.play("transition_to_screen")
+		yield($SceneTransitionPanel/AnimationPlayer, "animation_finished")
+		$SceneTransitionPanel.visible = false
+	else:
+		$MarginContainer/BackToPauseScreen.connect("pressed", self, "back_to_pause")
 
 
 func open_options_page(source):
@@ -41,3 +50,16 @@ func open_options_page(source):
 
 func play_blip():
 	AudioController.play_clip("menu_blip")
+
+
+func exiting_scene():
+	$SceneTransitionPanel.visible = true
+	$SceneTransitionPanel/AnimationPlayer.play("transition_to_black")
+	yield($SceneTransitionPanel/AnimationPlayer, "animation_finished")
+	
+	get_tree().change_scene("res://scenes/main_menu/MainMenu.tscn")
+
+
+func back_to_pause():
+	self.visible = false
+	pass
