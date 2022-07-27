@@ -8,6 +8,7 @@ var habit_percentages = [0.8, 0.9, 1, 1.1, 1.2]
 
 var shop_generation_timer
 
+# Why is this here???????/
 var selected_item_index = null
 var selected_slot = null
 

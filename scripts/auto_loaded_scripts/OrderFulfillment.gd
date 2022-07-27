@@ -126,7 +126,7 @@ func end_day():
 		
 		if available_quests[order].expired:
 			
-			available_quests[order].queue_free()
+			available_quests.erase(order)
 	
 	unlock_any_new_orders()
 	
@@ -200,7 +200,7 @@ func can_be_fulfilled(order_key:String):
 			if (req_item.quality != null) and (req_item.quality > inv_item.quality):
 				continue
 			
-			if (req_item.producer != null) and (req_item.producer == inv_item.producer):
+			if (req_item.producer != null) and (req_item.producer != inv_item.producer):
 				continue
 			
 			# If the program gets to this point, the item is required.
@@ -254,6 +254,8 @@ func fulfill_order(order_key:String, item_arr):
 		if !available_quests[order_key].overdue:
 			PlayerVariables.increment_players_money(available_quests[order_key].pay)
 			PlayerVariables.reputation += available_quests[order_key].reward_reputation
+			
+			print(PlayerVariables.reputation)
 		else:
 			PlayerVariables.increment_players_money(available_quests[order_key].overdue_pay)
 	
@@ -293,7 +295,6 @@ func unlock_any_new_orders():
 #
 ## TODO: Refactor this maybe? This whole system is a bit of a mess lol
 func unlock_new_orders(prereq_key):
-	
 	for order in story_orders_dict:
 		# Check if order was already completed or is already available to the player
 		if previous_quests.has(order) or available_quests.has(order):

@@ -7,6 +7,12 @@ func _ready():
 func edit_text(req_item:Item = null):
 	$QuantityLabel.text = str(req_item.quantity) + "x"
 	
+	if req_item.producer != null:
+		$ProducerRequirement/ProducerLabel.text = req_item.producer
+	else:
+		$ProducerRequirement/ProducerLabel.text = "Any"
+		pass
+	
 	if req_item.grade != null:
 		$GradeRequirement/GradeLabel.text = req_item.grade
 	else:

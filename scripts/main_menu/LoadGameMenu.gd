@@ -8,9 +8,7 @@ var save_arr:Array
 
 var save_slot = preload("res://scenes/main_menu/slots/SaveFileSlot.tscn")
 
-
 signal open_popup(selected_save)
-
 
 # Slot selection
 var selected_save_data:SaveData = null
@@ -73,7 +71,9 @@ func delete_save():
 func _on_PlayButton_pressed():
 	SaveAndLoad.load_save(selected_save_data.filename)
 	
-	exiting_scene()
+	$SceneTransitionPanel.visible = true
+	$SceneTransitionPanel/AnimationPlayer.play("transition_to_black")
+	yield($SceneTransitionPanel/AnimationPlayer, "animation_finished")
 	
 	Global.start_game()
 

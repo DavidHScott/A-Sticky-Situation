@@ -50,6 +50,8 @@ func _init(order_title:String = "Placeholder",
 	fulfill_timelimit = deadline
 	prereq_keys = prereq
 	wait_day_to_unlock = wait
+	reward_reputation = reward_rep
+	required_reputation = required_rep
 	
 	# 20% discount if the player is late. May change this later
 	overdue_pay = pay * 0.8

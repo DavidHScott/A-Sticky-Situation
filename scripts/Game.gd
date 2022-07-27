@@ -57,6 +57,7 @@ func _ready():
 	OrderFulfillment.generate_random_orders = SaveAndLoad.save_data.generate_random_orders
 	
 	current_day = SaveAndLoad.save_data.current_day
+	$GUI/Interface/UpperThird/Counters/DayCounter/Label.text = "DAY " + str(current_day)
 	
 	PlayerVariables.username = SaveAndLoad.save_data.player_name
 	PlayerVariables.money = SaveAndLoad.save_data.money
@@ -252,6 +253,7 @@ func switch_game_state():
 		
 		current_day += 1
 		SaveAndLoad.save_data.current_day = current_day
+		$GUI/Interface/UpperThird/Counters/DayCounter/Label.text = "DAY " + str(current_day)
 		
 		Market.new_day()
 		ShoppingController.start_shop_day()

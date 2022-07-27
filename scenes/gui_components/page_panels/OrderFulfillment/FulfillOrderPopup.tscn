@@ -5,7 +5,6 @@
 
 [node name="FulfillOrderPopup" type="Popup"]
 pause_mode = 2
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 425, 0 )

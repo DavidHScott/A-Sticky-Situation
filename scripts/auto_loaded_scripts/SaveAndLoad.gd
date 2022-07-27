@@ -30,7 +30,6 @@ func _ready():
 	
 	# Check for saves directory
 	if !dir.dir_exists(SAVE_FOLDER):
-		print("Test")
 		dir.make_dir("saves")
 	
 	
@@ -138,7 +137,7 @@ func clear_save_game():
 	save_data.available_quests.clear()
 	save_data.previous_quests.clear()
 	
-	save_data.available_quests.append([initial_order, false, false, 0, 0])
+	save_data.available_quests.append([initial_order, false, false, 0, 0, "???"])
 	save_data.max_orders = 2
 	save_data.generate_random_orders = false
 	
@@ -237,13 +236,15 @@ func save_orders_to_savedata():
 		var overdue = OrderFulfillment.available_quests[order_key].overdue
 		var days_since_init = OrderFulfillment.available_quests[order_key].days_since_init
 		var days_since_accept = OrderFulfillment.available_quests[order_key].days_since_accept
+		var distributer = OrderFulfillment.available_quests[order_key].distributer
 		
 		# 0: Key
 		# 1: Accepted bool
 		# 2: Overdue bool
 		# 3: Days since inititalization
 		# 4: Days since order accepted
-		var order = [order_key, accepted, overdue, days_since_init, days_since_accept]
+		# 5: Distributer key
+		var order = [order_key, accepted, overdue, days_since_init, days_since_accept, distributer]
 		save_data.available_quests.append(order)
 	
 	# Previous quests is easier at the moment. The only data that needs to be stored is the keys
@@ -263,6 +264,8 @@ func load_orders_from_savedata():
 		var overdue_bool = order[2]
 		var days_since_init = order[3]
 		var days_since_accept = order[4]
+		var distributer = order[5]
+		
 		
 		if OrderFulfillment.story_orders_dict.has(order_key):
 			OrderFulfillment.available_quests[order_key] = OrderFulfillment.story_orders_dict[order_key]
@@ -273,6 +276,7 @@ func load_orders_from_savedata():
 		OrderFulfillment.available_quests[order_key].overdue = overdue_bool
 		OrderFulfillment.available_quests[order_key].days_since_init = days_since_init
 		OrderFulfillment.available_quests[order_key].days_since_accept = days_since_accept
+		OrderFulfillment.available_quests[order_key].distributer = distributer
 	
 	for order_key in save_data.previous_quests:
 		OrderFulfillment.previous_quests.append(order_key)

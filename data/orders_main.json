@@ -105,7 +105,7 @@
     "maxime_0": {
     	"Title": "A New Partnership",
      	"Distributer": "Maxime",
-	"Description": "Well hello there stranger!\n\nYou seem to be making a name for yourself around these parts, so I thought I’d introduce myself. I’m simply known as Maxime. I own a small business in Québec, and I’ve been a part of this endeavour since the black market went online. In that time I’ve learned that having plenty of connections and friends in high places is the key to success in this type of business.\n\nAs it happens, I’m suddenly in need of some new connections, and you seem to be going places. At the moment, I’m getting a little low on a few key products in my store. I need one barrel of each syrup grade from {producer_HAM}. They’re old friends of mine, so I like to showcase their product.\n\nThanks in advance bud!",
+	"Description": "Well hello there stranger!\n\nYou seem to be making a name for yourself around these parts, so I thought I’d introduce myself. I’m simply known as Maxime. I own a small business in Québec, and I’ve been a part of this endeavour since the black market went online. In that time I’ve learned that having plenty of connections and friends in high places is the key to success in this type of business.\n\nAs it happens, I’m suddenly in need of some new connections, and you seem to be going places. At the moment, I’m getting a little low on a few key products in my store. I need one barrel of each syrup grade from {producer-HAM}. They’re old friends of mine, so I like to showcase their product.\n\nThanks in advance bud!",
 	"Payment": 3500,
     "RepReward": 1,
 	"Requirements": [{
@@ -195,7 +195,7 @@
     "wyman_4": {
     	"Title": "Be Vigilant",
      	"Distributer": "Wyman Inc.",
-	"Description": "Hello {playername},\n\nI hope you have been well.\n\nFirstly I would like to make you aware that a source of ours has confirmed that the syrup producer {producer_NUR} is currently under police investigation. I would highly suggest that you refrain from purchasing merchandise from them for the foreseeable future. The FPAQ does not look fondly on the sale of syrup behind their back\n\nOtherwise, our order is attached as expected.\n\nRegards.",
+	"Description": "Hello {playername},\n\nI hope you have been well.\n\nFirstly I would like to make you aware that a source of ours has confirmed that the syrup producer {producer-NUR} is currently under police investigation. I would highly suggest that you refrain from purchasing merchandise from them for the foreseeable future. The FPAQ does not look fondly on the sale of syrup behind their back\n\nOtherwise, our order is attached as expected.\n\nRegards.",
 	"Payment": 5100,
     "RepReward": 1,
 	"Requirements": [{
@@ -261,7 +261,7 @@
     "maxime_3": {
     	"Title": "Harsh Reality",
      	"Distributer": "Maxime",
-	"Description": "Hey, bud.\n\nUnfortunately, {producer_HAM} seems to be under investigation, and the last shipment you sent my way got stopped by the cops. I don’t want you to feel down on yourself, these things just happen sometimes. Although, with all that’s going on, you may want to obtain some extra storage space, just as some additional redundancy. If you’d like, I can call in a few favours and try and get you a good deal.\n\nAnywho, I’m going to try to keep a low profile until all of this blows over. It’s been good working with you, {playername}.\n\nKeep yourself out of trouble.",
+	"Description": "Hey, bud.\n\nUnfortunately, {producer-HAM} seems to be under investigation, and the last shipment you sent my way got stopped by the cops. I don’t want you to feel down on yourself, these things just happen sometimes. Although, with all that’s going on, you may want to obtain some extra storage space, just as some additional redundancy. If you’d like, I can call in a few favours and try and get you a good deal.\n\nAnywho, I’m going to try to keep a low profile until all of this blows over. It’s been good working with you, {playername}.\n\nKeep yourself out of trouble.",
 	"Payment": 0,
     "RepReward": 0,
 	"Requirements": null,
@@ -287,7 +287,7 @@
     "???_2": {
     	"Title": "Discretion is Advised",
      	"Distributer": "???",
-	"Description": "Well hello there, {playername}.\n\nSo it looks like you’ve made something of a name for yourself. Since you’ve proven yourself to be reliable, I have a favour to ask of you.\n\na buddy of mine is under investigation for withholding merchandise from the cartel, and the two of us have been working to smuggle his unaccounted-for product out of his sugar shack. Now, we need a middleman to help get the stuff away without incident. This, of course, is where you come in.\n\nWe’ve created a burner account on the market, so over the next few days, you’ll start to see items appear from a supplier using the name {producer_SHS}. Send it over once you’ve rounded it all up, and I’ll make sure you’re rewarded heavily.\n\nI know this is a big ask, even in an industry that’s already not particularly legal, but rest assured, we are taking your safety into account. As long as you send everything over in a timely manner, I’ll make sure everything goes precisely to plan.\n\nMany thanks.",
+	"Description": "Well hello there, {playername}.\n\nSo it looks like you’ve made something of a name for yourself. Since you’ve proven yourself to be reliable, I have a favour to ask of you.\n\na buddy of mine is under investigation for withholding merchandise from the cartel, and the two of us have been working to smuggle his unaccounted-for product out of his sugar shack. Now, we need a middleman to help get the stuff away without incident. This, of course, is where you come in.\n\nWe’ve created a burner account on the market, so over the next few days, you’ll start to see items appear from a supplier using the name {producer-SHS}. Send it over once you’ve rounded it all up, and I’ll make sure you’re rewarded heavily.\n\nI know this is a big ask, even in an industry that’s already not particularly legal, but rest assured, we are taking your safety into account. As long as you send everything over in a timely manner, I’ll make sure everything goes precisely to plan.\n\nMany thanks.",
 	"Payment": 12000,
     "RepReward": 30,
 	"Requirements": [{
